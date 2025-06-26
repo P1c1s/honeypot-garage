@@ -70,6 +70,7 @@ RUN apt update && \
 	net-tools \
 	netbase \
 	netcat-openbsd \
+	nginx \
 	openssh-client \
 	openssh-server \
 	openssl \
