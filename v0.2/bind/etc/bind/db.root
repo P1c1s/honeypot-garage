@@ -1,0 +1,16 @@
+$TTL   60000
+@               IN      SOA     ROOT-SERVER.    root.ROOT-SERVER. (
+                        2025062701 ; serial
+                        28800      ; refresh
+                        14400      ; retry
+                        3600000    ; expire
+                        0          ; negative cache ttl
+                        )
+
+@               IN      NS      ROOT-SERVER.
+ROOT-SERVER.    IN      AAAA    2001:db8::31    ; indirizzo fittizio per il root server
+
+com.            IN      NS      a.gtld-servers.net.
+a.gtld-servers.net. IN AAAA    2001:503:a83e::2:30  ; uno dei veri root NS per .com
+
+google.com.     IN      AAAA    2607:f8b0:4005:805::200e  ; IPv6 reale di google.com

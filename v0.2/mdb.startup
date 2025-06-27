@@ -13,4 +13,5 @@ ip link set dev eth0 up
 # from the stateless auto-configuration
 
 # start databse server daemon
-systemctl start mariadb
+# systemctl start mariadb
+service mariadb start

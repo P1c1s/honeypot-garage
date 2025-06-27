@@ -63,7 +63,7 @@ RUN apt update && \
 	lsb-release \
 	make \
 	man-db \
-	mysql-server \
+	mariadb-server \
 	mtr-tiny \
 	nano \
 	ndisc6 \
