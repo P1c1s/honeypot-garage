@@ -7,11 +7,10 @@
 4. [Commands](#commands)
 
 ## Network scheme
-![alt text](network.png)
+![alt text](network.drawio.png)
 
 ## Description
-* In the local network, all hosts can be reached through the hostname
-e.g. In Lan A, the thinkpad can ping macbookpro through ip `ping 192.168.179.10` or it can ping macbookpro throw hostname  `ping macbookpro` 
+ 
 #### Lan A
 **Router**: fritzbox
 **Switch**: tplink8 with 8 available ports 

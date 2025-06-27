@@ -1,0 +1,2 @@
+chmod o-rw /etc/radvd.conf
+systemctl start radvd
