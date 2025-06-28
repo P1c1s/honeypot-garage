@@ -1,0 +1,6 @@
+SAMBA :
+
+smbclient //172.17.0.2/sharing -U pippo -c "put /pippo.txt pippo.txt"
+
+smbclient -L //172.17.0.2/sharing -U pippo 
+
