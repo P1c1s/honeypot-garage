@@ -20,5 +20,5 @@ if ($conn->connect_error) {
 
 $conn->close();
 ?>
-    <!-- CREATE USER 'pippo'@'localhost' IDENTIFIED BY 'pippo'; -->
+    <!-- CREATE USER 'pippo'@'ip_del_server' IDENTIFIED BY 'pippo'; -->
 
