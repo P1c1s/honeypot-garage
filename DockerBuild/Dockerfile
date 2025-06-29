@@ -78,6 +78,7 @@ RUN apt update && \
 	python3-pip \
 	radvd \
 	rsync \
+	smbclient \
 	screen \
 	sed \
 	systemd-userdbd \

@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 echo 'ole';
-$servername = "172.17.0.2"; // Cambia con l'indirizzo corretto
+$servername = "mdb"; // Cambia con l'indirizzo corretto
 $username = "pluto";
 $password = "pluto";
 
