@@ -1,0 +1,14 @@
+ip address add 192.169.0.3/24 dev eth0
+
+# a default router is selected
+ip route add default via 192.169.0.1
+
+# start web server daemon
+# systemctl start apache2
+service apache2 start
+
+#soluzione mometanea:
+
+echo "\$dbserver = 'mdb';" >> /etc/phpmyadmin/config-db.php
+
+/shared/./up.sh

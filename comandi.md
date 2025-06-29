@@ -1,11 +1,14 @@
 # Samba
-
+## Server
 ``` bash
 apt install samba -y # server
-apt install smbclient -y # client
-
 service smbd start #start service
+```
 
+# Client
+
+``` bash
+apt install smbclient -y # client
 smbclient //172.17.0.2/sharing -U pippo -c "put /pippo.txt pippo.txt"
 smbclient -L //172.17.0.2/sharing -U pippo # list directies
 ```
