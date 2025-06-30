@@ -51,3 +51,24 @@ apt-get install -y mongodb-org
 sudo apt-get update
 sudo apt-get install rsyslog
 ``` 
+
+# Netcat
+
+``` bash
+nc -l -p <porta server> # server
+nc <ip server> <porta server> # client
+``` 
+
+# OpenLdap
+
+``` bash
+
+```
+
+# OpenVpn
+
+``` bash
+# porta 1194
+curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+chmod +x openvpn-install.sh
+```
