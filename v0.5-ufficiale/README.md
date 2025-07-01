@@ -1,0 +1,58 @@
+# Indice
+1. [Introduzione](#1-introduzione)
+2. [Interfacce del Router](#2-interfacce-del-router)
+   - [Interfaccia: eth0 (LAN 1)](#interfaccia-eth0-lan-1)
+   - [Interfaccia: eth1 (LAN 2)](#interfaccia-eth1-lan-2)
+   - [Interfaccia: eth2 (LAN 3)](#interfaccia-eth2-lan-3)
+3. [Topologia della rete](#3-topologia-della-rete)
+4. [Firewall](#4-firewall)
+
+# 1. Introduzione
+Questo documento descrive l'architettura di rete e le interfacce di un router, evidenziando i dispositivi collegati e le loro funzioni.
+
+![alt text](network.drawio.svg)
+
+# 2. Interfacce del Router
+
+## Interfaccia: eth0 (LAN 1)
+**Nome interfaccia**: eth0  
+**Descrizione**: All'interfaccia eth0 è collegata la LAN di livello 1.  
+**Hosts**: 
+- **Switch 1**: Collega i seguenti dispositivi:
+  - **DNS Server**: Fornisce risoluzione dei nomi per i dispositivi nella rete.
+  - **Web Server (Apache)**: Server dedicato per la gestione di richieste web.
+
+## Interfaccia: eth1 (LAN 2)
+**Nome interfaccia**: eth1  
+**Descrizione**: All'interfaccia eth1 è collegata la LAN di livello 2.  
+**Hosts**: 
+- **Switch 2**: Collega i seguenti dispositivi:
+  - **Web Server (App 2)**: Server dedicato per l'applicazione 2, gestisce le richieste web.
+  - **Web Server (App 3)**: Server dedicato per l'applicazione 3, gestisce le richieste web.
+
+## Interfaccia: eth2 (LAN 3)
+**Nome interfaccia**: eth2  
+**Descrizione**: All'interfaccia eth2 è collegata la LAN di livello 3.  
+**Hosts**: 
+- **Switch 3**: (Se presente, altrimenti omettere)
+  - (Elencare eventuali dispositivi collegati)
+
+# 3. Firewall
+
+###### Chain INPUT (Policy ACCEPT)
+| num | target | prot | opt | in | out | source     | destination | source port | destination port |
+| --- | ------ | ---- | --- | -- | --- | ---------- | ----------- | ----- | --- |
+|     |        |      |     |    |     |            |             |         |     |
+
+###### Chain FORWARD (Policy ACCEPT)
+| num | target | prot | opt | in | out | source          | destination       | source port | destination port |
+| --- | ------ | ---- | --- | -- | --- | --------------- | ----------------- | ----- | ----- |
+| 1   | REJECT | all  | --  | *  |  *  | 192.168.2.0/24  | 192.168.179.0/24  | --    | ----- |
+| 2   | ACCEPT | all  | --  | *  |  *  | 192.168.178.11/24  | 192.168.179.101/24  | --    | 22 |
+| 3   | ACCEPT | all  | --  | *  |  *  | 192.168.0.110/24  | 192.168.0.101/24  | --    | 22 |
+| 4   | REJECT | all  | --  | *  |  *  | 0.0.0.0/0               | 192.168.0.101/24  | --    | 22 |
+
+###### Chain OUTPUT (Policy ACCEPT)
+| num | target | prot | opt | in | out | source     | destination | source port | destination port |
+| --- | ------ | ---- | --- | -- | --- | ---------- | ----------- | ----- | ----- |
+|     |        |      |     |    |     |            |             |         |     |
