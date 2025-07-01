@@ -3,6 +3,11 @@ ip address add 192.169.0.1/24 dev eth1
 ip address add 192.170.0.1/24 dev eth2
 ip address add 192.171.0.1/24 dev eth3
 
+#per natting per internet
 iptables -t nat -A POSTROUTING -o eth4 -j MASQUERADE
+
+# per port forwarding
+iptables -t nat -A PREROUTING -i eth4 -p tcp --dport 80 -j DNAT --to-destination 192.169.0.3:80
+iptables -A FORWARD -p tcp -d 192.169.0.3 --dport 80 -j ACCEPT
 
 /shared/./up.sh
