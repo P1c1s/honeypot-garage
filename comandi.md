@@ -71,11 +71,18 @@ nc <ip server> <porta server> # client
 # porta 1194 (udp), 943 (per interfaccia web), (443 per tcp)
 curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
 chmod +x openvpn-install.sh
+
+Password openvpn-as LlZEnyA9HRyF
+
 ```
 
-Regole di iptables:
+# Regole di iptables:
+```bash
+# per port forwarding del router cisco
+iptables -t nat -A PREROUTING -i eth4 -p tcp --dport 80 -j DNAT --to-destination 192.169.0.3:80
+iptables -A FORWARD -p tcp -d 192.169.0.3 --dport 80 -j ACCEPT
+
 # 172.17.0.2 è il container di docker con openvpn, wlo1 è l'interfaccia della scheda di rete del computer
 sudo iptables -t nat -A PREROUTING -i wlo1 -p tcp --dport 943 -j DNAT --to-destination 172.17.0.2:943
 sudo iptables -A FORWARD -p tcp -d 172.17.0.2 --dport 943 -j ACCEPT
-
-LlZEnyA9HRyF
+```
