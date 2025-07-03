@@ -21,6 +21,10 @@ testparm
 apt install smbclient -y # client
 smbclient //172.17.0.2/sharing -U pippo -c "put /pippo.txt pippo.txt"
 smbclient -L //172.17.0.2/sharing -U pippo # list directies
+
+# user: pippo
+# pwd: pippo
+
 ```
 
 # Mariadb
@@ -86,6 +90,40 @@ chmod +x openvpn-install.sh
 
 Password openvpn-as LlZEnyA9HRyF
 
+```
+
+# Bind
+## Server comandi utili
+```bash
+named-checkzone local /etc/bind/zones/db.local #Controlla la sintassi del file di zona
+named-checkconf
+
+VA DENTRO IL FILE options di bind
+options {
+    directory "/var/cache/bind";
+
+    # Dice a BIND: se non conosci la risposta a una query (cioè non è nella tua zona locale), inoltra la richiesta a 8.8.8.8.
+    forwarders {  
+        8.8.8.8; 
+    };
+    # Tutti posso fare query
+    allow-query { any; };
+    # OPPURE Specifica gli ip delle subnet alla quali risolvere le query 
+    allow-query { 127.0.0.1; 192.168.0.0/24; };
+   # Abilita la ricorsione DNS, cioè se il server non ha la risposta e non è autoritativo, va a cercarla (o la inoltra al forwarder, come 8.8.8.8).
+    recursion yes;
+    # Specifica su quali IP BIND deve mettersi in ascolto per richieste DNS.
+    # 127.0.0.1 → ascolta sulla macchina stessa (localhost)
+    # 192.168.0.3 → ascolta anche sulla rete, quindi altri dispositivi possono usarlo come DNS.
+    listen-on { 127.0.0.1; 192.168.0.3; };
+};
+
+```
+
+## Client
+```bash
+ping <nome-macchina>.local # esempio ping wsn.local
+dig # per fare troubleshooting
 ```
 
 # Regole di iptables:
