@@ -3,6 +3,16 @@
 ``` bash
 apt install samba -y # server
 service smbd start #start service
+
+#aggiunta utenti
+adduser pippo
+smbpasswd -a pippo
+
+mkdir /home/pippo/sharing
+chmod 777 /home/pippo/sharing
+
+#test funzionamento samba -- stampa parametri configurazione
+testparm
 ```
 
 # Client
@@ -18,12 +28,11 @@ smbclient -L //172.17.0.2/sharing -U pippo # list directies
 ``` bash
 apt install -y mariadb-server
 nano /etc/mysql/mariadb.conf.d/50-server.cnf # bind-address = 0.0.0.0
-CREATE USER 'pippo'@'ip_del_server' IDENTIFIED BY 'pippo';
+#CREATE USER 'pippo'@'ip_del_server' IDENTIFIED BY 'pippo';
 CREATE USER 'pippo'@'%' IDENTIFIED BY 'pippo'; # la % dovrebbe dare accesso a tutti gli ip
-GRANT ALL PRIVILEGES ON safepanda.* TO 'panda'@'ip_del_server';
+GRANT ALL PRIVILEGES ON safepanda.* TO 'panda'@'%';
 FLUSH PRIVILEGES;
-apt install -y phpmyadmin
-nano /etc/phpmyadmin/config-db.php # $dbserver='172.17.0.3';
+
 ```
 
 # Apache
@@ -31,6 +40,9 @@ nano /etc/phpmyadmin/config-db.php # $dbserver='172.17.0.3';
 ``` bash
 apt install -y apache2
 apt install  -y php libapache2-mod-php php-mysql
+#comunicazione con MariaDB
+apt install -y phpmyadmin
+nano /etc/phpmyadmin/config-db.php # $dbserver='172.17.0.3';
 ```
 
 # MongoDb
