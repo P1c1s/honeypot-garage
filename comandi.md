@@ -118,6 +118,9 @@ options {
     listen-on { 127.0.0.1; 192.168.0.3; };
 };
 
+
+# GENRAZIONE FILE db.root
+wget -O /path-destinazione https://www.internic.net/domain/named.root
 ```
 
 ## Client
