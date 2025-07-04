@@ -12,8 +12,13 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 
 ![alt text](network.drawio.png)
 
+--- 
+
 ![alt text](namespace.drawio.png)
 
+---
+
+![alt text](hops.drawio.png)
 
 # 2. Interfacce del Router
 

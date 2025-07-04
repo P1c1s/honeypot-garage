@@ -131,9 +131,13 @@ dig # per fare troubleshooting
 
 # Regole di iptables:
 ```bash
+
+# per il natting dentro docker, permette ai conteiner di uscire ... 
+iptables -t nat -A POSTROUTING -o eth4 -j MASQUERADE
+
 # per port forwarding del router cisco
 iptables -t nat -A PREROUTING -i eth4 -p tcp --dport 80 -j DNAT --to-destination 192.169.0.3:80
-iptables -A FORWARD -p tcp -d 192.169.0.3 --dport 80 -j ACCEPT
+iptables -I FORWARD 1 -p tcp -d 192.169.0.3 --dport 80 -j ACCEPT # PROVARE A METTERLA COME PRIMA REGOLA DELLA CATENA POTREBBE FUNZIONARE
 
 # 172.17.0.2 è il container di docker con openvpn, wlo1 è l'interfaccia della scheda di rete del computer
 sudo iptables -t nat -A PREROUTING -i wlo1 -p tcp --dport 943 -j DNAT --to-destination 172.17.0.2:943
