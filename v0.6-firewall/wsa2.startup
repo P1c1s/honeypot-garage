@@ -1,0 +1,10 @@
+ip address add 192.170.0.2/24 dev eth0
+
+# a default router is selected
+ip route add default via 192.170.0.1
+
+# start web server daemon
+# systemctl start apache2
+service apache2 start
+
+/shared/./up.sh

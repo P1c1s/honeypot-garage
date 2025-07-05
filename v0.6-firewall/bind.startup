@@ -1,0 +1,9 @@
+ip address add 192.168.0.3/24 dev eth0
+
+# a default router is selected
+ip route add default via 192.168.0.1
+
+# start dns server daemon
+systemctl start bind9
+
+# /shared/./up.sh
