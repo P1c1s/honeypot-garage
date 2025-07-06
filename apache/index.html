@@ -187,11 +187,13 @@
         <h2 style="margin-top:130px">Sei approdato su un sito web hostato da un server Apache situato in una rete virtuale creata con Kathará.</h2>
         <h3 style="text-align: left; margin-top: 50px;">Per i veri curiosoni:</h3>
         <p>Forse ti starai chiedendo come sia possibile.
-            L'ip al quale ti sei connesso è l'indirizzo di quel bel Thinkpad X1 Carbon. È a lui che hai effettuato una richiesta http
-            su porta 80. Attraverso delle regole di <strong>natting</strong> impostate con iptables, la richiesta http viene inoltrata
-            ad un router presente nel laboratorio Kathará. Questo router ha 5 interfacce tra cui una <strong>bridged</strong>. La richiesta viene poi instradata
-            dal router verso il server apache. Il server apache processa la richiesta e manda la risposta al router che si occupa di inoltrarla
-            al pc host - il thinkpad - che anche lui a sua volta la inoltra al client. Ovvero a te.
+            La macchina alla ti sei connesso il router di casa di Lorenzo. È a lui che hai effettuato una richiesta http
+            su porta 80. Attraverso delle configurazioni dal panello di controllo, sono state aperte diverse porte (port forwording).
+            Questo router inoltra il traffico in entrata sulla porta 80 ad un computer nella rete locale (thinkpad t450s).
+            Attraverso delle regole di <strong>natting</strong> impostate con iptables, la richiesta http viene inoltrata
+            ad un router (cisco) presente nel laboratorio Kathará. Questo router ha 5 interfacce tra cui una <strong>bridged</strong>.
+            La richiesta viene poi instradata dal router verso il server apache. Una volta che il server apache processa la richiesta,
+            questa ripete la "strada" al contrario finchè non arriva a te.
         </p>
         <p style="color: #ff9edd;">
             P.s.
@@ -202,11 +204,14 @@
         <div class="button-container">
             <a id="toggle-button" class="retro-button" href="javascript:void(0)">Scopri altri servizi</a>
         </div>
-        <div id="extra-services">
-            <p>Prova a connetterti a <strong>smb://ip</strong></p>
-            <p>Prova a connetterti a <strong>ssh admin@ip</strong></p>
-            <a class="retro-button" href="http://172.17.0.2:8080" target="_blank" rel="noopener noreferrer">Accedi a nginx</a>
-            <a class="retro-button" href="phpmyadmin" target="_blank" rel="noopener noreferrer">Accedi al DB server</a>
+        <div id="extra-services" style="display: none;">
+            <p>Prova a connetterti a <strong>smb://fragolino.ddns.net</strong></p>
+            <p>Prova a connetterti a <strong>ssh admin@fragolino.ddns.net</strong></p>
+            <a style="color: #ffcc00;" href="http://fragolino.ddns.net:8080" target="_blank" rel="noopener noreferrer">
+                <p>Accedi a nginx</p>
+            </a>
+            <a style="color: #ffcc00;" href="phpmyadmin" target="_blank" rel="noopener noreferrer">
+                <p>Accedi al DB server</p>
         </div>
     </div>
 
@@ -261,6 +266,8 @@
                 toggleButton.textContent = 'Scopri altri servizi';
             }
         });
+
+
     </script>
 </body>
 
