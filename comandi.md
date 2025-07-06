@@ -143,3 +143,11 @@ iptables -I FORWARD 1 -p tcp -d 192.169.0.3 --dport 80 -j ACCEPT # PROVARE A MET
 sudo iptables -t nat -A PREROUTING -i wlo1 -p tcp --dport 943 -j DNAT --to-destination 172.17.0.2:943
 sudo iptables -A FORWARD -p tcp -d 172.17.0.2 --dport 943 -j ACCEPT
 ```
+
+
+# Docker
+```bash
+docker login -u <username> prova3191    # password: prova3191
+docker tag <nome_immagine> <username/nome_repo>
+docker push <username/nome_repo>
+```
