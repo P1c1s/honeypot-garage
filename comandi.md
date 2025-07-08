@@ -137,11 +137,23 @@ iptables -t nat -A POSTROUTING -o eth4 -j MASQUERADE
 
 # per port forwarding del router cisco
 iptables -t nat -A PREROUTING -i eth4 -p tcp --dport 80 -j DNAT --to-destination 192.169.0.3:80
-iptables -I FORWARD 1 -p tcp -d 192.169.0.3 --dport 80 -j ACCEPT # PROVARE A METTERLA COME PRIMA REGOLA DELLA CATENA POTREBBE FUNZIONARE
+iptables -I FORWARD 1 -p tcp -d 192.169.0.3 --dport 80 -j ACCEPT 
 
 # 172.17.0.2 è il container di docker con openvpn, wlo1 è l'interfaccia della scheda di rete del computer
 sudo iptables -t nat -A PREROUTING -i wlo1 -p tcp --dport 943 -j DNAT --to-destination 172.17.0.2:943
 sudo iptables -A FORWARD -p tcp -d 172.17.0.2 --dport 943 -j ACCEPT
+
+# regole specifiche per la macchina host (thinkpad)
+iptables -t nat -A PREROUTING -i enp0s25 -p tcp --dport 22 -j DNAT --to-destination 172.17.0.2:22
+iptables -I FORWARD 1 -p tcp -d 172.17.0.2 --dport 22 -j ACCEPT
+iptables -t nat -A PREROUTING -i enp0s25 -p tcp --dport 80 -j DNAT --to-destination 172.17.0.2:80
+iptables -I FORWARD 1 -p tcp -d 172.17.0.2 --dport 80 -j ACCEPT
+iptables -t nat -A PREROUTING -i enp0s25 -p tcp --dport 139 -j DNAT --to-destination 172.17.0.2:139
+iptables -I FORWARD 1 -p tcp -d 172.17.0.2 --dport 139 -j ACCEPT
+iptables -t nat -A PREROUTING -i enp0s25 -p tcp --dport 445 -j DNAT --to-destination 172.17.0.2:445
+iptables -I FORWARD 1 -p tcp -d 172.17.0.2 --dport 445 -j ACCEPT
+iptables -t nat -A PREROUTING -i enp0s25 -p tcp --dport 8080 -j DNAT --to-destination 172.17.0.2:8080
+iptables -I FORWARD 1 -p tcp -d 172.17.0.2 --dport 8080 -j ACCEPT
 ```
 
 
