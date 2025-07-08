@@ -6,6 +6,7 @@
    - [Interfaccia: eth2 (LAN 3)](#interfaccia-eth2-lan-3)
 3. [Topologia della rete](#3-topologia-della-rete)
 4. [Firewall](#4-firewall)
+5. [Accounts](#5-accounts)
 
 # 1. Introduzione
 Questo documento descrive l'architettura di rete e le interfacce di un router, evidenziando i dispositivi collegati e le loro funzioni.

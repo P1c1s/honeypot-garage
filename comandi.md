@@ -147,7 +147,13 @@ sudo iptables -A FORWARD -p tcp -d 172.17.0.2 --dport 943 -j ACCEPT
 
 # Docker
 ```bash
-docker login -u <username> prova3191    # password: prova3191
+docker login -u <username> theb0ys
 docker tag <nome_immagine> <username/nome_repo>
 docker push <username/nome_repo>
+```
+
+Arp spoofing
+```bash
+apt-get install dsniff
+arpspoof -i eth0 -t 192.169.0.2 192.169.0.1
 ```
