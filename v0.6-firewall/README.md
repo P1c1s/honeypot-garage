@@ -105,17 +105,40 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 
 ### SSH
 
-| Host          | Username      | Password      | Tipo di Account   |
-|---------------|---------------|---------------|------------------ |
-| wsa1          | user1         | password123   | Amministratore    |
-| smb           | user2         | qwerty456     | Utente Normale    |
-| host3         | user3         | abcdef789     | Utente Ospite     |
-| host4         | admin         | adminPass     | Amministratore    |
-| host5         | guest         | guest1234     | Utente Ospite     |
+| Host    | Username | Password   | Tipo di Account       |
+| ------- | -------- | ---------- | --------------------- |
+| bind    | senior   | 1Password! | Amministratore Senior |
+| bind    | junior   | 2Password! | Amministratore Junior |
+| ldap    | senior   | 1Password! | Amministratore Senior |
+| mdb     | senior   | 1Password! | Amministratore Senior |
+| openvpn | senior   | 1Password! | Amministratore Senior |
+| smb     | senior   | 1Password! | Amministratore Senior |
+| wsa1    | senior   | 1Password! | Amministratore Senior |
+| wsa1    | junior   | 2Password! | Amministratore Junior |
+| wsa2    | senior   | 1Password! | Amministratore Senior |
+| wsa2    | junior   | 2Password! | Amministratore Junior |
+| wsn     | senior   | 1Password! | Amministratore Senior |
+| wsn     | junior   | 2Password! | Amministratore Junior |
 
 
 ### Samba
 
+| Host | Username | Password | Tipo di Account |
+| ---- | -------- | -------- | --------------- |
+| smb  | mario    | 1as-aoi  | Dirigente       |
+| smb  | filippo  | lolw-9u! | Dipendete       |
+
+
+
+| mdb     | senior   | 1Password! | Amministratore Senior |
+| openvpn | senior   | 1Password! | Amministratore Senior |
+| smb     | senior   | 1Password! | Amministratore Senior |
+| wsa1    | senior   | 1Password! | Amministratore Senior |
+| wsa1    | junior   | 2Password! | Amministratore Junior |
+| wsa2    | senior   | 1Password! | Amministratore Senior |
+| wsa2    | junior   | 2Password! | Amministratore Junior |
+| wsn     | senior   | 1Password! | Amministratore Senior |
+| wsn     | junior   | 2Password! | Amministratore Junior |
 
 ### DB
 
