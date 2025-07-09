@@ -39,7 +39,6 @@ RUN apt update && \
 	apt install -y --no-install-recommends \
 	apt-utils \
 	apt-transport-https \
-	apache2 \
 	arping \
 	bridge-utils \
 	curl \
@@ -63,7 +62,6 @@ RUN apt update && \
 	lsb-release \
 	make \
 	man-db \
-	mariadb-server \
 	mtr-tiny \
 	nano \
 	ndisc6 \

@@ -88,13 +88,15 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | --- | ------ | ---- | --- | -- | --- | ---------- | ----------- | ----- | --- |
 |     |        |      |     |    |     |            |             |         |     |
 
-###### Chain FORWARD (Policy ACCEPT)
-| num | target | prot | opt | in | out | source          | destination       | source port | destination port |
-| --- | ------ | ---- | --- | -- | --- | --------------- | ----------------- | ----- | ----- |
-| 1   | REJECT | all  | --  | *  |  *  | 192.168.2.0/24  | 192.168.179.0/24  | --    | ----- |
-| 2   | ACCEPT | all  | --  | *  |  *  | 192.168.178.11/24  | 192.168.179.101/24  | --    | 22 |
-| 3   | ACCEPT | all  | --  | *  |  *  | 192.168.0.110/24  | 192.168.0.101/24  | --    | 22 |
-| 4   | REJECT | all  | --  | *  |  *  | 0.0.0.0/0               | 192.168.0.101/24  | --    | 22 |
+###### Chain FORWARD (Policy DROP)
+| num | target | prot | opt | in  | out | source          | destination       | source port | destination port |
+|-----|--------|------|-----|-----|-----|------------------|--------------------|-------------|-------------------|
+| 2   | ACCEPT | all  |     |     |     | 192.168.0.0/24   |                    |             |                   |
+| 3   | ACCEPT | all  |     |     |     | 192.169.0.0/24   |                    |             |                   |
+| 4   | ACCEPT | all  |     |     |     | 192.170.0.0/24   |                    |             |                   |
+| 5   | ACCEPT | tcp  |     |     |     | 192.168.1.0/24   |                    |             | 22                |
+| 6   | ACCEPT | all  |     |     |     |                  |                    |             |                   |
+
 
 ###### Chain OUTPUT (Policy ACCEPT)
 | num | target | prot | opt | in | out | source     | destination | source port | destination port |
@@ -120,7 +122,6 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | wsn     | senior   | 1Password! | Amministratore Senior |
 | wsn     | junior   | 2Password! | Amministratore Junior |
 
-
 ### Samba
 
 | Host | Username | Password | Tipo di Account |
@@ -128,17 +129,10 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | smb  | mario    | 1as-aoi  | Dirigente       |
 | smb  | filippo  | lolw-9u! | Dipendete       |
 
+### DB/phpmyadmin
 
-
-| mdb     | senior   | 1Password! | Amministratore Senior |
-| openvpn | senior   | 1Password! | Amministratore Senior |
-| smb     | senior   | 1Password! | Amministratore Senior |
-| wsa1    | senior   | 1Password! | Amministratore Senior |
-| wsa1    | junior   | 2Password! | Amministratore Junior |
-| wsa2    | senior   | 1Password! | Amministratore Senior |
-| wsa2    | junior   | 2Password! | Amministratore Junior |
-| wsn     | senior   | 1Password! | Amministratore Senior |
-| wsn     | junior   | 2Password! | Amministratore Junior |
-
-### DB
-
+| Host  | Username | Password   | Tipo di Account       |
+| ----- | -------- | ---------- | --------------------- |
+| mdb   | senior   | 1Password! | Amministratore Senior |
+| mdb   | junior   | 2Password! | Amministratore Junior |
+| mdb   | pluto   | pluto       | Da eliminare - funziona solo in v0.5-ufficiale in su |

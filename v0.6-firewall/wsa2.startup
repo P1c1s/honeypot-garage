@@ -7,4 +7,10 @@ ip route add default via 192.170.0.1
 # systemctl start apache2
 service apache2 start
 
+# start ssh server
+service ssh start
+useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' 'senior') senior
+useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' 'junior') junior
+
+
 /shared/./up.sh

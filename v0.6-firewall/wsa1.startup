@@ -11,4 +11,9 @@ service apache2 start
 
 echo "\$dbserver = 'mdb';" >> /etc/phpmyadmin/config-db.php
 
+# start ssh server
+service ssh start
+useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' 'senior') senior
+useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' 'junior') junior
+
 /shared/./up.sh
