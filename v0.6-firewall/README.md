@@ -136,3 +136,28 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | mdb   | senior   | 1Password! | Amministratore Senior |
 | mdb   | junior   | 2Password! | Amministratore Junior |
 | mdb   | pluto   | pluto       | Da eliminare - funziona solo in v0.5-ufficiale in su |
+
+
+### Conn
+
+|   | Colonna 1 | Colonna 2 | Colonna 3 | Colonna 4 | Colonna 5 | Colonna 6 | Colonna 7 | Colonna 8 | Colonna 9 | Colonna 10 |
+|---|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|------------|
+| A |     Si    |     Si    |           |           |           |           |           |           |           |            |
+| B |           |           |           |           |           |           |           |           |           |            |
+| C |           |           |           |           |           |           |           |           |           |            |
+| D |           |           |           |           |           |           |           |           |           |            |
+| E |           |           |           |           |           |           |           |           |           |            |
+
+
+|   | A     | B | C | D | E |
+|---|-------|---|---|---|---|
+| Colonna 1 | Si    |   |   |   |   |
+| Colonna 2 | Si    |   |   |   |   |
+| Colonna 3 |       |   |   |   |   |
+| Colonna 4 |       |   |   |   |   |
+| Colonna 5 |       |   |   |   |   |
+| Colonna 6 |       |   |   |   |   |
+| Colonna 7 |       |   |   |   |   |
+| Colonna 8 |       |   |   |   |   |
+| Colonna 9 |       |   |   |   |   |
+| Colonna 10|       |   |   |   |   |

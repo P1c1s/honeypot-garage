@@ -1,0 +1,33 @@
+ip address add 192.169.0.4/24 dev eth0
+
+# a default router is selected
+ip route add default via 192.169.0.1
+
+
+# start samba server daemon
+service smbd start
+
+# start ssh server
+service ssh start
+useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' 'senior') senior
+
+/shared/./up.sh
+
+# creazione utenti condivisione samba
+echo "[sharing] " >> /etc/samba/smb.conf
+
+echo "comment = Samba share directory
+   path = /srv/dirigenti/mario
+   read only = no
+   writable = yes
+   browseable = yes
+   guest ok = no
+   valid users = @mario" >> /etc/samba/smb.conf
+
+echo "comment = Samba share directory
+   path = /srv/dipendenti/filippo
+   read only = no
+   writable = yes
+   browseable = yes
+   guest ok = no
+   valid users = @filippo" >> /etc/samba/smb.conf

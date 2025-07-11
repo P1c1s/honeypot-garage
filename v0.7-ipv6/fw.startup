@@ -1,0 +1,52 @@
+ip address add 12.0.0.1/30 dev eth0
+ip address add 11.0.0.1/30 dev eth1
+
+
+# inoltro pacchetti su router cisco
+ip route add 192.168.0.0/24 via 12.0.0.2 dev eth0
+ip route add 192.169.0.0/24 via 12.0.0.2 dev eth0
+ip route add 192.170.0.0/24 via 12.0.0.2 dev eth0
+
+# inoltro pacchetti su router ciscos
+ip route add 192.168.1.0/24 via 11.0.0.2 dev eth1
+ip route add 192.168.2.0/24 via 11.0.0.2 dev eth1
+ip route add 192.168.3.0/24 via 11.0.0.2 dev eth1
+
+ip route add default dev eth2
+
+# per natting per internet
+iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE
+
+
+#### iptables ####
+
+# Port forwarding ssh
+# iptables -t nat -A PREROUTING -i eth2 -p tcp --dport 22 -j DNAT --to-destination 192.168.0.4:22
+# iptables -A FORWARD -p tcp -d 192.169.0.2 --dport 22 -j ACCEPT
+
+# Port forwarding ws1a
+iptables -t nat -A PREROUTING -i eth2 -p tcp --dport 80 -j DNAT --to-destination 192.169.0.2:80
+iptables -A FORWARD -p tcp -d 192.169.0.2 --dport 80 -j ACCEPT
+
+# Port forwarding smb
+iptables -t nat -A PREROUTING -i eth2 -p tcp --dport 139 -j DNAT --to-destination 192.169.0.4:139
+iptables -A FORWARD -p tcp -d 192.169.0.4 --dport 139 -j ACCEPT
+iptables -t nat -A PREROUTING -i eth2 -p tcp --dport 445 -j DNAT --to-destination 192.169.0.4:445
+iptables -A FORWARD -p tcp -d 192.169.0.4 --dport 445 -j ACCEPT
+
+# Port forwarding wsn                         porta esterna                       porta interna
+iptables -t nat -A PREROUTING -i eth2 -p tcp --dport 8080 -j DNAT --to-destination 192.170.0.3:80
+#                                          porta interna
+iptables -A FORWARD -p tcp -d 192.170.0.3 --dport 80 -j ACCEPT
+
+
+# FIREWALL
+iptables -P FORWARD DROP
+iptables -A FORWARD -s 192.168.00/24 -j ACCEPT
+iptables -A FORWARD -s 192.169.00/24 -j ACCEPT
+iptables -A FORWARD -s 192.170.00/24 -j ACCEPT
+iptables -A FORWARD -s 192.168.1.0/24 -p tcp --dport 22 -j ACCEPT
+iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+
+/shared/./up.sh
