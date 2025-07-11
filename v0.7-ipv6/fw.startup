@@ -1,18 +1,29 @@
-ip address add 12.0.0.1/30 dev eth0
-ip address add 11.0.0.1/30 dev eth1
+# the eth0, eth1, and eth2 interfaces are set down and then up 
+# to force the stateless auto-configuration
+# to rely on the new MAC addresses
+ip link set dev eth0 down
+ip link set dev eth0 up
+ip link set dev eth1 down
+ip link set dev eth1 up
 
+
+# set correct privileges for radvd.conf
+chmod o-rw /etc/radvd.conf
+
+# start the radvd service
+systemctl start radvd
 
 # inoltro pacchetti su router cisco
-ip route add 192.168.0.0/24 via 12.0.0.2 dev eth0
-ip route add 192.169.0.0/24 via 12.0.0.2 dev eth0
-ip route add 192.170.0.0/24 via 12.0.0.2 dev eth0
+# ip route add 192.168.0.0/24 via 12.0.0.2 dev eth0
+# ip route add 192.169.0.0/24 via 12.0.0.2 dev eth0
+# ip route add 192.170.0.0/24 via 12.0.0.2 dev eth0
 
 # inoltro pacchetti su router ciscos
-ip route add 192.168.1.0/24 via 11.0.0.2 dev eth1
-ip route add 192.168.2.0/24 via 11.0.0.2 dev eth1
-ip route add 192.168.3.0/24 via 11.0.0.2 dev eth1
+# ip route add 192.168.1.0/24 via 11.0.0.2 dev eth1
+# ip route add 192.168.2.0/24 via 11.0.0.2 dev eth1
+# ip route add 192.168.3.0/24 via 11.0.0.2 dev eth1
 
-ip route add default dev eth2
+# ip route add default dev eth2
 
 # per natting per internet
 iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE

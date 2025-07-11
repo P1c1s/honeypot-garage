@@ -1,6 +1,14 @@
-ip address add 192.168.2.2/24 dev eth0
+# the eth0 interface is set down and then up 
+# to force the stateless auto-configuration
+# to rely on the new MAC address
+ip link set dev eth0 down
+ip link set dev eth0 up
+
+# no command is given to configure an IPv6 address 
+# or a default gateway, since they come 
+# from the stateless auto-configuration
 
 # a default router is selected
-ip route add default via 192.168.2.1
+# ip route add default via 192.168.2.1
 
 /shared/./up.sh

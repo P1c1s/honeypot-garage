@@ -1,11 +1,24 @@
-ip address add 30.0.0.2/30 dev eth0
-ip address add 20.0.0.2/30 dev eth1
-ip address add 192.168.2.1/24 dev eth2
+# the eth0, eth1, and eth2 interfaces are set down and then up 
+# to force the stateless auto-configuration
+# to rely on the new MAC addresses
+ip link set dev eth0 down
+ip link set dev eth0 up
+ip link set dev eth1 down
+ip link set dev eth1 up
+ip link set dev eth2 down
+ip link set dev eth2 up
+
+
+# set correct privileges for radvd.conf
+chmod o-rw /etc/radvd.conf
+
+# start the radvd service
+systemctl start radvd
 
 #inoltro pacchetti
-ip route add 192.168.3.0/24 via 30.0.0.1 dev eth0
-ip route add 192.168.1.0/24 via 20.0.0.1 dev eth1
-ip route add default via 20.0.0.1 dev eth1
+# ip route add 192.168.3.0/24 via 30.0.0.1 dev eth0
+# ip route add 192.168.1.0/24 via 20.0.0.1 dev eth1
+# ip route add default via 20.0.0.1 dev eth1
 
 
 
