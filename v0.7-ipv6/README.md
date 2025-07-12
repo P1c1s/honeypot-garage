@@ -136,3 +136,164 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | mdb   | senior   | 1Password! | Amministratore Senior |
 | mdb   | junior   | 2Password! | Amministratore Junior |
 | mdb   | pluto   | pluto       | Da eliminare - funziona solo in v0.5-ufficiale in su |
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Colorata</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .red {
+            background-color: red;
+            color: white;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>LAN A</th>
+            <th>LAN B</th>
+            <th>LAN C</th>
+            <th>LAN D</th>
+            <th>LAN O</th>
+            <th>LAN S</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>bind</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>oldap</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>wsa1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>mdb</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>wsa2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>nginx</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>openvpn</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>pcs1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>pcs2</td>
+            <td></td>
+            <td></td>
+            <td class="red">x</td>
+            <td class="green">v</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>pcd1</td>
+            <td></td>
+            <td></td>
+            <td class="red">x</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>pco1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
+|       | LAN A | LAN B | LAN C     | LAN D     | LAN O | LAN S |
+|-------|-------|-------|-----------|-----------|-------|-------|
+| bind  |       |       |           |           |       |       |
+| oldap |       |       |           |           |       |       |
+| wsa1  |       |       |           |           |       |       |
+| mdb   |       |       |           |           |       |       |
+| wsa2  |       |       |           |           |       |       |
+| nginx |       |       |           |           |       |       |
+| openvpn |     |       |           |           |       |       |
+| pcs1  |       |       |           |           |       |       |
+| pcs2  |       |       | **x** (red) | **v** (green) |       |       |
+| pcd1  |       |       | **x** (red) |           |       |       |
+| pco1  |       |       |           |           |       |       |

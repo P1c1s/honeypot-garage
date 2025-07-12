@@ -170,9 +170,13 @@ apt-get install dsniff
 arpspoof -i eth0 -t 192.169.0.2 192.169.0.1
 ```
 
-# PING IPV6
+# IPV6
 ```bash
 # per fare il ping on IPv6 utilizzanfdo l'indirizzo link-local bisogna specificare l'interfaccia su cui si vuole effettuare il ping
 ping -6 fe80::200:ff:fe00:a01%<interfaccia>
+
+# curl ipv6
+curl -g -6 'http://[fe80::3ad1:35ff:fe08:cd%eth0]:80/'
 ```
+
 
