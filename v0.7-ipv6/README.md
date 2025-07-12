@@ -2,8 +2,8 @@
 
 ## Indice
 1. [Introduzione](#1-introduzione)
-   i. [Topologia della rete](#1.1-topologia-della-rete)
-   ii. [Spazio dei nomi](#1.2-spazio-dei-nomi)
+2. [Topologia della rete](#2-topologia-della-rete)
+3. [Spazio dei nomi](#3-spazio-dei-nomi)
    iii. [Lan]
     1. [Lan A]
     2. [Lan B]
@@ -13,6 +13,8 @@
     6. [Lan FX]
     7. [Lan I]
     8. [Lan S]
+
+4. [Raggiungibilità]
 2. [Interfacce del Router](#2-interfacce-del-router)
    - [Interfaccia: eth0 (LAN 1)](#interfaccia-eth0-lan-1)
    - [Interfaccia: eth1 (LAN 2)](#interfaccia-eth1-lan-2)
@@ -27,10 +29,26 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 ![alt text](network.drawio.png)
 
 --- 
-## 2. Spazio dei nomi
+## 3. Spazio dei nomi
 
 ![alt text](namespace.drawio.png)
 
+
+## 4. Raggiungibilità
+|         | LAN A | LAN B | LAN C | LAN D | LAN O | LAN S | Internet |
+|---------|-------|-------|-------|-------|-------|-------|----------|
+| bind1   |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
+| oldap   |       |       |       |       |       |       |    V     |
+| wsa1    |       |       |       |       |       |       |    V     |
+| mdb     |       |       |       |       |       |       |    V     |
+| wsa2    |       |       |       |       |       |       |    V     |
+| nginx   |       |       |       |       |       |       |    V     |
+| openvpn |       |       |       |       |       |       |    V     |
+| bind2   |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
+| pcs1    |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
+| pcs2    |       |       |       |       |       |       |    V     |
+| pcd1    |       |       |       |       |       |       |    V     |
+| pco1    |       |       |       |       |       |       |    V     |
 
 
 # 2. Interfacce del Router
@@ -138,162 +156,3 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | mdb   | pluto   | pluto       | Da eliminare - funziona solo in v0.5-ufficiale in su |
 
 
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabella Colorata</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        .red {
-            background-color: red;
-            color: white;
-        }
-        .green {
-            background-color: green;
-            color: white;
-        }
-    </style>
-</head>
-<body>
-
-<table>
-    <thead>
-        <tr>
-            <th></th>
-            <th>LAN A</th>
-            <th>LAN B</th>
-            <th>LAN C</th>
-            <th>LAN D</th>
-            <th>LAN O</th>
-            <th>LAN S</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>bind</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>oldap</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>wsa1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>mdb</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>wsa2</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>nginx</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>openvpn</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>pcs1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>pcs2</td>
-            <td></td>
-            <td></td>
-            <td class="red">x</td>
-            <td class="green">v</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>pcd1</td>
-            <td></td>
-            <td></td>
-            <td class="red">x</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>pco1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-
-</body>
-</html>
-
-|       | LAN A | LAN B | LAN C     | LAN D     | LAN O | LAN S |
-|-------|-------|-------|-----------|-----------|-------|-------|
-| bind  |       |       |           |           |       |       |
-| oldap |       |       |           |           |       |       |
-| wsa1  |       |       |           |           |       |       |
-| mdb   |       |       |           |           |       |       |
-| wsa2  |       |       |           |           |       |       |
-| nginx |       |       |           |           |       |       |
-| openvpn |     |       |           |           |       |       |
-| pcs1  |       |       |           |           |       |       |
-| pcs2  |       |       | **x** (red) | **v** (green) |       |       |
-| pcd1  |       |       | **x** (red) |           |       |       |
-| pco1  |       |       |           |           |       |       |
