@@ -31,24 +31,24 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 --- 
 ## 3. Spazio dei nomi
 
-![alt text](namespace.drawio.png)
+<!-- ![alt text](namespace.drawio.png) -->
 
 
 ## 4. Raggiungibilità
 |         | LAN A | LAN B | LAN C | LAN D | LAN O | LAN S | Internet |
 |---------|-------|-------|-------|-------|-------|-------|----------|
-| bind1   |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
-| oldap   |       |       |       |       |       |       |    V     |
-| wsa1    |       |       |       |       |       |       |    V     |
-| mdb     |       |       |       |       |       |       |    V     |
-| wsa2    |       |       |       |       |       |       |    V     |
-| nginx   |       |       |       |       |       |       |    V     |
-| openvpn |       |       |       |       |       |       |    V     |
-| bind2   |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
+| bind1   |   V   |   V   |   V   |   V   |   V   |   X   |    X     |
+| oldap   |       |       |       |       |       |   X   |    X     |
+| wsa1    |   V   |   V   |   V   |   V   |   V   |   X   |    X     |
+| mdb     |       |       |       |       |   X   |   X   |    V     |
+| wsa2    |       |       |       |       |       |   X   |    V     |
+| nginx   |       |       |       |       |       |   X   |    V     |
+| openvpn |       |       |       |       |       |   X   |    V     |
+| bind2   |   V   |   V   |   V   |   V   |   V   |   X   |    V     |
 | pcs1    |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
-| pcs2    |       |       |       |       |       |       |    V     |
-| pcd1    |       |       |       |       |       |       |    V     |
-| pco1    |       |       |       |       |       |       |    V     |
+| pcs2    |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
+| pcd1    |       |       |       |       |       |   X   |    V     |
+| pco1    |       |       |       |       |       |   X   |    V     |
 
 
 # 2. Interfacce del Router

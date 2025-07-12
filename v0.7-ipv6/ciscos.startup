@@ -1,20 +1,7 @@
-# the eth0, eth1, and eth2 interfaces are set down and then up 
-# to force the stateless auto-configuration
-# to rely on the new MAC addresses
-ip link set dev eth0 down
-ip link set dev eth0 up
-ip link set dev eth1 down
-ip link set dev eth1 up
-ip link set dev eth2 down
-ip link set dev eth2 up
-ip link set dev eth3 down
-ip link set dev eth3 up
-
-
 # set a static ip address on the point-to-point link
-ip address add 2001:2:2:2::/64 dev eth0
-ip address add 2001:3:3:3::/64 dev eth1
-ip address add 2001:4:4:4::/64 dev eth2
+ip address add 2001:2:2:2::/64 dev eth0         # Lan F2
+ip address add 2001:3:3:3::/64 dev eth1         # Lan F1
+ip address add 2001:4:4:4::/64 dev eth2         # Lan S
 
 
 

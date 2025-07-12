@@ -27,7 +27,7 @@ smbclient -L //172.17.0.2/sharing -U pippo # list directies
 
 ```
 
-# Mariadb
+# Mariadb per mdb
 
 ``` bash
 apt install -y mariadb-server
@@ -36,7 +36,6 @@ nano /etc/mysql/mariadb.conf.d/50-server.cnf # bind-address = 0.0.0.0
 CREATE USER 'pippo'@'%' IDENTIFIED BY 'pippo'; # la % dovrebbe dare accesso a tutti gli ip
 GRANT ALL PRIVILEGES ON safepanda.* TO 'panda'@'%';
 FLUSH PRIVILEGES;
-
 ```
 
 # Apache
@@ -73,6 +72,20 @@ sudo apt-get install rsyslog
 ``` bash
 nc -l -p <porta server> # server
 nc <ip server> <porta server> # client
+
+#ipv6
+nc -l -6 -p 1234 -s fe80::200:ff:fe00:b1%eth1 #link-local
+nc -l -6 -p 1234 -s 2001:1:1:2902:: #indirizzo global
+``` 
+
+# NMap
+
+``` bash
+
+
+#ipv6
+nmap -6 fe80::200:ff:fe00:b1%eth0 #link-local
+nmap -6 2001:1:1:2902::   #indirizzo global
 ``` 
 
 # OpenLdap
@@ -109,7 +122,11 @@ options {
     # Tutti posso fare query
     allow-query { any; };
     # OPPURE Specifica gli ip delle subnet alla quali risolvere le query 
-    allow-query { 127.0.0.1; 192.168.0.0/24; };
+    allow-query { 127.0.0.1; 192.168.0.0/24; }# wordpress macch wsa2
+CREATE DATABASE wordpress;
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'hrl-2D4-dd5-fGh';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;;
    # Abilita la ricorsione DNS, cioè se il server non ha la risposta e non è autoritativo, va a cercarla (o la inoltra al forwarder, come 8.8.8.8).
     recursion yes;
     # Specifica su quali IP BIND deve mettersi in ascolto per richieste DNS.
@@ -177,6 +194,19 @@ ping -6 fe80::200:ff:fe00:a01%<interfaccia>
 
 # curl ipv6
 curl -g -6 'http://[fe80::3ad1:35ff:fe08:cd%eth0]:80/'
+
+#L'RFC 4291 riserva agli indirizzi link local il prefisso FE80::/10 ma impone che i successivi 54 bit siano impostati a 0 così il prefisso effettivamente utilizzabile è FE80::/64. L'assegnazione di questi indirizzi può avvenire in automatico o in manuale (es configurazione statica). Un esempio di indirizzo IP così formulato è fe80::284:edff:febe:f528 (le lettere si possono scrivere indifferentemente in carattere maiuscolo o minuscolo).
 ```
 
 
+## Sito Wordpress
+```bash
+# wordpress macch wsa2
+CREATE DATABASE wordpress;
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'hrl-2D4-dd5-fGh';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+
+username = 'michela'
+password = 'qYmB9l$9#AArvqqE%H'
+```

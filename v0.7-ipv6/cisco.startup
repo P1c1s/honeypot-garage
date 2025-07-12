@@ -1,18 +1,8 @@
-# the eth0, eth1, and eth2 interfaces are set down and then up 
-# to force the stateless auto-configuration
-# to rely on the new MAC addresses
-ip link set dev eth0 down
-ip link set dev eth0 up
-ip link set dev eth1 down
-ip link set dev eth1 up
-ip link set dev eth2 down
-ip link set dev eth2 up
-ip link set dev eth3 down
-ip link set dev eth3 up
-
 # set a static ip address on the point-to-point link
-ip address add 2001:1:1:2901::/64 dev eth0
-ip address add 2001:1:1:2902::/64 dev eth1
+ip address add 2001:1:1:2901::/64 dev eth0      # Lan A
+ip address add 2001:1:1:2902::/64 dev eth1      # Lan B
+ip address add 2001:1:1:2903::/64 dev eth2      # Lan C
+
 
 # set correct privileges for radvd.conf
 chmod o-rw /etc/radvd.conf
@@ -22,7 +12,8 @@ systemctl start radvd
 
 
 #inoltro pacchetti
-# ip route add default via 12.0.0.1 dev eth3
+ip route add default via fe80::200:ff:fe00:1101 dev eth3        # Lan I
+
 
 
 
