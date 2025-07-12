@@ -4,23 +4,16 @@
 1. [Introduzione](#1-introduzione)
 2. [Topologia della rete](#2-topologia-della-rete)
 3. [Spazio dei nomi](#3-spazio-dei-nomi)
-   iii. [Lan]
-    1. [Lan A]
-    2. [Lan B]
-    3. [Lan C]
-    4. [Lan D]
-    5. [Lan E]
-    6. [Lan FX]
-    7. [Lan I]
-    8. [Lan S]
-
-4. [Raggiungibilità]
-2. [Interfacce del Router](#2-interfacce-del-router)
-   - [Interfaccia: eth0 (LAN 1)](#interfaccia-eth0-lan-1)
-   - [Interfaccia: eth1 (LAN 2)](#interfaccia-eth1-lan-2)
-   - [Interfaccia: eth2 (LAN 3)](#interfaccia-eth2-lan-3)
-4. [Firewall](#4-firewall)
-5. [Accounts](#5-accounts)
+4. [Raggiungibilità](#4-raggiungibilità)
+5. [LAN](#5-lan)
+   1. [LAN A](#51-lan-a)
+   2. [LAN B](#52-lan-b)
+   3. [LAN C](#53-lan-c)
+   4. [LAN S](#54-lan-s)
+   5. [LAN D](#55-lan-d)
+   6. [LAN O](#56-lan-o)
+6. [Firewall](#6-firewall)
+7. [Accounts](#7-accounts)
 
 ## 1. Introduzione
 Questo documento descrive l'architettura di rete e le interfacce di un router, evidenziando i dispositivi collegati e le loro funzioni.
@@ -28,11 +21,8 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 ## 2. Topologia della rete
 ![alt text](network.drawio.png)
 
---- 
 ## 3. Spazio dei nomi
-
-<!-- ![alt text](namespace.drawio.png) -->
-
+![alt text](namespace.drawio.png)
 
 ## 4. Raggiungibilità
 |         | LAN A | LAN B | LAN C | LAN D | LAN O | LAN S | Internet |
@@ -49,6 +39,48 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | pcs2    |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
 | pcd1    |       |       |       |       |       |   X   |    V     |
 | pco1    |       |       |       |       |       |   X   |    V     |
+
+## 5. LAN
+Di seguito verranno viste con maggior dettaglio le LAN (Local Area Network) ...
+
+### 5.1 LAN A
+**descrizione**: La lan A è ...  
+**router**: 
+**hosts**:
+  - ldap: 
+  - bind1:
+
+### 5.2 LAN B
+**descrizione**: La lan B è ...  
+**router**: 
+**hosts**:
+  - wsa1: 
+  - mdb:
+  - smb: 
+
+### 5.3 LAN C
+**descrizione**: La lan C è ...  
+**router**: 
+**hosts**:
+  - wsa2: 
+  - wsn:
+  - openvpn
+  - bind2
+
+### 5.4 LAN S
+**descrizione**: La lan S è ...  
+**router**: 
+**hosts**: ...
+
+### 5.5 LAN D
+**descrizione**: La lan D è ...  
+**router**: 
+**hosts**: ...
+
+### 5.6 LAN O
+**descrizione**: La lan O è ...  
+**router**: 
+**hosts**: ...
 
 
 # 2. Interfacce del Router
@@ -99,7 +131,7 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | 5   | ACCEPT | tcp  |     |    |     | 0.0.0.0/0 | 192.170.0.3 | any         | 80               | `wsn`       |
 
 
-# 3. Firewall
+# 5. Firewall
 
 ###### Chain INPUT (Policy ACCEPT)
 | num | target | prot | opt | in | out | source     | destination | source port | destination port |
@@ -121,7 +153,7 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 | --- | ------ | ---- | --- | -- | --- | ---------- | ----------- | ----- | ----- |
 |     |        |      |     |    |     |            |             |         |     |
 
-# 5. Accounts
+# 6. Accounts
 
 ### SSH
 
