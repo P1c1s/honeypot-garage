@@ -42,30 +42,31 @@ Questo documento descrive l'architettura di rete e le interfacce di un router, e
 
 ## 5. LAN
 Di seguito verranno viste con maggior dettaglio le LAN (Local Area Network) ...
+Intranet: A B C ...
 
 ### 5.1 LAN A
 **descrizione**: La lan A è ...  
 **router**: 
 **hosts**:
   - ldap: 
-  - bind1:
+  - `bind1`: DNS server bind9, fornisce risoluzione dei nomi per gli host nella intranet.
 
 ### 5.2 LAN B
 **descrizione**: La lan B è ...  
 **router**: 
 **hosts**:
-  - wsa1: 
-  - mdb:
-  - smb: 
+  - `wsa1`: *Web server apache2 dedicato per la gestione di richieste web. Contiene risorse esclusive per la intranet*
+  - `mdb`: **
+  - `smb`: 
 
 ### 5.3 LAN C
 **descrizione**: La lan C è ...  
 **router**: 
 **hosts**:
-  - wsa2: 
-  - wsn:
-  - openvpn
-  - bind2
+  - `wsa2`: *Web server apache2 dedicato per la gestione di richieste web. Contiene risorse esclusive accessibili da internt. Wp + mariadb* 
+  - `wsn`: *Web server ngnix dedicato per la gestione di richieste web. Contiene risorse esclusive accessibili da internt*
+  - openvpn:
+  - `bind1`: DNS server bind9, fornisce risoluzione dei nomi per gli host di internet.
 
 ### 5.4 LAN S
 **descrizione**: La lan S è ...  
@@ -81,32 +82,6 @@ Di seguito verranno viste con maggior dettaglio le LAN (Local Area Network) ...
 **descrizione**: La lan O è ...  
 **router**: 
 **hosts**: ...
-
-
-# 2. Interfacce del Router
-
-## Interfaccia: eth0 (LAN 1)
-**Nome interfaccia**: eth0  
-**Descrizione**: All'interfaccia eth0 è collegata la LAN di livello 1.  
-**Hosts**: 
-- **Switch 1**: Collega i seguenti dispositivi:
-  - **DNS Server**: Fornisce risoluzione dei nomi per i dispositivi nella rete.
-  - **Web Server (Apache)**: Server dedicato per la gestione di richieste web.
-
-## Interfaccia: eth1 (LAN 2)
-**Nome interfaccia**: eth1  
-**Descrizione**: All'interfaccia eth1 è collegata la LAN di livello 2.  
-**Hosts**: 
-- **Switch 2**: Collega i seguenti dispositivi:
-  - **Web Server (App 2)**: Server dedicato per l'applicazione 2, gestisce le richieste web.
-  - **Web Server (App 3)**: Server dedicato per l'applicazione 3, gestisce le richieste web.
-
-## Interfaccia: eth2 (LAN 3)
-**Nome interfaccia**: eth2  
-**Descrizione**: All'interfaccia eth2 è collegata la LAN di livello 3.  
-**Hosts**: 
-- **Switch 3**: (Se presente, altrimenti omettere)
-  - (Elencare eventuali dispositivi collegati)
 
 # NAT
 
@@ -131,7 +106,7 @@ Di seguito verranno viste con maggior dettaglio le LAN (Local Area Network) ...
 | 5   | ACCEPT | tcp  |     |    |     | 0.0.0.0/0 | 192.170.0.3 | any         | 80               | `wsn`       |
 
 
-# 5. Firewall
+# 6. Firewall
 
 ###### Chain INPUT (Policy ACCEPT)
 | num | target | prot | opt | in | out | source     | destination | source port | destination port |
@@ -153,7 +128,7 @@ Di seguito verranno viste con maggior dettaglio le LAN (Local Area Network) ...
 | --- | ------ | ---- | --- | -- | --- | ---------- | ----------- | ----- | ----- |
 |     |        |      |     |    |     |            |             |         |     |
 
-# 6. Accounts
+# 7. Accounts
 
 ### SSH
 
