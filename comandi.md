@@ -210,3 +210,16 @@ FLUSH PRIVILEGES;
 username = 'michela'
 password = 'qYmB9l$9#AArvqqE%H'
 ```
+
+## Kathara APIs
+```bash
+python3 -m pip install "kathara[pyuv]"
+
+#se non funziona
+python3 -m pip install kathara
+python3 -m pip install "kathara[pyuv]"
+#oppure
+python3 -m pip install git+https://github.com/saghul/pyuv@master#egg=pyuv
+python3 -m pip install kathara
+#le librerie vengono installate nella cartella .local/lib/.. dell'utente
+```
