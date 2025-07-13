@@ -32,3 +32,6 @@ lab.create_file_from_list(
     ]
     , "pc2.startup"
 )
+
+Kathara.get_instance().deploy_lab(lab)
+print(next(Kathara.get_instance().get_machines_stats(lab_name=lab.name)))
