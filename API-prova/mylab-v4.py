@@ -2,10 +2,16 @@ from Kathara.manager.Kathara import Kathara
 from Kathara.model.Lab import Lab
 from Kathara.model.Link import Link
 from Kathara.model.Machine import Machine
+from Kathara.setting.Setting import Setting
 import ipaddress
 from modules.mylib import *
 
 import json
+
+
+Setting.get_instance().enable_ipv6 = True
+
+# settings.save_to_disk()
 
 # Percorso del file JSON
 file_path = 'lab.json'
@@ -14,14 +20,28 @@ file_path = 'lab.json'
 with open(file_path, 'r') as json_file:
     rete = json.load(json_file)
 
+radvd = """
+interface ethX
+{
+	AdvSendAdvert on;
+	MinRtrAdvInterval 3;
+	MaxRtrAdvInterval 9;
+	AdvDefaultLifetime 27;
+	prefix Y/64 {};
+};
+"""
+
+
+
+# 2a04:0000:0000:0000::/56
 
 network_address = {
-    "A" : "192.168.23.0/24",
-    "B" : "192.168.24.0/24",
-    "C" : "192.168.25.0/24", 
-    "F1" : "192.168.26.0/24", 
-    "F2" : "192.168.27.0/24", 
-    "S" : "192.168.28.0/24", 
+    "A" : "2a04:0:0:0001::/64",
+    "B" : "2a04:0:0:0002::/64",
+    "C" : "2a04:0:0:0003::/64", 
+    "S" : "2a04:0:0:0004::/64",  
+    "D" : "2a04:0:0:0005::/64", 
+    "O" : "2a04:0:0:0006::/64", 
 }
 
 # cambiare immagine per switch con minimo indispensabile
@@ -49,14 +69,16 @@ lab = Lab("Prova")
 for router in rete:
     lab.new_machine(router, image = get_image_for_host(image_host, router))
     startup_lines = []
+    radvd_lines = []
     for i in range(len(rete[router]["lan"])) :          # creazione delle "zampe" lan del router
         lab.connect_machine_to_link(router, rete[router]["lan"][i], machine_iface_number = rete[router]["iface"][i])
         ip = next(ip_iterators[rete[router]["lan"][i]])
-        startup_lines.append(f"ip address add {str(ip)}/24 dev eth{rete[router]["iface"][i]}")
-    for i in range(len(rete[router]["plan"])) :         # creazione delle "zampe" plan 
-        lab.connect_machine_to_link(router, rete[router]["plan"][i], machine_iface_number = rete[router]["piface"][i])
-        ip = next(ip_iterators[rete[router]["plan"][i]])
-        startup_lines.append(f"ip address add {str(ip)}/24 dev eth{rete[router]["piface"][i]}")
+        startup_lines.append(f"ip address add {str(ip)}/64 dev eth{rete[router]["iface"][i]}")
+        lab.get_machine(router).create_file_from_string(content = radvd.replace("X", str(i)).replace("Y",str(ip)), dst_path="/etc/radvd.conf")
+    # for i in range(len(rete[router]["plan"])) :         # creazione delle "zampe" plan 
+    #     lab.connect_machine_to_link(router, rete[router]["plan"][i], machine_iface_number = rete[router]["piface"][i])
+    #     ip = next(ip_iterators[rete[router]["plan"][i]])
+    #     startup_lines.append(f"ip address add {str(ip)}/24 dev eth{rete[router]["piface"][i]}")
 
     for i in range(len(rete[router]["lan"])) :          # creazione degli switch per ogni zampa lan del router
         switch = list(rete[router]["switch"].keys())[i]
@@ -72,7 +94,7 @@ for router in rete:
             lab.connect_machine_to_link(switch, f"{rete[router]["lan"][i]}{index}")     # connessione punto-punto host-switch (a1, a2, b1, b2, ...)
             lab.connect_machine_to_link(host, f"{rete[router]["lan"][i]}{index}")
             ip = next(ip_iterators[rete[router]["lan"][i]])
-            lab.create_file_from_list([f"ip address add {str(ip)}/24 dev eth0"], f"{host}.startup")
+            lab.create_file_from_list([f"ip address add {str(ip)}/64 dev eth0"], f"{host}.startup")
             startup_lines_switch.append(f"ip link set dev eth{index} master mainbridge")
             index += 1
 
@@ -82,9 +104,11 @@ for router in rete:
         lab.create_file_from_list(startup_lines_switch, f"{switch}.startup")
 
 
-
+    startup_lines += ["chmod o-rw /etc/radvd.conf", 
+                    "systemctl start radvd" ]
     lab.create_file_from_list(startup_lines, f"{router}.startup")
 
 # Deploy del lab
 Kathara.get_instance().deploy_lab(lab)
 print(next(Kathara.get_instance().get_machines_stats(lab_name=lab.name)))
+

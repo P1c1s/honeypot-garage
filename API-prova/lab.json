@@ -1,0 +1,22 @@
+{
+    "cisco" : {
+        "lan" : ["A", "B", "C"],
+        "plan" : [], 
+        "iface" : [0, 1, 2],
+        "pface" : [],
+        "switch" : {
+            "switcha" : ["oldap", "bind1"],
+            "switchb" : ["smb", "mdb", "wsa1"],
+            "switchc" : ["ovpn", "bind2", "wsa2", "nginx"]
+        }
+    },
+    "ciscos" : {
+        "lan" : ["S"],
+        "plan" : ["F1", "F2"],
+        "iface" : [0],
+        "piface" : [1, 2],
+        "switch" : {
+            "switchs" : ["pc1s", "pc2s"]
+        }
+    }
+}
