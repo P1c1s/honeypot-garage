@@ -3,6 +3,7 @@ from Kathara.model.Lab import Lab
 from Kathara.model.Link import Link
 from Kathara.model.Machine import Machine
 from Kathara.setting.Setting import Setting
+from Kathara.model.Interface import Interface
 import ipaddress
 from modules.mylib import *
 
@@ -52,6 +53,11 @@ image_host = {
     "theb0ys/samba": ["smb"],
 }
 
+router_startup = {
+    "cisco" : "",
+    "ciscos" : "",
+    "ciscod" : "",
+}
 
 
 # 👉 Dizionario per tenere traccia dell'IP assegnato a ogni host
@@ -74,11 +80,9 @@ for router in rete:
         lab.connect_machine_to_link(router, rete[router]["lan"][i], machine_iface_number = rete[router]["iface"][i])
         ip = next(ip_iterators[rete[router]["lan"][i]])
         startup_lines.append(f"ip address add {str(ip)}/64 dev eth{rete[router]["iface"][i]}")
-        lab.get_machine(router).create_file_from_string(content = radvd.replace("X", str(i)).replace("Y",str(ip)), dst_path="/etc/radvd.conf")
-    # for i in range(len(rete[router]["plan"])) :         # creazione delle "zampe" plan 
-    #     lab.connect_machine_to_link(router, rete[router]["plan"][i], machine_iface_number = rete[router]["piface"][i])
-    #     ip = next(ip_iterators[rete[router]["plan"][i]])
-    #     startup_lines.append(f"ip address add {str(ip)}/24 dev eth{rete[router]["piface"][i]}")
+        lab.get_machine(router).create_file_from_string(content = radvd.replace("X", str(i)).replace("Y",str(ip)), dst_path="/etc/radvd.conf")      # inserimento file configurazione demone radv
+    for i in range(len(rete[router]["plan"])) :         # creazione delle "zampe" plan 
+        lab.connect_machine_to_link(router, rete[router]["plan"][i], machine_iface_number = rete[router]["piface"][i])
 
     for i in range(len(rete[router]["lan"])) :          # creazione degli switch per ogni zampa lan del router
         switch = list(rete[router]["switch"].keys())[i]
@@ -94,6 +98,7 @@ for router in rete:
             lab.connect_machine_to_link(switch, f"{rete[router]["lan"][i]}{index}")     # connessione punto-punto host-switch (a1, a2, b1, b2, ...)
             lab.connect_machine_to_link(host, f"{rete[router]["lan"][i]}{index}")
             ip = next(ip_iterators[rete[router]["lan"][i]])
+
             lab.create_file_from_list([f"ip address add {str(ip)}/64 dev eth0"], f"{host}.startup")
             startup_lines_switch.append(f"ip link set dev eth{index} master mainbridge")
             index += 1
@@ -102,11 +107,34 @@ for router in rete:
                                 "brctl setageing mainbridge 600"]
 
         lab.create_file_from_list(startup_lines_switch, f"{switch}.startup")
+    
 
-
-    startup_lines += ["chmod o-rw /etc/radvd.conf", 
+    startup_lines += ["chmod o-rw /etc/radvd.conf",                     # configurazione demone radv
                     "systemctl start radvd" ]
-    lab.create_file_from_list(startup_lines, f"{router}.startup")
+
+    router_startup[router] = startup_lines
+
+
+for router in rete:
+    startup_lines = router_startup[router]
+
+    for r in rete[router].get("route", []):
+        dest_lan, plan = r.split("|")
+        next_hop_router = find_router_connected_to_plan(plan, rete, router)
+
+        # Trova interfaccia usata dal router corrente per quella plan
+        iface_index = rete[router]["plan"].index(plan)
+        iface_name = f"eth{rete[router]['piface'][iface_index]}"
+
+        next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index(plan)]
+        mac = generate_mac_from_router_iface(next_hop_router, next_hop_iface)
+        link_local = mac_to_ipv6_link_local(mac)
+
+
+        startup_lines.append(f"ip -6 route add {network_address[dest_lan]} via {link_local} dev {iface_name}")
+        lab.create_file_from_list(startup_lines, f"{router}.startup")
+    
+#   --> generare tutti i mac address per generare indirizzi ipv6 link-local
 
 # Deploy del lab
 Kathara.get_instance().deploy_lab(lab)

@@ -12,11 +12,22 @@
     },
     "ciscos" : {
         "lan" : ["S"],
-        "plan" : ["F1", "F2"],
+        "plan" : ["F2", "F1"],
         "iface" : [0],
         "piface" : [1, 2],
         "switch" : {
             "switchs" : ["pc1s", "pc2s"]
+        }, 
+        "route" : ["D|F2"]
+    },
+    "ciscod" : {
+        "lan" : ["D"],
+        "plan" : ["F2", "F1"],
+        "iface" : [0],
+        "piface" : [1, 2],
+        "switch" : {
+            "switchd" : ["pc1d"]
         }
     }
+
 }
