@@ -1,3 +1,4 @@
+import os
 from Kathara.manager.Kathara import Kathara
 from Kathara.model.Lab import Lab
 from Kathara.model.Link import Link
@@ -50,7 +51,7 @@ network_address = {
 # cambiare immagine per switch con minimo indispensabile
 image_host = {
     "theb0ys/apache": ["wsa1", "wsa2"],
-    "theb0ys/base": ["bind1", "bind2", "nginx", "ovpn", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "fw", "pc1s", "pc2s", "pc1d", "pc1o"],
+    "theb0ys/base": ["wsn", "ovpn", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "fw", "pc1s", "pc2s", "pc1d", "pc1o"],
     "theb0ys/mariadb": ["mdb"],
     "theb0ys/samba": ["smb"],
 }
@@ -60,6 +61,22 @@ router_startup = {
     "ciscos" : "",
     "ciscod" : "",
     "ciscoo" : "",
+}
+
+host_startup = {
+    "oldap" : [],
+    "bind1" : ["service bind start"],
+    "wsa1" : [],
+    "mdb" : [],
+    "smb" : [],
+    "wsa2" : [],
+    "wsn" : [],
+    "ovpn" : [], 
+    "bind2" : ["service bind start"],
+    "pc1s" : [], 
+    "pc2s" : [], 
+    "pc1d" : [], 
+    "pc1o" : [], 
 }
 
 
@@ -106,8 +123,11 @@ for router in rete:
                 lab.connect_machine_to_link(host, f"{rete[router]["lan"][i]}{index}")
                 ip = next(ip_iterators[rete[router]["lan"][i]])
 
-                lab.create_file_from_list([f"ip address add {str(ip)}/64 dev eth0\nip -6 route add default via {network_address[rete[router]["lan"][i]].replace("::/64", "::1")} dev eth0"], f"{host}.startup")
+                host_startup[host].append(f"ip address add {str(ip)}/64 dev eth0\nip -6 route add default via {network_address[rete[router]["lan"][i]].replace("::/64", "::1")} dev eth0")
+                lab.create_file_from_list(host_startup[host], f"{host}.startup")
                 startup_lines_switch.append(f"ip link set dev eth{index} master mainbridge")
+
+                lab.get_machine(host).create_file_from_string("nameserver 2a04:0:0:1::3", "/etc/resolv.conf")
                 index += 1
 
             startup_lines_switch += ["ip link set up dev mainbridge", 
@@ -141,8 +161,14 @@ for router in rete:
 
         startup_lines.append(f"ip -6 route add {network_address[dest_lan]} via {link_local} dev {iface_name}")
     
+    lab.get_machine(router).create_file_from_string("nameserver 2a04:0:0:1::3", "/etc/resolv.conf")
+
     lab.create_file_from_list(startup_lines, f"{router}.startup")
-    
+
+copy_folder_to_machine(lab.get_machine("bind1"), "bind", "/etc/bind")
+
+
+
 #   --> generare tutti i mac address per generare indirizzi ipv6 link-local
 
 # Deploy del lab
