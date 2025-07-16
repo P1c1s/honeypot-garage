@@ -2,6 +2,8 @@
 
 ## Indice
 1. [Introduzione](#1-introduzione)
+  1.1 [Kathara](#11-kathara)
+  1.2 [Immagini docker](#12-immagini-docker)
 2. [Topologia della rete](#2-topologia-della-rete)
 3. [Spazio dei nomi](#3-spazio-dei-nomi)
 4. [Raggiungibilità](#4-raggiungibilità)
@@ -16,7 +18,24 @@
 7. [Accounts](#7-accounts)
 
 ## 1. Introduzione
-Questo documento descrive l'architettura di rete e le interfacce di un router, evidenziando i dispositivi collegati e le loro funzioni.
+Questo documento descrive l'architettura di rete utilizza con Kathara per simulare un ambiente honeypot, consentendo l'analisi e lo studio di attacchi informatici in un contesto controllato. Il setup include vari dispositivi di rete e un server honeypot configurato per catturare e registrare le interazioni degli attaccanti.
+
+
+### 1.1 Kathara
+Per il seguente lavoro, è stata utilizzata **[Kathara](https://www.kathara.org/)**, una piattaforma di simulazione di rete che consente di creare e gestire scenari di rete complessi utilizzando container docker. Kathara è particolarmente utile per l'insegnamento e la sperimentazione in ambito networking, poiché offre un ambiente flessibile e scalabile per testare configurazioni di rete, protocolli e servizi. Grazie a Kathara, è stato possibile simulare vari dispositivi di rete e configurare le loro interazioni in modo semplice ed efficace, facilitando l'analisi e la comprensione delle dinamiche di rete.
+### 1.2. Immagini docker
+Nel laboratorio sono state usate delle immagini docker custom fornite da **[theb0ys](https://hub.docker.com/u/theb0ys)**. Di seguito sono elencate le immagini disponibili con una breve descrizione di ciascuna.
+
+- [theb0ys/base](https://hub.docker.com/r/theb0ys/base): Un'immagine di base utilizzata come fondamento per altre immagini Docker. Include le librerie e le dipendenze necessarie per eseguire applicazioni specifiche.
+
+- [theb0ys/apache](https://hub.docker.com/r/theb0ys/apache): Un'immagine per fornire un server web Apache. Utilizzata per servire contenuti web e configurata per collegarsi ad un dabatabase esterno. Inoltre è anche installato phpyadmin.
+
+- [theb0ys/VERSIONE ALTERNATIVA](https://hub.docker.com/r/theb0ys/apache):
+
+- [theb0ys/samba](https://hub.docker.com/r/theb0ys/samba): Un'immagine per fornire servizi di condivisione di file e stampanti in una rete. Consente la condivisione di file tra sistemi operativi diversi, come Windows e Linux. 
+
+- [theb0ys/mariadb](https://hub.docker.com/r/theb0ys/mariadb): Un'immagine per fornire un'istanza di MariaDB, un sistema di gestione di database relazionali. Utilizzata per gestire database e applicazioni che richiedono un backend di database. Mariadb è stato configurato in modo tale da accettare richieste sia sull'interfaccia di loopback che quella """globale""". 
+
 
 ## 2. Topologia della rete
 ![alt text](network.drawio.png)
@@ -161,5 +180,6 @@ Intranet: A B C ...
 | mdb   | senior   | 1Password! | Amministratore Senior |
 | mdb   | junior   | 2Password! | Amministratore Junior |
 | mdb   | pluto   | pluto       | Da eliminare - funziona solo in v0.5-ufficiale in su |
+
 
 
