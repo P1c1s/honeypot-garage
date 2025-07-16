@@ -22,12 +22,13 @@
     },
     "ciscod" : {
         "lan" : ["D"],
-        "plan" : ["F2", "F1"],
+        "plan" : ["F2", "F3"],
         "iface" : [0],
         "piface" : [1, 2],
         "switch" : {
             "switchd" : ["pc1d"]
-        }
+        }, 
+        "route" : ["S|F2"]
     }
 
 }
