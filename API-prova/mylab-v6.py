@@ -50,7 +50,7 @@ network_address = {
 # cambiare immagine per switch con minimo indispensabile
 image_host = {
     "theb0ys/apache": ["wsa1", "wsa2"],
-    "theb0ys/base": ["bind1", "bind2", "nginx", "ovpn", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "fw"],
+    "theb0ys/base": ["bind1", "bind2", "nginx", "ovpn", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "fw", "pc1s", "pc2s", "pc1d", "pc1o"],
     "theb0ys/mariadb": ["mdb"],
     "theb0ys/samba": ["smb"],
 }
