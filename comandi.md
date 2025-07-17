@@ -156,6 +156,12 @@ FLUSH PRIVILEGES;;
     listen-on { 127.0.0.1; 192.168.0.3; };
 };
 
+#su macchina bind -- accetta il traffico solo dagli indirizzi link-local sulle M1 e M2
+ip6tables -A INPUT -i eth1 -s fe80::/10 -p tcp --dport 22 -j ACCEPT
+ip6tables -A INPUT -p tcp --dport 22 -j REJECT
+
+```
+
 
 # GENRAZIONE FILE db.root
 wget -O /path-destinazione https://www.internic.net/domain/named.root

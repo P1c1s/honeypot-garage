@@ -94,3 +94,13 @@ def copy_folder_to_machine(machine, src_dir, dst_dir):
             # Scrive il file nel filesystem virtuale della macchina
             machine.create_file_from_string(content=content, dst_path=remote_path)
 
+def genera_mac_progressivi(penultimo_gruppo: str):
+    """
+    Genera MAC address da 00:00:00:00:<penultimo>:01 a 00:00:00:00:<penultimo>:0b
+    """
+    penultimo_gruppo = penultimo_gruppo.replace("M", "")
+    macs = []
+    for ultimo in range(0x01, 0x0F):  # da 1 a 16
+        mac = f"00:00:00:00:{penultimo_gruppo.zfill(2)}:{ultimo:02x}"
+        macs.append(mac)
+    return macs

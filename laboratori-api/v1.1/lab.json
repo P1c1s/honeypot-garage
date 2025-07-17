@@ -22,7 +22,7 @@
             "iface" : [0, 1, 2],
             "piface" : [3],
             "switch" : {
-                "switcha" : ["oldap", "bind1"],
+                "switcha" : ["oldap", "syslog", "bind1"],
                 "switchb" : ["wsa1", "mdb", "smb"],
                 "switchc" : ["wsa2", "wsn", "ovpn", "bind2"]
             },
@@ -63,6 +63,7 @@
 
     "host_startup" : {
         "oldap" : [],
+        "syslog" : [], 
         "bind1" : ["service bind start"],
         "wsa1" : ["service apache2 start"],
         "mdb" : ["service mariadb start"],
@@ -85,13 +86,12 @@
     },
 
     "network_address" : {
-        "A" : "2a04:0:0:0001::/64",
-        "B" : "2a04:0:0:0002::/64",
-        "C" : "2a04:0:0:0003::/64", 
-        "S" : "2a04:0:0:0004::/64",  
-        "D" : "2a04:0:0:0005::/64", 
-        "O" : "2a04:0:0:0006::/64", 
-        "G" : "2a04:0:0:0007::/64"
+        "A" : "2a04:0:0:0000::/64",
+        "B" : "2a04:0:0:0001::/64",
+        "C" : "2a04:0:0:0002::/64", 
+        "S" : "2a04:0:0:0010::/64",  
+        "D" : "2a04:0:0:0011::/64", 
+        "O" : "2a04:0:0:0012::/64"    
     },
 
     "image_host" : {

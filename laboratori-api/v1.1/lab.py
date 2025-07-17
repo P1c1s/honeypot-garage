@@ -46,6 +46,11 @@ interface ethX
 };
 """
 
+management_host = {
+    "M1" : ["bind1", "oldap", "syslog", "wsa1", "mdb", "smb", "wsa2", "wsn", "ovpn", "bind2", "pc1s"],                  ## 11 host
+    "M2" : ["fw", "cisco", "switcha", "switchb", "switchc", "ciscos", "switchs", "ciscod", "switchd", "ciscoo", "switcho", "pc2s"]
+}
+
 # 👉 Dizionario per tenere traccia dell'IP assegnato a ogni host
 assigned_ips = {}
 
@@ -98,7 +103,7 @@ for router in rete:
                 lab.create_file_from_list(host_startup[host], f"{host}.startup")
                 startup_lines_switch.append(f"ip link set dev eth{index} master mainbridge")
 
-                lab.get_machine(host).create_file_from_string("nameserver 2a04:0:0:1::3", "/etc/resolv.conf")
+                lab.get_machine(host).create_file_from_string("nameserver 2a04:0:0:0::4", "/etc/resolv.conf")
                 index += 1
 
             startup_lines_switch += ["ip link set up dev mainbridge", 
@@ -114,27 +119,45 @@ for router in rete:
 
 
 for router in rete:
-    startup_lines = router_startup[router]
 
-    for r in rete[router].get("route", []):
-        dest_lan, plan = r.split("|")
-        next_hop_router = find_router_connected_to_plan(plan, rete, router)
-
-        # Trova interfaccia usata dal router corrente per quella plan
-        iface_index = rete[router]["plan"].index(plan)
-        iface_name = f"eth{rete[router]['piface'][iface_index]}"
-
-        next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index(plan)]
-        # mac = generate_mac_from_router_iface(next_hop_router, next_hop_iface)
+    if router == "fw" : 
+        next_hop_router = find_router_connected_to_plan("I", rete, "fw")
+        next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index("I")]
         mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
         link_local = mac_to_ipv6_link_local(mac)
+        router_startup[router].append(f"ip -6 route add 2a04::/60 via {link_local} dev eth0\n")
+                                      
+        next_hop_router = find_router_connected_to_plan("E", rete, "fw")
+        next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index("E")]
+        mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
+        link_local = mac_to_ipv6_link_local(mac)
+        router_startup[router].append(f"ip -6 route add 2a04:0:0:10::/60 via {link_local} dev eth1\n")
 
+        
+    else :
+        for r in rete[router].get("route", []):
+            dest_lan, plan = r.split("|")
+            next_hop_router = find_router_connected_to_plan(plan, rete, router)
 
-        startup_lines.append(f"ip -6 route add {network_address[dest_lan]} via {link_local} dev {iface_name}")
-    
-    lab.get_machine(router).create_file_from_string("nameserver 2a04:0:0:1::3", "/etc/resolv.conf")
+            # Trova interfaccia usata dal router corrente per quella plan
+            iface_index = rete[router]["plan"].index(plan)
+            iface_name = f"eth{rete[router]['piface'][iface_index]}"
 
-    lab.create_file_from_list(startup_lines, f"{router}.startup")
+            next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index(plan)]
+            # mac = generate_mac_from_router_iface(next_hop_router, next_hop_iface)
+            mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
+            link_local = mac_to_ipv6_link_local(mac)
+
+            router_startup[router].append(f"ip -6 route add {network_address[dest_lan]} via {link_local} dev {iface_name}")
+
+    lab.get_machine(router).create_file_from_string("nameserver 2a04:0:0:0::4", "/etc/resolv.conf")
+
+    lab.create_file_from_list(router_startup[router], f"{router}.startup")
+
+# creazione vlans (management lans)
+for lan, hosts in management_host.items():
+    for host in hosts: 
+        lab.connect_machine_to_link(host, lan, mac_address=genera_mac_progressivi(lan)[management_host[lan].index(host)])
 
 copy_folder_to_machine(lab.get_machine("bind1"), "bind", "/etc/bind")
 
@@ -145,3 +168,7 @@ copy_folder_to_machine(lab.get_machine("bind1"), "bind", "/etc/bind")
 Kathara.get_instance().deploy_lab(lab)
 print(next(Kathara.get_instance().get_machines_stats(lab_name=lab.name)))
 
+
+
+
+# disabilitazione ipv6 ->       ip addr del 127.0.0.1/8 dev lo
