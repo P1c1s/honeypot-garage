@@ -91,6 +91,27 @@ nmap -6 2001:1:1:2902::   #indirizzo global
 # OpenLdap
 
 ``` bash
+# database locale situato in /var/lib/ldap
+
+apt install slapd ldap-utils
+sudo dpkg-reconfigure slapd             #riconfigurazione del server
+
+dn: uid=nome_utente,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: organizationalPerson
+cn: Nome Utente
+sn: Cognome
+uid: nome_utente
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/nome_utente
+userPassword: password_utente
+
+sudo ldapadd -x -D "cn=admin,dc=example,dc=com" -W -f utente.ldif
+ldapsearch -x -b "dc=example,dc=com" "(uid=nome_utente)"            # verifica inserimento utente
+
+
 
 ```
 
