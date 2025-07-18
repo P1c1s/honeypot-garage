@@ -2,8 +2,8 @@
 
 ## Indice
 1. [Introduzione](#1-introduzione)
-  1.1 [Kathara](#11-kathara)
-  1.2 [Immagini docker](#12-immagini-docker)
+  1.1. [Kathara](#11-kathara)
+  1.2. [Immagini docker](#12-immagini-docker)
 2. [Topologia della rete](#2-topologia-della-rete)
 3. [Spazio dei nomi](#3-spazio-dei-nomi)
 4. [Raggiungibilità](#4-raggiungibilità)
@@ -41,23 +41,23 @@ Nel laboratorio sono state usate delle immagini docker custom fornite da **[theb
 ![alt text](network.drawio.png)
 
 ## 3. Spazio dei nomi
-![alt text](namespace.drawio.png)
-
+### Bind1
+![alt text](namespace.bind1.drawio.png)
+### Bind2
+![alt text](namespace.bind2.drawio.png)
 ## 4. Raggiungibilità
-|         | LAN A | LAN B | LAN C | LAN D | LAN O | LAN S | Internet |
-|---------|-------|-------|-------|-------|-------|-------|----------|
-| bind1   |   V   |   V   |   V   |   V   |   V   |   X   |    X     |
-| oldap   |       |       |       |       |       |   X   |    X     |
-| wsa1    |   V   |   V   |   V   |   V   |   V   |   X   |    X     |
-| mdb     |       |       |       |       |   X   |   X   |    V     |
-| wsa2    |       |       |       |       |       |   X   |    V     |
-| nginx   |       |       |       |       |       |   X   |    V     |
-| openvpn |       |       |       |       |       |   X   |    V     |
-| bind2   |   V   |   V   |   V   |   V   |   V   |   X   |    V     |
-| pcs1    |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
-| pcs2    |   V   |   V   |   V   |   V   |   V   |   V   |    V     |
-| pcd1    |       |       |       |       |       |   X   |    V     |
-| pco1    |       |       |       |       |       |   X   |    V     |
+|   DA/A       | LAN A | LAN B | LAN C | LAN S | LAN D | LAN O | LAN M1 | LAN M2 | Internet |
+|--------------|-------|-------|-------|-------|-------|-------|--------|--------|----------|
+| **LAN A**    |       |       |       |       |       |       |        |        |          |
+| **LAN B**    |       |       |       |       |       |       |        |        |          |
+| **LAN C**    |       |       |       |       |       |       |        |        |          |
+| **LAN S**    |       |       |       |       |       |       |        |        |    X     |
+| **LAN D**    |       |       |       |       |       |       |        |        |          |
+| **LAN O**    |       |       |       |       |       |       |        |        |          |
+| **LAN M1**   |   V   |   V   |   V   |   V   |   X   |   X   |   ?    |   X    |    X     |
+| **LAN M2**   |   V   |   V   |   V   |   X   |   X   |   X   |   X    |   ?    |    X     |
+| **Internet** |   X   |   X   |   V   |   X   |   X   |   X   |   X    |   X    |    ?     |
+
 
 ## 5. LAN
 Di seguito verranno viste con maggior dettaglio le LAN (Local Area Network) ...
@@ -189,3 +189,4 @@ Subnetting:
 
 
 
+# /etc/hosts/ ip VLAN su pc1s e pc2s
