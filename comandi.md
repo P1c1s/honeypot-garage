@@ -63,8 +63,74 @@ apt-get install -y mongodb-org
 # Syslog
 
 ``` bash
-sudo apt-get update
-sudo apt-get install rsyslog
+# https://it.linux-terminal.com/?p=58
+rsyslogd -v
+apt-get install rsyslog
+
+# server
+nano /etc/rsyslog.d/50-remote-logs.conf 
+"
+# define template for remote loggin
+# remote logs will be stored at /var/log/remotelogs directory
+# each host will have specific directory based on the system %HOSTNAME%
+# name of the log file is %PROGRAMNAME%.log such as sshd.log, su.log
+# both %HOSTNAME% and %PROGRAMNAME% is the Rsyslog message properties
+template (
+    name="RemoteLogs"
+    type="string"
+    string="/var/log/remotelogs/%HOSTNAME%/%PROGRAMNAME%.log"
+)
+
+# gather all log messages from all facilities
+# at all severity levels to the RemoteLogs template
+*.* -?RemoteLogs
+
+# stop the process once the file is written
+stop
+"
+
+# client
+apt-get install rsyslog
+nano /etc/rsyslog.d/20-forward-logs.conf 
+
+"
+# process all log messages before sending
+# with the SendRemote template
+template(
+    name="SendRemote"
+    type="string"
+    string="<%PRI%>%TIMESTAMP:::date-rfc3339% %HOSTNAME% %syslogtag:1:32%%msg:::sp-if-no-1st-sp%%msg%"
+)
+
+# forward log messages using omfwd module
+# to the target server 172.16.1.10
+# via UDP porotocol on port 514
+# log messages is formatted using the SendRemote template
+# setup queue for remote log
+action(
+    type="omfwd"
+    Target="172.16.1.10"
+    Port="514"
+    Protocol="udp"
+    template="SendRemote"
+
+    queue.SpoolDirectory="/var/spool/rsyslog"
+    queue.FileName="remote"
+    queue.MaxDiskSpace="1g"
+    queue.SaveOnShutdown="on"
+    queue.Type="LinkedList"
+    ResendLastMSGOnReconnect="on"
+)
+
+# stop process after the file is written
+stop
+"
+rsyslogd -N1 -f /etc/rsyslog.conf
+rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf
+
+# WEB GUI
+https://github.com/ShorterKing/rsyslog-webui-automatic
+https://github.com/tinylama/rsyslog-webui
 ``` 
 
 # Netcat
@@ -157,6 +223,7 @@ FLUSH PRIVILEGES;;
 };
 
 #su macchina bind -- accetta il traffico solo dagli indirizzi link-local sulle M1 e M2
+# ListenAdrress :: 
 ip6tables -A INPUT -i eth1 -s fe80::/10 -p tcp --dport 22 -j ACCEPT
 ip6tables -A INPUT -p tcp --dport 22 -j REJECT
 
