@@ -5,6 +5,9 @@ from Kathara.model.Link import Link
 from Kathara.model.Machine import Machine
 from Kathara.setting.Setting import Setting
 from Kathara.model.Interface import Interface
+import docker
+from Kathara.manager.docker.DockerLink import *
+#from ..foundation.model.FilesystemMixin import FilesystemMixin
 import ipaddress
 from modules.mylib import *
 
@@ -100,7 +103,6 @@ for router in rete:
                 ip = next(ip_iterators[rete[router]["lan"][i]])
 
                 host_startup[host].append(f"ip address add {str(ip)}/64 dev eth0\nip -6 route add default via {network_address[rete[router]["lan"][i]].replace("::/64", "::1")} dev eth0")
-                lab.create_file_from_list(host_startup[host], f"{host}.startup")
                 startup_lines_switch.append(f"ip link set dev eth{index} master mainbridge")
 
                 lab.get_machine(host).create_file_from_string("nameserver 2a04:0:0:0::4", "/etc/resolv.conf")
@@ -144,7 +146,6 @@ for router in rete:
             iface_name = f"eth{rete[router]['piface'][iface_index]}"
 
             next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index(plan)]
-            # mac = generate_mac_from_router_iface(next_hop_router, next_hop_iface)
             mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
             link_local = mac_to_ipv6_link_local(mac)
 
@@ -152,20 +153,53 @@ for router in rete:
 
     lab.get_machine(router).create_file_from_string("nameserver 2a04:0:0:0::4", "/etc/resolv.conf")
 
-    lab.create_file_from_list(router_startup[router], f"{router}.startup")
 
 # creazione vlans (management lans)
 for lan, hosts in management_host.items():
     for host in hosts: 
-        lab.connect_machine_to_link(host, lan, mac_address=genera_mac_progressivi(lan)[management_host[lan].index(host)])
+        mac_address = genera_mac_progressivi(lan)[management_host[lan].index(host)]
+        lab.connect_machine_to_link(host, lan, mac_address=mac_address)
+        if (lan == "M1") :
+            host_startup["pc1s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+        else:
+            host_startup["pc2s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+
+
+# Crea un client Docker
+client = docker.from_env()
+
+# Ottieni informazioni sulla rete bridge
+# bridge_network = client.networks.get('bridge')
+# lab.get_machine("fw").add_interface(bridge_network)
+
+for host in host_startup:
+    lab.create_file_from_list(host_startup[host], f"{host}.startup")   
+for router in router_startup:
+    lab.create_file_from_list(router_startup[router], f"{router}.startup") 
+
+
 
 copy_folder_to_machine(lab.get_machine("bind1"), "bind", "/etc/bind")
+#lab.get_machine("bind1").fs.copy_directory_from_path("bind", "/etc")       -- chiedere a Tommaso
 
 
 
 
 # Deploy del lab
 Kathara.get_instance().deploy_lab(lab)
+
+
+client = docker.from_env()
+
+# Nome del container Docker generato da Kathara
+container_name = "kathara_sicmic-4rxxi5niaxyotf8t9fxhcw_fw_J8dJIw6Pk7dvoKS53DzEUA"
+
+# Ottieni il container
+container = client.containers.get(container_name)
+
+# Collega il container alla rete bridge di Docker
+client.networks.get("bridge").connect(container)
+
 print(next(Kathara.get_instance().get_machines_stats(lab_name=lab.name)))
 
 
