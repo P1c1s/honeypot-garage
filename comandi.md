@@ -89,6 +89,13 @@ template (
 stop
 "
 
+nano /etc/rsyslog.conf
+# rimuovere commenti alle righe:
+provides UDP syslog reception
+module(load="imudp")
+input(type="imudp" port="514")
+
+
 # client
 apt-get install rsyslog
 nano /etc/rsyslog.d/20-forward-logs.conf 
@@ -222,11 +229,6 @@ FLUSH PRIVILEGES;;
     listen-on { 127.0.0.1; 192.168.0.3; };
 };
 
-#su macchina bind -- accetta il traffico solo dagli indirizzi link-local sulle M1 e M2
-# ListenAdrress :: 
-ip6tables -A INPUT -i eth1 -s fe80::/10 -p tcp --dport 22 -j ACCEPT
-ip6tables -A INPUT -p tcp --dport 22 -j REJECT
-
 ```
 
 
@@ -316,4 +318,17 @@ python3 -m pip install "kathara[pyuv]"
 python3 -m pip install git+https://github.com/saghul/pyuv@master#egg=pyuv
 python3 -m pip install kathara
 #le librerie vengono installate nella cartella .local/lib/.. dell'utente
+```
+
+## SSH su vlan con link-local
+```bash
+nano /etc/ssh/sshd_config
+# decommentare riga Listenon ::
+
+ssh siserver@fe80::200:ff:fe00:104%eth1
+
+#su macchine -- accetta il traffico solo dagli indirizzi link-local sulle M1 e M2
+# ListenAdrress :: 
+ip6tables -A INPUT -i eth1 -s fe80::/10 -p tcp --dport 22 -j ACCEPT
+ip6tables -A INPUT -p tcp --dport 22 -j REJECT
 ```
