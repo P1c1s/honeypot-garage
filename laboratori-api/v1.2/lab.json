@@ -1,0 +1,109 @@
+{
+    "lab_info":{
+        "description" : "Versione con ipv6 e aggiunte quasi tutte le macchine della rete di sinistra e di destra",
+        "version" : "1.2",
+        "author" : "M. Sicuranza, L. Ricciardi",
+        "email" : "contact@kathara.org",
+        "web" : "http://www.kathara.org/"
+    },
+
+    "rete": {
+        "fw" : {
+            "lan" : [],
+            "plan" : ["I", "E"], 
+            "iface" : [],
+            "piface" : [0 , 1],
+            "switch" : {},
+            "route" : ["A|I", "B|I", "C|I", "S|E", "D|E", "O|E"]
+        },
+        "cisco" : {
+            "lan" : ["A", "B", "C"],
+            "plan" : ["I"], 
+            "iface" : [0, 1, 2],
+            "piface" : [3],
+            "switch" : {
+                "switcha" : ["oldap", "syslog", "bind1"],
+                "switchb" : ["wsa1", "mdb", "smb"],
+                "switchc" : ["wsa2", "wsn", "ovpn", "bind2"]
+            },
+            "route" : ["def|I"]
+
+        },
+        "ciscos" : {
+            "lan" : ["S"],
+            "plan" : ["F2", "F1", "E"],
+            "iface" : [0],
+            "piface" : [1, 2, 3],
+            "switch" : {
+                "switchs" : ["pc1s", "pc2s"]
+            }, 
+            "route" : ["D|F2", "O|F1", "def|E"]
+        },
+        "ciscod" : {
+            "lan" : ["D"],
+            "plan" : ["F2", "F3"],
+            "iface" : [0],
+            "piface" : [1, 2],
+            "switch" : {
+                "switchd" : ["pc1d"]
+            }, 
+            "route" : ["S|F2", "O|F3", "def|F2"]
+        },
+        "ciscoo" : {
+            "lan" : ["O"],
+            "plan" : ["F3", "F1"],
+            "iface" : [0],
+            "piface" : [1, 2],
+            "switch" : {
+                "switcho" : ["pc1o"]
+            }, 
+            "route" : ["D|F3", "S|F1", "def|F1"]
+        }
+    },
+
+    "machine_startup" : {
+        "oldap" : [],
+        "syslog" : [], 
+        "bind1" : ["service bind start"],
+        "wsa1" : ["service apache2 start"],
+        "mdb" : ["service mariadb start"],
+        "smb" : ["service smbd start"],
+        "wsa2" : ["service apache2 start"],
+        "wsn" : ["service ngnix start"],
+        "ovpn" : [], 
+        "bind2" : ["service bind start"],
+        "pc1s" : [], 
+        "pc2s" : [], 
+        "pc1d" : [], 
+        "pc1o" : [],
+        "cisco" : [],
+        "ciscos" : [],
+        "ciscod" : [],
+        "ciscoo" : [], 
+        "fw" : [],
+        "switcha" : [],
+        "switchb" : [],
+        "switchc" : [],
+        "switchs" : [],
+        "switchd" : [],
+        "switcho" : []
+    },
+
+    "network_address" : {
+        "A" : "2a04:0:0:0000::/64",
+        "B" : "2a04:0:0:0001::/64",
+        "C" : "2a04:0:0:0002::/64", 
+        "S" : "2a04:0:0:0010::/64",  
+        "D" : "2a04:0:0:0011::/64", 
+        "O" : "2a04:0:0:0012::/64"    
+    },
+
+    "image_host" : {
+        "theb0ys/apache": ["wsa1", "wsa2"],
+        "theb0ys/base": ["wsn", "ovpn", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "fw", "pc1s", "pc2s", "pc1d", "pc1o"],
+        "theb0ys/mariadb": ["mdb"],
+        "theb0ys/samba": ["smb"]
+    }
+
+
+}

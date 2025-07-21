@@ -28,10 +28,8 @@ with open(file_path, 'r') as json_file:
     lab_info = dictionary["lab_info"]
     # Carica nella variabile rete la struttura con chiave rete
     rete = dictionary["rete"]
-    # Carica nella variabile host_startup la struttura con chiave host_startup
-    host_startup = dictionary["host_startup"]
-    # Carica nella variabile router_startup la struttura con chiave router_startup
-    router_startup = dictionary["router_startup"]
+    # Carica nella variabile machine_startup la struttura con chiave machine_startup
+    machine_startup = dictionary["machine_startup"]
     # Carica nella variabile network_address la struttura con chiave network_address
     network_address = dictionary["network_address"]
     # Carica nella variabile image_host la struttura con chiave image_host
@@ -75,12 +73,13 @@ lab.web = lab_info["web"]
 
 for router in rete:
     lab.new_machine(router, image = get_image_for_host(image_host, router))
-    startup_lines = []
+    # startup_lines = []
     radvd_lines = [""]
     for i in range(len(rete[router]["lan"])) :          # creazione delle "zampe" lan del router
         lab.connect_machine_to_link(router, rete[router]["lan"][i], machine_iface_number = rete[router]["iface"][i])
         ip = next(ip_iterators[rete[router]["lan"][i]])
-        startup_lines.append(f"ip address add {str(ip)}/64 dev eth{rete[router]["iface"][i]}")
+        # startup_lines.append(f"ip address add {str(ip)}/64 dev eth{rete[router]["iface"][i]}")
+        machine_startup[router].append(f"ip address add {str(ip)}/64 dev eth{rete[router]["iface"][i]}")
         radvd_lines.append(radvd.replace("X", str(i)).replace("Y",str(ip)))                             # creazione configurazione radv con specifico prefix per ogni lan
     lab.get_machine(router).create_file_from_list(lines = radvd_lines, dst_path="/etc/radvd.conf")      # inserimento file configurazione demone radv
     for i in range(len(rete[router]["plan"])) :         # creazione delle "zampe" plan 
@@ -92,8 +91,10 @@ for router in rete:
             lab.new_machine(switch, image = get_image_for_host(image_host, switch))
             lab.connect_machine_to_link(switch, rete[router]["lan"][i])
 
-            startup_lines_switch = ["ip link add name mainbridge type bridge",
-                                    "ip link set dev eth0 master mainbridge"]
+            # startup_lines_switch = ["ip link add name mainbridge type bridge",
+            #                         "ip link set dev eth0 master mainbridge"]
+            machine_startup[switch].append("""ip link add name mainbridge type bridge\n
+                                            ip link set dev eth0 master mainbridge""")
 
             index = 1
             for host in rete[router]["switch"][switch] :    # creazione degli host connessi alle zampe degli switch
@@ -102,22 +103,29 @@ for router in rete:
                 lab.connect_machine_to_link(host, f"{rete[router]["lan"][i]}{index}")
                 ip = next(ip_iterators[rete[router]["lan"][i]])
 
-                host_startup[host].append(f"ip address add {str(ip)}/64 dev eth0\nip -6 route add default via {network_address[rete[router]["lan"][i]].replace("::/64", "::1")} dev eth0")
-                startup_lines_switch.append(f"ip link set dev eth{index} master mainbridge")
+                machine_startup[host].append(f"ip address add {str(ip)}/64 dev eth0\nip -6 route add default via {network_address[rete[router]["lan"][i]].replace("::/64", "::1")} dev eth0")
+                # startup_lines_switch.append(f"ip link set dev eth{index} master mainbridge")
+                machine_startup[switch].append(f"ip link set dev eth{index} master mainbridge")
 
                 lab.get_machine(host).create_file_from_string("nameserver 2a04:0:0:0::4", "/etc/resolv.conf")
                 index += 1
 
-            startup_lines_switch += ["ip link set up dev mainbridge", 
-                                    "brctl setageing mainbridge 600"]
+            # startup_lines_switch += ["ip link set up dev mainbridge", 
+            #                         "brctl setageing mainbridge 600"]
+            machine_startup[switch].append("""ip link set up dev mainbridge\n
+                                           brctl setageing mainbridge 600""")
 
-            lab.create_file_from_list(startup_lines_switch, f"{switch}.startup")
+            # lab.create_file_from_list(startup_lines_switch, f"{switch}.startup")
+            lab.create_file_from_list(machine_startup[switch], f"{switch}.startup")
+
     
 
-    startup_lines += ["chmod o-rw /etc/radvd.conf",                     # configurazione demone radv
-                    "systemctl start radvd" ]
+    # startup_lines += ["chmod o-rw /etc/radvd.conf",                     # configurazione demone radv
+    #                 "systemctl start radvd" ]
+    machine_startup[router].append("""chmod o-rw /etc/radvd.conf\n
+                                   systemctl start radvd""")
 
-    router_startup[router] = startup_lines
+    # router_startup[router] = startup_lines
 
 
 for router in rete:
@@ -127,13 +135,16 @@ for router in rete:
         next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index("I")]
         mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
         link_local = mac_to_ipv6_link_local(mac)
-        router_startup[router].append(f"ip -6 route add 2a04::/60 via {link_local} dev eth0\n")
+        # router_startup[router].append(f"ip -6 route add 2a04::/60 via {link_local} dev eth0\n")
+        machine_startup[router].append(f"ip -6 route add 2a04::/60 via {link_local} dev eth0\n")
                                       
         next_hop_router = find_router_connected_to_plan("E", rete, "fw")
         next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index("E")]
         mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
         link_local = mac_to_ipv6_link_local(mac)
-        router_startup[router].append(f"ip -6 route add 2a04:0:0:10::/60 via {link_local} dev eth1\n")
+        # router_startup[router].append(f"ip -6 route add 2a04:0:0:10::/60 via {link_local} dev eth1\n")
+        machine_startup[router].append(f"ip -6 route add 2a04:0:0:10::/60 via {link_local} dev eth1\n")
+
 
         
     else :
@@ -149,7 +160,9 @@ for router in rete:
             mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
             link_local = mac_to_ipv6_link_local(mac)
 
-            router_startup[router].append(f"ip -6 route add {network_address[dest_lan]} via {link_local} dev {iface_name}")
+            # router_startup[router].append(f"ip -6 route add {network_address[dest_lan]} via {link_local} dev {iface_name}")
+            machine_startup[router].append(f"ip -6 route add {network_address[dest_lan]} via {link_local} dev {iface_name}")
+
 
     lab.get_machine(router).create_file_from_string("nameserver 2a04:0:0:0::4", "/etc/resolv.conf")
 
@@ -160,9 +173,19 @@ for lan, hosts in management_host.items():
         mac_address = genera_mac_progressivi(lan)[management_host[lan].index(host)]
         lab.connect_machine_to_link(host, lan, mac_address=mac_address)
         if (lan == "M1") :
-            host_startup["pc1s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+            # host_startup["pc1s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+            # host_startup[host].append("useradd -m -p $(perl -e 'print crypt($ARGV[0], \"password\")' '1Password!') siserver")
+            # host_startup[host].append("service ssh start")
+            machine_startup["pc1s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+            machine_startup[host].append("useradd -m -p $(perl -e 'print crypt($ARGV[0], \"password\")' '1Password!') siserver")
+
         else:
-            host_startup["pc2s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+            # host_startup["pc2s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+            # router_startup[host].append("useradd -m -p $(perl -e 'print crypt($ARGV[0], \"password\")' '2Password!') sirouter")
+            # router_startup[host].append("service ssh start")
+            machine_startup["pc2s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
+            machine_startup[host].append("useradd -m -p $(perl -e 'print crypt($ARGV[0], \"password\")' '2Password!') sirouter")
+        machine_startup[host].append("service ssh start")
 
 
 # Crea un client Docker
@@ -172,10 +195,12 @@ client = docker.from_env()
 # bridge_network = client.networks.get('bridge')
 # lab.get_machine("fw").add_interface(bridge_network)
 
-for host in host_startup:
-    lab.create_file_from_list(host_startup[host], f"{host}.startup")   
-for router in router_startup:
-    lab.create_file_from_list(router_startup[router], f"{router}.startup") 
+# for host in host_startup:
+#     lab.create_file_from_list(host_startup[host], f"{host}.startup")   
+# for router in router_startup:
+#     lab.create_file_from_list(router_startup[router], f"{router}.startup") 
+for machine in machine_startup:
+    lab.create_file_from_list(machine_startup[machine], f"{machine}.startup")   
 
 
 
