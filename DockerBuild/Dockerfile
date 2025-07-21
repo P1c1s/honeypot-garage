@@ -39,7 +39,9 @@ RUN apt update && \
 	apt install -y --no-install-recommends \
 	apt-utils \
 	apt-transport-https \
+	apache2 \
 	arping \
+	bat \
 	bridge-utils \
 	curl \
 	diffutils \
@@ -62,9 +64,11 @@ RUN apt update && \
 	lsb-release \
 	make \
 	man-db \
+	mariadb-server \
 	mtr-tiny \
 	nano \
 	ndisc6 \
+	nmap \
 	net-tools \
 	netbase \
 	netcat-openbsd \
@@ -75,6 +79,7 @@ RUN apt update && \
 	procps \
 	python3-pip \
 	radvd \
+	rsyslog \
 	rsync \
 	smbclient \
 	screen \

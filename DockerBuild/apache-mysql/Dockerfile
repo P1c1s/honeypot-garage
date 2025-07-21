@@ -26,7 +26,7 @@ RUN	mkdir output && \
 
 # Build the final image
 FROM debian:12
-LABEL org.opencontainers.image.authors="Kathara Team <contact@kathara.org>"
+LABEL org.opencontainers.image.authors="The Boys Team"
 
 ENV LANG="C.UTF-8"
 ENV LC_ALL="C.UTF-8"
@@ -42,6 +42,7 @@ RUN apt update && \
 	apache2 \
 	arping \
 	bridge-utils \
+	bat \
 	curl \
 	diffutils \
 	dnsutils \
@@ -71,6 +72,7 @@ RUN apt update && \
 	netbase \
 	netcat-openbsd \
 	nginx \
+	nmap \
 	openssh-client \
 	openssh-server \
 	openssl \
@@ -78,9 +80,13 @@ RUN apt update && \
 	python3-pip \
 	radvd \
 	rsync \
+	rsyslog \
+	samba \
+	smbclient \
 	screen \
 	sed \
 	systemd-userdbd \
+	sudo \
 	tar \
 	tcpdump \
 	telnet \

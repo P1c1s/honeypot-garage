@@ -210,10 +210,7 @@ options {
     allow-query { any; };
     # OPPURE Specifica gli ip delle subnet alla quali risolvere le query 
     allow-query { 127.0.0.1; 192.168.0.0/24; }# wordpress macch wsa2
-CREATE DATABASE wordpress;
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'hrl-2D4-dd5-fGh';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'admin'@'localhost';
-FLUSH PRIVILEGES;;
+
    # Abilita la ricorsione DNS, cioè se il server non ha la risposta e non è autoritativo, va a cercarla (o la inoltra al forwarder, come 8.8.8.8).
     recursion yes;
     # Specifica su quali IP BIND deve mettersi in ascolto per richieste DNS.
