@@ -1,0 +1,590 @@
+[
+    {
+        "raccolta": "🌍 Capitali Europee",
+        "categoria": "Geografia",
+        "descrizione": "Domande sulle capitali dei principali paesi europei.",
+        "domande": [
+            {
+                "quesito": "Qual è la capitale d'Italia?",
+                "opzioneUno": "Roma",
+                "opzioneDue": "Milano",
+                "opzioneTre": "Napoli",
+                "opzioneQuattro": "Torino"
+            },
+            {
+                "quesito": "Qual è la capitale della Francia?",
+                "opzioneUno": "Parigi",
+                "opzioneDue": "Lione",
+                "opzioneTre": "Marsiglia",
+                "opzioneQuattro": "Nizza"
+            },
+            {
+                "quesito": "Qual è la capitale della Germania?",
+                "opzioneUno": "Berlino",
+                "opzioneDue": "Monaco",
+                "opzioneTre": "Amburgo",
+                "opzioneQuattro": "Francoforte"
+            },
+            {
+                "quesito": "Qual è la capitale della Spagna?",
+                "opzioneUno": "Madrid",
+                "opzioneDue": "Barcellona",
+                "opzioneTre": "Valencia",
+                "opzioneQuattro": "Siviglia"
+            },
+            {
+                "quesito": "Qual è la capitale del Regno Unito?",
+                "opzioneUno": "Londra",
+                "opzioneDue": "Manchester",
+                "opzioneTre": "Liverpool",
+                "opzioneQuattro": "Birmingham"
+            }
+        ]
+    },
+    {
+        "raccolta": "🧮 Matematica di base",
+        "categoria": "Matematica",
+        "descrizione": "Esercizi semplici di matematica per ripassare le basi.",
+        "domande": [
+            {
+                "quesito": "Quanto fa 5 + 3?",
+                "opzioneUno": "8",
+                "opzioneDue": "7",
+                "opzioneTre": "9",
+                "opzioneQuattro": "6"
+            },
+            {
+                "quesito": "Quanto fa 10 - 4?",
+                "opzioneUno": "6",
+                "opzioneDue": "5",
+                "opzioneTre": "7",
+                "opzioneQuattro": "8"
+            },
+            {
+                "quesito": "Quanto fa 6 × 7?",
+                "opzioneUno": "42",
+                "opzioneDue": "36",
+                "opzioneTre": "48",
+                "opzioneQuattro": "40"
+            },
+            {
+                "quesito": "Quanto fa 81 ÷ 9?",
+                "opzioneUno": "9",
+                "opzioneDue": "8",
+                "opzioneTre": "7",
+                "opzioneQuattro": "10"
+            },
+            {
+                "quesito": "Quanto fa 9 x 9?",
+                "opzioneUno": "81",
+                "opzioneDue": "72",
+                "opzioneTre": "99",
+                "opzioneQuattro": "90"
+            }
+        ]
+    },
+    {
+        "raccolta": "📚 Letteratura Classica",
+        "categoria": "Letteratura",
+        "descrizione": "Quiz su autori e opere della letteratura classica italiana e mondiale.",
+        "domande": [
+            {
+                "quesito": "Chi ha scritto 'La Divina Commedia'?",
+                "opzioneUno": "Dante Alighieri",
+                "opzioneDue": "Petrarca",
+                "opzioneTre": "Manzoni",
+                "opzioneQuattro": "Leopardi"
+            },
+            {
+                "quesito": "Chi ha scritto 'Il piccolo principe'?",
+                "opzioneUno": "Antoine de Saint-Exupéry",
+                "opzioneDue": "Victor Hugo",
+                "opzioneTre": "Jules Verne",
+                "opzioneQuattro": "Albert Camus"
+            },
+            {
+                "quesito": "Chi ha scritto 'I promessi sposi'?",
+                "opzioneUno": "Alessandro Manzoni",
+                "opzioneDue": "Dante",
+                "opzioneTre": "Italo Calvino",
+                "opzioneQuattro": "Giovanni Verga"
+            }
+        ]
+    },
+    {
+        "raccolta": "🧬 Scienze Naturali",
+        "categoria": "Scienze",
+        "descrizione": "Domande sulle basi delle scienze naturali e chimiche.",
+        "domande": [
+            {
+                "quesito": "Qual è l'elemento chimico con simbolo O?",
+                "opzioneUno": "Ossigeno",
+                "opzioneDue": "Oro",
+                "opzioneTre": "Osmio",
+                "opzioneQuattro": "Oganesson"
+            },
+            {
+                "quesito": "Qual è il pianeta più vicino al Sole?",
+                "opzioneUno": "Mercurio",
+                "opzioneDue": "Venere",
+                "opzioneTre": "Terra",
+                "opzioneQuattro": "Marte"
+            },
+            {
+                "quesito": "Quale organo umano produce l'insulina?",
+                "opzioneUno": "Pancreas",
+                "opzioneDue": "Fegato",
+                "opzioneTre": "Rene",
+                "opzioneQuattro": "Cuore"
+            }
+        ]
+    },
+    {
+        "raccolta": "🪖 Storia Antica",
+        "categoria": "Storia",
+        "descrizione": "Domande sugli eventi e personaggi dell'antichità.",
+        "domande": [
+            {
+                "quesito": "Chi fu il primo imperatore romano?",
+                "opzioneUno": "Augusto",
+                "opzioneDue": "Nerone",
+                "opzioneTre": "Cesare",
+                "opzioneQuattro": "Traiano"
+            },
+            {
+                "quesito": "In che anno cadde l’Impero Romano d’Occidente?",
+                "opzioneUno": "476 d.C.",
+                "opzioneDue": "410 d.C.",
+                "opzioneTre": "1453 d.C.",
+                "opzioneQuattro": "1492 d.C."
+            },
+            {
+                "quesito": "Qual era la lingua principale dell’Impero Romano?",
+                "opzioneUno": "Latino",
+                "opzioneDue": "Greco",
+                "opzioneTre": "Etrusco",
+                "opzioneQuattro": "Fenicio"
+            }
+        ]
+    },
+    {
+        "raccolta": "🎥 Cinema e TV",
+        "categoria": "Intrattenimento",
+        "descrizione": "Quiz su film, registi e serie televisive famose.",
+        "domande": [
+            {
+                "quesito": "Chi ha diretto il film 'Inception'?",
+                "opzioneUno": "Christopher Nolan",
+                "opzioneDue": "Steven Spielberg",
+                "opzioneTre": "James Cameron",
+                "opzioneQuattro": "Quentin Tarantino"
+            },
+            {
+                "quesito": "In quale serie TV appare il personaggio Walter White?",
+                "opzioneUno": "Breaking Bad",
+                "opzioneDue": "Lost",
+                "opzioneTre": "Dexter",
+                "opzioneQuattro": "The Wire"
+            },
+            {
+                "quesito": "Qual è il nome del mago nella saga di Harry Potter?",
+                "opzioneUno": "Harry Potter",
+                "opzioneDue": "Ron Weasley",
+                "opzioneTre": "Hermione Granger",
+                "opzioneQuattro": "Albus Silente"
+            }
+        ]
+    },
+    {
+        "raccolta": "🥎 Sport",
+        "categoria": "Sport",
+        "descrizione": "Domande sul mondo dello sport e le sue regole fondamentali.",
+        "domande": [
+            {
+                "quesito": "Quante persone giocano in una squadra di calcio?",
+                "opzioneUno": "11",
+                "opzioneDue": "9",
+                "opzioneTre": "7",
+                "opzioneQuattro": "5"
+            },
+            {
+                "quesito": "Chi ha vinto più titoli nel tennis maschile?",
+                "opzioneUno": "Roger Federer",
+                "opzioneDue": "Rafael Nadal",
+                "opzioneTre": "Novak Djokovic",
+                "opzioneQuattro": "Pete Sampras"
+            },
+            {
+                "quesito": "Dove si tengono le Olimpiadi estive del 2021?",
+                "opzioneUno": "Tokyo",
+                "opzioneDue": "Rio de Janeiro",
+                "opzioneTre": "Londra",
+                "opzioneQuattro": "Pechino"
+            }
+        ]
+    },
+    {
+        "raccolta": "🎶 Musica",
+        "categoria": "Arte",
+        "descrizione": "Quiz su cantanti, gruppi e strumenti musicali famosi.",
+        "domande": [
+            {
+                "quesito": "Chi ha cantato 'Thriller'?",
+                "opzioneUno": "Michael Jackson",
+                "opzioneDue": "Prince",
+                "opzioneTre": "Madonna",
+                "opzioneQuattro": "Elvis Presley"
+            },
+            {
+                "quesito": "Quale gruppo ha pubblicato l'album 'Abbey Road'?",
+                "opzioneUno": "The Beatles",
+                "opzioneDue": "The Rolling Stones",
+                "opzioneTre": "Pink Floyd",
+                "opzioneQuattro": "Queen"
+            },
+            {
+                "quesito": "Che strumento suona Jimi Hendrix?",
+                "opzioneUno": "Chitarra",
+                "opzioneDue": "Pianoforte",
+                "opzioneTre": "Batteria",
+                "opzioneQuattro": "Basso"
+            }
+        ]
+    },
+    {
+        "raccolta": "💾 Tecnologia",
+        "categoria": "Informatica",
+        "descrizione": "Domande su computer, software e innovazioni tecnologiche.",
+        "domande": [
+            {
+                "quesito": "Cos'è un CPU?",
+                "opzioneUno": "Processore",
+                "opzioneDue": "Memoria",
+                "opzioneTre": "Scheda grafica",
+                "opzioneQuattro": "Hard disk"
+            },
+            {
+                "quesito": "In che anno è stato inventato il World Wide Web?",
+                "opzioneUno": "1989",
+                "opzioneDue": "1995",
+                "opzioneTre": "2000",
+                "opzioneQuattro": "1980"
+            },
+            {
+                "quesito": "Qual è il linguaggio di programmazione più usato per il web?",
+                "opzioneUno": "JavaScript",
+                "opzioneDue": "Python",
+                "opzioneTre": "Java",
+                "opzioneQuattro": "C++"
+            }
+        ]
+    },
+    {
+        "raccolta": "🐗 Animali Selvatici",
+        "categoria": "Natura",
+        "descrizione": "Domande sugli animali selvatici e le loro caratteristiche principali.",
+        "domande": [
+            {
+                "quesito": "Quale animale è noto come il re della giungla?",
+                "opzioneUno": "Leone",
+                "opzioneDue": "Tigre",
+                "opzioneTre": "Elefante",
+                "opzioneQuattro": "Orso"
+            },
+            {
+                "quesito": "Quale uccello non può volare?",
+                "opzioneUno": "Pinguino",
+                "opzioneDue": "Aquile",
+                "opzioneTre": "Falco",
+                "opzioneQuattro": "Colibrì"
+            }
+        ]
+    },
+    {
+        "raccolta": "🎞️ Cinema Classico",
+        "categoria": "Arte & Cultura",
+        "descrizione": "Quiz su film classici, registi e attori del cinema d’epoca.",
+        "domande": [
+            {
+                "quesito": "Chi ha diretto il film 'Via col vento'?",
+                "opzioneUno": "Victor Fleming",
+                "opzioneDue": "Alfred Hitchcock",
+                "opzioneTre": "Orson Welles",
+                "opzioneQuattro": "Frank Capra"
+            },
+            {
+                "quesito": "In che anno è uscito il film 'Casablanca'?",
+                "opzioneUno": "1942",
+                "opzioneDue": "1939",
+                "opzioneTre": "1945",
+                "opzioneQuattro": "1950"
+            },
+            {
+                "quesito": "Quale attore interpreta il protagonista in 'Psycho'?",
+                "opzioneUno": "Anthony Perkins",
+                "opzioneDue": "James Stewart",
+                "opzioneTre": "Gregory Peck",
+                "opzioneQuattro": "Humphrey Bogart"
+            }
+        ]
+    },
+    {
+        "raccolta": "🖥️ Informatica Base",
+        "categoria": "Tecnologia",
+        "descrizione": "Domande introduttive sui concetti fondamentali dell’informatica e del computer.",
+        "domande": [
+            {
+                "quesito": "Che cos’è un sistema operativo?",
+                "opzioneUno": "Software che gestisce hardware e software del computer",
+                "opzioneDue": "Un tipo di computer",
+                "opzioneTre": "Un programma per disegnare",
+                "opzioneQuattro": "Un browser web"
+            }
+        ]
+    },
+    {
+        "raccolta": "🍔 Cibo e Cucina",
+        "categoria": "Gastronomia",
+        "descrizione": "Quiz su piatti tipici, ingredienti e cucine del mondo.",
+        "domande": [
+            {
+                "quesito": "Qual è l’ingrediente principale della paella?",
+                "opzioneUno": "Riso",
+                "opzioneDue": "Pasta",
+                "opzioneTre": "Patate",
+                "opzioneQuattro": "Mais"
+            },
+            {
+                "quesito": "Quale formaggio è usato per la pizza Margherita?",
+                "opzioneUno": "Mozzarella",
+                "opzioneDue": "Parmesan",
+                "opzioneTre": "Gorgonzola",
+                "opzioneQuattro": "Ricotta"
+            },
+            {
+                "quesito": "Da quale paese proviene il sushi?",
+                "opzioneUno": "Giappone",
+                "opzioneDue": "Cina",
+                "opzioneTre": "Corea",
+                "opzioneQuattro": "Thailandia"
+            },
+            {
+                "quesito": "Quale spezia è ricavata dai fiori di Crocus?",
+                "opzioneUno": "Zafferano",
+                "opzioneDue": "Curcuma",
+                "opzioneTre": "Paprika",
+                "opzioneQuattro": "Cannella"
+            }
+        ]
+    },
+    {
+        "raccolta": "⚽ Sport Famosi",
+        "categoria": "Sport",
+        "descrizione": "Domande sui principali sport e le loro regole più conosciute.",
+        "domande": [
+            {
+                "quesito": "Quanti giocatori ci sono in una squadra di calcio?",
+                "opzioneUno": "11",
+                "opzioneDue": "9",
+                "opzioneTre": "7",
+                "opzioneQuattro": "15"
+            },
+            {
+                "quesito": "In che sport si usa il termine 'home run'?",
+                "opzioneUno": "Baseball",
+                "opzioneDue": "Football americano",
+                "opzioneTre": "Cricket",
+                "opzioneQuattro": "Rugby"
+            }
+        ]
+    },
+    {
+        "raccolta": "🏺 Mitologia Greca",
+        "categoria": "Storia",
+        "descrizione": "Quiz sui miti, gli dei e gli eroi della mitologia greca.",
+        "domande": [
+            {
+                "quesito": "Chi è il dio del mare nella mitologia greca?",
+                "opzioneUno": "Poseidone",
+                "opzioneDue": "Zeus",
+                "opzioneTre": "Ade",
+                "opzioneQuattro": "Ermes"
+            },
+            {
+                "quesito": "Quale eroe ha affrontato il Minotauro?",
+                "opzioneUno": "Teseo",
+                "opzioneDue": "Ercole",
+                "opzioneTre": "Perseo",
+                "opzioneQuattro": "Achille"
+            },
+            {
+                "quesito": "Chi era la dea della saggezza?",
+                "opzioneUno": "Atena",
+                "opzioneDue": "Era",
+                "opzioneTre": "Afrodite",
+                "opzioneQuattro": "Artemide"
+            },
+            {
+                "quesito": "Quale creatura ha serpenti al posto dei capelli?",
+                "opzioneUno": "Medusa",
+                "opzioneDue": "Chimera",
+                "opzioneTre": "Minotauro",
+                "opzioneQuattro": "Cerbero"
+            }
+        ]
+    },
+    {
+        "raccolta": "🎤 Musica Pop",
+        "categoria": "Arte & Cultura",
+        "descrizione": "Quiz su artisti famosi e hit della musica pop mondiale.",
+        "domande": [
+            {
+                "quesito": "Chi è conosciuto come il 'Re del Pop'?",
+                "opzioneUno": "Michael Jackson",
+                "opzioneDue": "Elvis Presley",
+                "opzioneTre": "Prince",
+                "opzioneQuattro": "Freddie Mercury"
+            },
+            {
+                "quesito": "Quale band ha scritto la canzone 'Hey Jude'?",
+                "opzioneUno": "The Beatles",
+                "opzioneDue": "The Rolling Stones",
+                "opzioneTre": "Queen",
+                "opzioneQuattro": "The Who"
+            },
+            {
+                "quesito": "Da quale paese proviene la cantante Shakira?",
+                "opzioneUno": "Colombia",
+                "opzioneDue": "Messico",
+                "opzioneTre": "Argentina",
+                "opzioneQuattro": "Spagna"
+            }
+        ]
+    },
+    {
+        "raccolta": "💻 Tecnologia Moderna",
+        "categoria": "Tecnologia",
+        "descrizione": "Domande sulle tecnologie attuali e le innovazioni digitali.",
+        "domande": [
+            {
+                "quesito": "Che cos’è un ‘blockchain’?",
+                "opzioneUno": "Una catena di blocchi dati digitali",
+                "opzioneDue": "Un tipo di software antivirus",
+                "opzioneTre": "Una piattaforma social",
+                "opzioneQuattro": "Un sistema operativo"
+            },
+            {
+                "quesito": "Quale azienda ha creato il sistema operativo Windows?",
+                "opzioneUno": "Microsoft",
+                "opzioneDue": "Apple",
+                "opzioneTre": "Google",
+                "opzioneQuattro": "IBM"
+            }
+        ]
+    },
+    {
+        "raccolta": "✈️ Viaggi e Capitali",
+        "categoria": "Geografia",
+        "descrizione": "Quiz su capitali e destinazioni famose nel mondo.",
+        "domande": [
+            {
+                "quesito": "Qual è la capitale del Giappone?",
+                "opzioneUno": "Tokyo",
+                "opzioneDue": "Kyoto",
+                "opzioneTre": "Osaka",
+                "opzioneQuattro": "Hiroshima"
+            },
+            {
+                "quesito": "Qual è la capitale dell’Australia?",
+                "opzioneUno": "Canberra",
+                "opzioneDue": "Sydney",
+                "opzioneTre": "Melbourne",
+                "opzioneQuattro": "Brisbane"
+            },
+            {
+                "quesito": "Qual è la capitale del Brasile?",
+                "opzioneUno": "Brasilia",
+                "opzioneDue": "Rio de Janeiro",
+                "opzioneTre": "San Paolo",
+                "opzioneQuattro": "Salvador"
+            },
+            {
+                "quesito": "Qual è la capitale del Canada?",
+                "opzioneUno": "Ottawa",
+                "opzioneDue": "Toronto",
+                "opzioneTre": "Vancouver",
+                "opzioneQuattro": "Montreal"
+            },
+            {
+                "quesito": "Qual è la capitale della Russia?",
+                "opzioneUno": "Mosca",
+                "opzioneDue": "San Pietroburgo",
+                "opzioneTre": "Kazan",
+                "opzioneQuattro": "Novosibirsk"
+            }
+        ]
+    },
+    {
+        "raccolta": "📙 Letteratura Contemporanea",
+        "categoria": "Letteratura",
+        "descrizione": "Domande su autori e opere della letteratura moderna e contemporanea.",
+        "domande": [
+            {
+                "quesito": "Chi ha scritto 'Il nome della rosa'?",
+                "opzioneUno": "Umberto Eco",
+                "opzioneDue": "Italo Calvino",
+                "opzioneTre": "Alberto Moravia",
+                "opzioneQuattro": "Primo Levi"
+            },
+            {
+                "quesito": "Chi è l’autore di 'Cent’anni di solitudine'?",
+                "opzioneUno": "Gabriel García Márquez",
+                "opzioneDue": "Mario Vargas Llosa",
+                "opzioneTre": "Jorge Luis Borges",
+                "opzioneQuattro": "Isabel Allende"
+            }
+        ]
+    },
+    {
+        "raccolta": "🧪 Scienze Generali",
+        "categoria": "Scienze",
+        "descrizione": "Domande basilari su biologia, fisica e chimica.",
+        "domande": [
+            {
+                "quesito": "Qual è la formula chimica dell'acqua?",
+                "opzioneUno": "H₂O",
+                "opzioneDue": "CO₂",
+                "opzioneTre": "NaCl",
+                "opzioneQuattro": "O₂"
+            },
+            {
+                "quesito": "Qual è l’organo principale del sistema circolatorio?",
+                "opzioneUno": "Cuore",
+                "opzioneDue": "Fegato",
+                "opzioneTre": "Polmone",
+                "opzioneQuattro": "Cervello"
+            },
+            {
+                "quesito": "Qual è lo stato della materia che ha volume ma non forma fissa?",
+                "opzioneUno": "Liquido",
+                "opzioneDue": "Solido",
+                "opzioneTre": "Gas",
+                "opzioneQuattro": "Plasma"
+            },
+            {
+                "quesito": "Quale pianeta è noto come il 'pianeta rosso'?",
+                "opzioneUno": "Marte",
+                "opzioneDue": "Venere",
+                "opzioneTre": "Giove",
+                "opzioneQuattro": "Saturno"
+            },
+            {
+                "quesito": "Qual è l'unità di misura della forza?",
+                "opzioneUno": "Newton",
+                "opzioneDue": "Watt",
+                "opzioneTre": "Joule",
+                "opzioneQuattro": "Volt"
+            }
+        ]
+    }
+]

@@ -1,0 +1,28 @@
+# set a static ip address on the point-to-point link
+ip address add 2001:1:1:2901::/64 dev eth0      # Lan A
+ip address add 2001:1:1:2902::/64 dev eth1      # Lan B
+
+
+# set correct privileges for radvd.conf
+chmod o-rw /etc/radvd.conf
+
+# start the radvd service
+systemctl start radvd
+
+apt upgrade && apt install tayga -y
+
+echo "tun-device nat64" >> /etc/tayga.conf
+echo "ipv4-addr 192.0.2.1" >> /etc/tayga.conf         # IPv4 del router (puoi scegliere un IP interno)
+echo "prefix 64:ff9b::/96" >> /etc/tayga.conf         # prefisso standard NAT64
+echo "dynamic-pool 192.0.2.128/25" >> /etc/tayga.conf # pool IPv4 per traduzioni
+echo "data-dir /var/spool/tayga" >> /etc/tayga.conf
+
+ip link set nat64 up
+ip addr add 64:ff9b::1/96 dev nat64
+ip route add 64:ff9b::/96 dev nat64
+
+sysctl -w net.ipv6.conf.all.forwarding=1
+sysctl -w net.ipv4.ip_forward=1
+
+systemctl enable tayga
+systemctl start tayga

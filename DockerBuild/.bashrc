@@ -122,6 +122,7 @@ function show_iptables {
     sed -E 's/ LOG /\x1b[36;1m&\x1b[0m/'
 }
 
+alias ip='ip -c'
 alias ipt='show_iptables'
 
 
