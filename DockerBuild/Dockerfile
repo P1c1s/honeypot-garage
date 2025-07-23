@@ -49,9 +49,11 @@ RUN apt update && \
 	dublin-traceroute \
 	ethtool \
 	expect \
+	gcc \
 	git \
 	gnupg \
 	hping3 \
+	htop \
 	iperf3 \
 	iptables \
 	iputils-ping \

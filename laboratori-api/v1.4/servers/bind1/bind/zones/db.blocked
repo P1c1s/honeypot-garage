@@ -1,0 +1,12 @@
+$TTL 86400
+
+@   IN  SOA bind1.local root.local. (
+        2         
+        604800
+        86400
+        2419200
+        86400 )
+
+    IN  NS  bind1.local     ; Definisce il nameserver autorevole per questa zona, qui impostato su localhost
+    IN  AAAA   ::      ; L'indirizzo IP del dominio radice (@), qui settato a :: per bloccare l'accesso
+*   IN  AAAA   ::      ; Wildcard: qualsiasi sottodominio di questo dominio risolve a :: (blocco anche per tutti i sottodomini)
