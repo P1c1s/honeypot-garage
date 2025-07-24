@@ -149,10 +149,6 @@ for lan, hosts in management_host.items():
             machine_startup[host].append("useradd -m -p $(perl -e 'print crypt($ARGV[0], \"password\")' '2Password!') sirouter")
         machine_startup[host].append("systemctl start ssh")
 
-
-# Crea un client Docker
-client = docker.from_env()
-
 for machine in machine_startup:
     lab.create_file_from_list(machine_startup[machine], f"{machine}.startup")   
 
@@ -162,27 +158,35 @@ for machine in machine_startup:
 # copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/sites-available", "/etc/apache2/sites-available")
 # copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/apache2.conf", "/etc/apache2")
 
-lab.get_machine("bind1").copy_directory_from_path("servers/bind1", "/etc") 
-lab.get_machine("bind1").copy_directory_from_path("servers/wsa2/apache2", "/etc/apache2")
-lab.get_machine("bind1").copy_directory_from_path("servers/wsa2/html", "/var/www/html")
+lab.get_machine("bind1").copy_directory_from_path("../configurazioni/bind1", "/etc/bind") 
+lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/apache2", "/etc/apache2")
+lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/html", "/var/www/html")
+lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsn/html", "/var/www/html")
+lab.get_machine("wsn").copy_directory_from_path("../configurazioni/wsn/html", "/var/www/html")
+lab.get_machine("wsn").copy_directory_from_path("../configurazioni/wsn/nginx", "/etc/nginx")
+lab.get_machine("smb").copy_directory_from_path("../configurazioni/smb/samba", "/etc/samba")
+#lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql", "/etc/mysql")
 #lab.get_machine("smb").copy_directory_from_path("servers/smb", "/etc")    
 
+# args = {
+#     'bridged': True
+# }
+
+lab.get_machine("fw").update_meta({"bridged":True})
 
 # Deploy del lab
 Kathara.get_instance().deploy_lab(lab)
 
-client = docker.from_env()
+# client = docker.from_env()
 
-# Nome del container Docker generato da Kathara
-container_name = "kathara_lorenzo-4rxxi5niaxyotf8t9fxhcw_fw_J8dJIw6Pk7dvoKS53DzEUA"
+# # Nome del container Docker generato da Kathara
+# container_name = "kathara_sicmic-4rxxi5niaxyotf8t9fxhcw_fw_J8dJIw6Pk7dvoKS53DzEUA"
 
-# Ottieni il container
-container = client.containers.get(container_name)
+# # Ottieni il container
+# container = client.containers.get(container_name)
 
-# Collega il container alla rete bridge di Docker
-client.networks.get("bridge").connect(container)
-
-print(next(Kathara.get_instance().get_machines_stats(lab_name=lab.name)))
+# # Collega il container alla rete bridge di Docker
+# client.networks.get("bridge").connect(container)
 
 
 print(next(Kathara.get_instance().get_machines_stats(lab_name=lab.name)))

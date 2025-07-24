@@ -69,7 +69,7 @@
         "mdb" : ["systemctl start mariadb"],
         "smb" : ["systemctl start smbd"],
         "wsa2" : ["systemctl start apache2"],
-        "wsn" : ["systemctl start ngnix"],
+        "wsn" : ["systemctl start nginx"],
         "ovpn" : [], 
         "bind2" : ["systemctl start bind9"],
         "pc1s" : [], 
@@ -99,10 +99,12 @@
     },
 
     "image_host" : {
-        "theb0ys/apache": [],
-        "theb0ys/base": ["wsa1", "wsa2", "mdb", "smb", "fw", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "switchs", "switchd", "switcho", "wsn", "ovpn", "pc1s", "pc2s", "pc1d", "pc1o"],
-        "theb0ys/mariadb": [],
-        "theb0ys/samba": []
+        "theb0ys/apache": ["wsa1", "wsa2"],
+        "theb0ys/nginx": ["wsn"],
+        "theb0ys/base": ["fw", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "switchs", "switchd", "switcho", "ovpn", "pc1s", "pc2s", "pc1d", "pc1o"],
+        "theb0ys/mariadb": ["mdb"],
+        "theb0ys/samba": ["smb"],
+        "kathara/bind:9.11": ["bind1", "bind2"]
     },
 
     "management_host" : {

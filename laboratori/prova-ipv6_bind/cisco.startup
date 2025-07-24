@@ -1,6 +1,6 @@
 # set a static ip address on the point-to-point link
-ip address add 2001:1:1:2901::/64 dev eth0      # Lan A
-ip address add 2001:1:1:2902::/64 dev eth1      # Lan B
+ip address add 2001:1:1:2901::1/64 dev eth0      # Lan A
+ip address add 2001:1:1:2902::1/64 dev eth1      # Lan B
 
 
 # set correct privileges for radvd.conf
