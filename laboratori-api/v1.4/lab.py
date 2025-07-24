@@ -147,7 +147,7 @@ for lan, hosts in management_host.items():
         else:
             machine_startup["pc2s"].append(f"echo '{mac_to_ipv6_link_local(mac_address)} {host}.local' >> /etc/hosts")
             machine_startup[host].append("useradd -m -p $(perl -e 'print crypt($ARGV[0], \"password\")' '2Password!') sirouter")
-        machine_startup[host].append("service ssh start")
+        machine_startup[host].append("systemctl start ssh")
 
 
 # Crea un client Docker
@@ -157,14 +157,15 @@ for machine in machine_startup:
     lab.create_file_from_list(machine_startup[machine], f"{machine}.startup")   
 
 # Copia delle cartelle nei server
-copy_folder_to_machine(lab.get_machine("bind1"), "servers/bind1/bind", "/etc/bind")
-copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/website", "/var/www/html")
-copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/000-default.conf", "/etc/apache2/sites-available")
-copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/apache2.conf", "/etc/apache2")
+# copy_folder_to_machine(lab.get_machine("bind1"), "servers/bind1/bind", "/etc/bind")
+# copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/website", "/var/www/html")
+# copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/sites-available", "/etc/apache2/sites-available")
+# copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/apache2.conf", "/etc/apache2")
 
-#lab.get_machine("bind1").fs.copy_directory_from_path("bind", "/etc")       -- chiedere a Tommaso
-
-
+lab.get_machine("bind1").copy_directory_from_path("servers/bind1", "/etc") 
+lab.get_machine("bind1").copy_directory_from_path("servers/wsa2/apache2", "/etc/apache2")
+lab.get_machine("bind1").copy_directory_from_path("servers/wsa2/html", "/var/www/html")
+#lab.get_machine("smb").copy_directory_from_path("servers/smb", "/etc")    
 
 
 # Deploy del lab
@@ -173,7 +174,7 @@ Kathara.get_instance().deploy_lab(lab)
 client = docker.from_env()
 
 # Nome del container Docker generato da Kathara
-container_name = "kathara_sicmic-4rxxi5niaxyotf8t9fxhcw_fw_J8dJIw6Pk7dvoKS53DzEUA"
+container_name = "kathara_lorenzo-4rxxi5niaxyotf8t9fxhcw_fw_J8dJIw6Pk7dvoKS53DzEUA"
 
 # Ottieni il container
 container = client.containers.get(container_name)

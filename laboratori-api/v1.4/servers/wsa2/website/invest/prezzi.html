@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prezzi in Tempo Reale - InvestSmart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">InvestSmart</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="prezzi.html" class="active">Prezzi in tempo reale</a></li>
+        <li><a href="index.html#servizi">Servizi</a></li>
+        <li><a href="index.html#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="prezzi-section">
+      <h1>Prezzi in Tempo Reale</h1>
+      <p>Seleziona la categoria per visualizzare i prezzi aggiornati di valute, azioni, criptovalute e commodities.</p>
+
+      <div class="filter-container">
+        <label for="categoria">Categoria:</label>
+        <select id="categoria">
+          <option value="tutte" selected>Tutte</option>
+          <option value="commodities">Commodities</option>
+          <option value="valute">Valute</option>
+          <option value="azioni">Azioni</option>
+          <option value="criptovalute">Criptovalute</option>
+        </select>
+      </div>
+
+      <div id="prezziContainer" class="prezzi-container">
+        <!-- Prezzi caricati dinamicamente -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 InvestSmart - Consulenza Investimenti</p>
+  </footer>
+
+  <script>
+    const METALS_KEY = 'TUO_METALS_API_KEY';
+    const ALPHA_KEY = 'TUO_ALPHA_VANTAGE_KEY';
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("prezziContainer");
+      const filtro = document.getElementById("categoria");
+
+      filtro.addEventListener("change", fetchAndRender);
+      fetchAndRender();
+
+      async function fetchAndRender() {
+        const cat = filtro.value;
+        container.innerHTML = '<p class="loading">Caricamento dati...</p>';
+
+        const data = [];
+        try {
+          if (cat === 'tutte' || cat === 'commodities') {
+            const res = await fetch(`https://metals-api.com/api/latest?access_key=${METALS_KEY}&symbols=XAU,XAG&base=USD`);
+            const json = await res.json();
+            if (json.success) {
+              data.push({ nome: 'Oro (XAU)', prezzo: `${(1/json.rates.XAU).toFixed(2)} USD/oz`, categoria: 'commodities' });
+              data.push({ nome: 'Argento (XAG)', prezzo: `${(1/json.rates.XAG).toFixed(2)} USD/oz`, categoria: 'commodities' });
+            }
+          }
+
+          if (cat === 'tutte' || ['valute','azioni','criptovalute'].includes(cat)) {
+            let symbolList = [];
+            if (cat === 'valute' || cat === 'tutte') symbolList.push('EURUSD','USDJPY');
+            if (cat === 'azioni' || cat === 'tutte') symbolList.push('AAPL','TSLA');
+            if (cat === 'criptovalute' || cat === 'tutte') symbolList.push('BTCUSD','ETHUSD');
+
+            const promises = symbolList.map(sym =>
+              fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${sym}&apikey=${ALPHA_KEY}`)
+              .then(r => r.json())
+              .then(j => {
+                const q = j['Global Quote'];
+                if (q) {
+                  const catAuto = ['EUR','USD','JPY'].includes(sym.slice(0,3)) ? 'valute' :
+                                   ['BTC','ETH'].includes(sym.slice(0,3)) ? 'criptovalute' : 'azioni';
+                  data.push({ nome: sym, prezzo: parseFloat(q['05. price']).toFixed(2), categoria: catAuto });
+                }
+              })
+            );
+            await Promise.all(promises);
+          }
+
+          render(data.filter(p => cat === 'tutte' || p.categoria === cat));
+        } catch(err) {
+          container.innerHTML = `<p class="errore">Errore: ${err.message}</p>`;
+        }
+      }
+
+      function render(items) {
+        container.innerHTML = '';
+        if (items.length === 0) {
+          container.innerHTML = '<p>Nessun dato disponibile.</p>';
+          return;
+        }
+        items.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'prezzo-card';
+          card.innerHTML = `<h2>${p.nome}</h2><p>${p.prezzo} USD</p>`;
+          container.appendChild(card);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -48,44 +48,40 @@ header p {
   letter-spacing: 1px;
 }
 
-/* City selector */
 .city-selector {
-  margin: 2rem 0 2.5rem 0;
+  margin: 2rem auto;
+  max-width: 500px;
   text-align: center;
 }
 
 .city-selector label {
-  font-weight: 600;
-  font-size: 1.3rem;
-  margin-bottom: 0.6rem;
   display: block;
-  color: #a3d2ca;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ed5454;
+  font-weight: 600;
 }
 
-.city-selector select {
-  width: 220px;
-  padding: 0.55rem 1rem;
-  border-radius: 30px;
-  border: none;
-  font-size: 1.1rem;
-  cursor: pointer;
-  background: #1c313a;
-  color: #e0e7ff;
-  box-shadow: 0 8px 15px rgb(127 255 212 / 0.35);
-  transition: background 0.3s ease, transform 0.3s ease;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
+.city-selector input[list] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
 }
 
-.city-selector select:hover {
-  background: #2c5364;
-  transform: scale(1.03);
+.city-selector input[list]:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 5px rgba(0, 119, 255, 0.3);
 }
+
+.city-selector input[list]::placeholder {
+  color: #aaa;
+}
+
 
 /* Stats section */
 .stats {

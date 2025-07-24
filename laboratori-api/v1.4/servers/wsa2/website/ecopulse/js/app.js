@@ -1,25 +1,24 @@
-const cityCoords = {
-  milano: { lat: 45.4642, lon: 9.19 },
-  roma: { lat: 41.9028, lon: 12.4964 },
-  napoli: { lat: 40.8522, lon: 14.2681 },
-  torino: { lat: 45.0703, lon: 7.6869 },
-  firenze: { lat: 43.7696, lon: 11.2558 },
-};
+const cityInput = document.getElementById('city');
+const cityList = document.getElementById('city-list');
 
-// Inserisci qui la tua API key OpenWeatherMap
-const API_KEY = '8d2a751ccdf85468f6965805f3b51243';
-
-const citySelect = document.getElementById('city');
+// Gli elementi meteo (uguali)
 const tempEl = document.getElementById('temp');
+const feelsLikeEl = document.getElementById('feels-like');
 const airQualityEl = document.getElementById('air-quality');
 const humidityEl = document.getElementById('humidity');
 const uvIndexEl = document.getElementById('uv-index');
 const windSpeedEl = document.getElementById('wind-speed');
+const windDirectionEl = document.getElementById('wind-direction');
 const pressureEl = document.getElementById('pressure');
 const rainChanceEl = document.getElementById('rain-chance');
+const visibilityEl = document.getElementById('visibility');
+const sunriseEl = document.getElementById('sunrise');
+const sunsetEl = document.getElementById('sunset');
 const mainPollutantsEl = document.getElementById('main-pollutants');
 const disasterListEl = document.getElementById('disaster-list');
 const pollenEl = document.getElementById('pollen');
+
+let cities = {};
 
 const pollenData = {
   milano: 'Moderato (graminacee, betulla)',
@@ -28,27 +27,6 @@ const pollenData = {
   torino: 'Moderato (betulla, quercia)',
   firenze: 'Basso (graminacee)',
 };
-
-async function fetchWeatherAndAir(city) {
-  const { lat, lon } = cityCoords[city];
-
-  try {
-    // Fetch meteo
-    const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=it`);
-    if (!weatherRes.ok) throw new Error('Errore nel fetch meteo');
-    const weatherData = await weatherRes.json();
-
-    // Fetch qualità aria
-    const airRes = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
-    if (!airRes.ok) throw new Error('Errore nel fetch aria');
-    const airData = await airRes.json();
-
-    return { weatherData, airData };
-  } catch (error) {
-    console.error('Errore fetching dati reali:', error);
-    throw error;
-  }
-}
 
 function mapAQI(aqi) {
   const labels = {
@@ -77,71 +55,96 @@ function formatPollutants(components) {
     nh3: 'NH₃',
   };
 
-  const pollutants = [];
-  for (const [key, value] of Object.entries(components)) {
-    if (value > 0 && pollutantNames[key]) {
-      pollutants.push(`${pollutantNames[key]}: ${value.toFixed(2)} µg/m³`);
-    }
-  }
-  return pollutants.join(', ') || '--';
+  return Object.entries(components)
+    .filter(([_, val]) => val > 0)
+    .map(([key, val]) => `${pollutantNames[key]}: ${val.toFixed(2)} µg/m³`)
+    .join(', ') || '--';
 }
 
 function updatePollen(city) {
-  pollenEl.textContent = pollenData[city] || '--';
+  const key = city.toLowerCase();
+  pollenEl.textContent = pollenData[key] || '--';
 }
 
-async function updateStatsReal(city) {
+async function fetchWeatherAndAir(lat, lon) {
+  const API_KEY = '8d2a751ccdf85468f6965805f3b51243';
+
+  const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=it`);
+  const airRes = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+
+  if (!weatherRes.ok || !airRes.ok) throw new Error('Errore nel fetch dei dati');
+
+  return {
+    weatherData: await weatherRes.json(),
+    airData: await airRes.json(),
+  };
+}
+
+async function updateStats(cityName) {
+  const city = cities[cityName.toLowerCase()];
+  if (!city) {
+    alert('Città non trovata!');
+    return;
+  }
+
   try {
     disasterListEl.innerHTML = '<p>Caricamento dati...</p>';
 
-    const { weatherData, airData } = await fetchWeatherAndAir(city);
+    const { lat, lon } = city;
+    const { weatherData, airData } = await fetchWeatherAndAir(lat, lon);
 
-    // Temperatura
     tempEl.textContent = `${weatherData.main.temp.toFixed(1)} °C`;
-    // Umidità
+    feelsLikeEl.textContent = `${weatherData.main.feels_like.toFixed(1)} °C`;
     humidityEl.textContent = `${weatherData.main.humidity} %`;
-    // Pressione
     pressureEl.textContent = `${weatherData.main.pressure} hPa`;
-    // Vento (convertito da m/s a km/h)
     windSpeedEl.textContent = `${mpsToKmh(weatherData.wind.speed)} km/h`;
-    // Possibilità pioggia
-    const rainVol = weatherData.rain?.['1h'] ?? 0;
-    rainChanceEl.textContent = rainVol > 0 ? `Pioggia: ${rainVol} mm nell'ultima ora` : 'Nessuna pioggia';
-    // Indice UV (OpenWeatherMap API separata, qui "N/D")
+
+    const deg = weatherData.wind.deg;
+    const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    windDirectionEl.textContent = dirs[Math.round(deg / 45) % 8];
+
+    const rain = weatherData.rain?.['1h'] ?? 0;
+    rainChanceEl.textContent = rain > 0 ? `Pioggia: ${rain} mm` : 'Nessuna pioggia';
+
+    visibilityEl.textContent = `${(weatherData.visibility / 1000).toFixed(1)} km`;
+
+    sunriseEl.textContent = new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+    sunsetEl.textContent = new Date(weatherData.sys.sunset * 1000).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+
     uvIndexEl.textContent = 'N/D';
 
-    // Qualità aria (AQI)
-    const airQualityIndex = airData.list[0].main.aqi;
-    airQualityEl.textContent = mapAQI(airQualityIndex);
+    airQualityEl.textContent = mapAQI(airData.list[0].main.aqi);
+    mainPollutantsEl.textContent = formatPollutants(airData.list[0].components);
 
-    // Pollutanti principali
-    const components = airData.list[0].components;
-    mainPollutantsEl.textContent = formatPollutants(components);
+    updatePollen(cityName);
 
-    // Polline (mock)
-    updatePollen(city);
-
-    // Calamità (mock, in attesa di integrazione API reali)
     disasterListEl.innerHTML = '<p>Nessuna calamità rilevata al momento.</p>';
-
-  } catch (error) {
-    tempEl.textContent = '-- °C';
-    airQualityEl.textContent = '--';
-    humidityEl.textContent = '-- %';
-    uvIndexEl.textContent = '--';
-    windSpeedEl.textContent = '-- km/h';
-    pressureEl.textContent = '-- hPa';
-    rainChanceEl.textContent = '--';
-    mainPollutantsEl.textContent = '--';
-    pollenEl.textContent = '--';
-    disasterListEl.innerHTML = '<p>Errore nel caricamento dati. Riprova più tardi.</p>';
+  } catch (err) {
+    console.error(err);
+    disasterListEl.innerHTML = '<p>Errore nel caricamento dati.</p>';
   }
 }
 
-// Inizializza con la città selezionata
-updateStatsReal(citySelect.value);
+async function loadCities() {
+  const res = await fetch('data/italian-cities.json');
+  const cityArray = await res.json();
 
-// Cambia dati quando cambia la città
-citySelect.addEventListener('change', e => {
-  updateStatsReal(e.target.value);
+  cityArray.forEach(city => {
+    cities[city.name.toLowerCase()] = { lat: city.lat, lon: city.lon };
+    const option = document.createElement('option');
+    option.value = city.name;
+    cityList.appendChild(option);
+  });
+}
+
+loadCities();
+
+// Inizializza al primo invio/cambio
+cityInput.addEventListener('change', () => {
+  updateStats(cityInput.value);
+});
+
+loadCities().then(() => {
+  cityInput.value = 'Roma';     // Imposta Roma come default nell'input
+  updateStats('Roma');           // Carica subito dati meteo per Roma
 });
