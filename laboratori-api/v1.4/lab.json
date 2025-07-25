@@ -8,11 +8,19 @@
     },
 
     "rete": {
+        "nat" : {
+            "lan" : [],
+            "plan" : ["N"], 
+            "iface" : [],
+            "piface" : [0],
+            "switch" : {},
+            "route" : []
+        },
         "fw" : {
             "lan" : [],
-            "plan" : ["I", "E"], 
+            "plan" : ["I", "E", "N"], 
             "iface" : [],
-            "piface" : [0 , 1],
+            "piface" : [0 , 1, 2],
             "switch" : {},
             "route" : ["A|I", "B|I", "C|I", "S|E", "D|E", "O|E"]
         },
@@ -66,7 +74,7 @@
         "syslog" : [], 
         "bind1" : ["systemctl start bind9"],
         "wsa1" : ["systemctl start apache2"],
-        "mdb" : ["systemctl start mariadb"],
+        "mdb" : ["service mariadb start"],
         "smb" : ["systemctl start smbd"],
         "wsa2" : ["systemctl start apache2"],
         "wsn" : ["systemctl start nginx"],
@@ -81,6 +89,7 @@
         "ciscod" : [],
         "ciscoo" : [], 
         "fw" : [],
+        "nat" : [],
         "switcha" : [],
         "switchb" : [],
         "switchc" : [],
@@ -101,7 +110,7 @@
     "image_host" : {
         "theb0ys/apache": ["wsa1", "wsa2"],
         "theb0ys/nginx": ["wsn"],
-        "theb0ys/base": ["fw", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "switchs", "switchd", "switcho", "ovpn", "pc1s", "pc2s", "pc1d", "pc1o"],
+        "theb0ys/base": ["nat", "fw", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "switchs", "switchd", "switcho", "ovpn", "pc1s", "pc2s", "pc1d", "pc1o"],
         "theb0ys/mariadb": ["mdb"],
         "theb0ys/samba": ["smb"],
         "kathara/bind:9.11": ["bind1", "bind2"]

@@ -116,6 +116,20 @@ for router in rete:
         mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
         link_local = mac_to_ipv6_link_local(mac)
         machine_startup[router].append(f"ip -6 route add 2a04:0:0:10::/60 via {link_local} dev eth1\n")
+
+        next_hop_router = find_router_connected_to_plan("N", rete, "fw")
+        next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index("N")]
+        mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
+        link_local = mac_to_ipv6_link_local(mac)
+        machine_startup[router].append(f"ip -6 route add default via {link_local} dev eth2\n")
+
+    elif router == "nat":
+        next_hop_router = find_router_connected_to_plan("N", rete, "nat")
+        next_hop_iface = rete[next_hop_router]["piface"][rete[next_hop_router]["plan"].index("N")]
+        mac = lab.get_machine(next_hop_router).interfaces[next_hop_iface].mac_address
+        link_local = mac_to_ipv6_link_local(mac)
+        machine_startup[router].append(f"ip -6 route add 2a04::/56 via {link_local} dev eth0\n")
+
     else :
         for r in rete[router].get("route", []):
             dest_lan, plan = r.split("|")
@@ -152,11 +166,6 @@ for lan, hosts in management_host.items():
 for machine in machine_startup:
     lab.create_file_from_list(machine_startup[machine], f"{machine}.startup")   
 
-# Copia delle cartelle nei server
-# copy_folder_to_machine(lab.get_machine("bind1"), "servers/bind1/bind", "/etc/bind")
-# copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/website", "/var/www/html")
-# copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/sites-available", "/etc/apache2/sites-available")
-# copy_folder_to_machine(lab.get_machine("wsa2"), "servers/wsa2/apache2/apache2.conf", "/etc/apache2")
 
 lab.get_machine("bind1").copy_directory_from_path("../configurazioni/bind1", "/etc/bind") 
 lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/apache2", "/etc/apache2")
@@ -165,29 +174,15 @@ lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsn/html", "
 lab.get_machine("wsn").copy_directory_from_path("../configurazioni/wsn/html", "/var/www/html")
 lab.get_machine("wsn").copy_directory_from_path("../configurazioni/wsn/nginx", "/etc/nginx")
 lab.get_machine("smb").copy_directory_from_path("../configurazioni/smb/samba", "/etc/samba")
-#lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql", "/etc/mysql")
-#lab.get_machine("smb").copy_directory_from_path("servers/smb", "/etc")    
+lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql/mariadb.conf.d", "/etc/mysql/mariadb.conf.d")      # -- da rivedere 
+lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/data", "/root")
+# lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql/mariadb.conf.d", "/etc/mysql/mariadb.conf.d")
 
-# args = {
-#     'bridged': True
-# }
-
-lab.get_machine("fw").update_meta({"bridged":True})
+# lab.get_machine("fw").update_meta({"bridged":True})
+lab.get_machine("nat").update_meta({"bridged":True})
 
 # Deploy del lab
 Kathara.get_instance().deploy_lab(lab)
-
-# client = docker.from_env()
-
-# # Nome del container Docker generato da Kathara
-# container_name = "kathara_sicmic-4rxxi5niaxyotf8t9fxhcw_fw_J8dJIw6Pk7dvoKS53DzEUA"
-
-# # Ottieni il container
-# container = client.containers.get(container_name)
-
-# # Collega il container alla rete bridge di Docker
-# client.networks.get("bridge").connect(container)
-
 
 print(next(Kathara.get_instance().get_machines_stats(lab_name=lab.name)))
 
