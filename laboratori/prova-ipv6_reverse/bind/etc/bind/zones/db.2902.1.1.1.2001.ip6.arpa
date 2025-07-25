@@ -1,0 +1,12 @@
+$TTL 604800
+@   IN  SOA bind.local. root.local. (
+        2025072501 ; Serial
+        604800
+        86400
+        2419200
+        604800 )
+
+@    IN  NS  bind.local.
+
+; PTR per smb (2001:1:1:2902:200:ff:fe00:b4)
+4.b.0.0.0.0.e.f.f.f.0.0.0.0.2.0.1.0.9.2 IN PTR smb.local.
