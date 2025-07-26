@@ -40,6 +40,9 @@ RUN apt update && \
 	apt-utils \
 	apt-transport-https \
 	apache2 \
+	php \
+	libapache2-mod-php \
+	php-mysql \
 	arping \
 	bat \
 	bridge-utils \

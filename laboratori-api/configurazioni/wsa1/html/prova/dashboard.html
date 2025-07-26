@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Area Riservata - Dashboard Aziendale</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #004080;
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e6f2ff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Area Riservata - Dashboard Aziendale</h1>
+  </header>
+  <nav>
+    <a href="#dipendenti" onclick="caricaSezione('dipendenti')">Dipendenti</a>
+    <a href="#stipendi" onclick="caricaSezione('stipendi')">Stipendi</a>
+    <a href="#bilanci_mensili" onclick="caricaSezione('bilanci_mensili')">Bilanci Mensili</a>
+    <a href="#bilanci_annuali" onclick="caricaSezione('bilanci_annuali')">Bilanci Annuali</a>
+    <a href="#allocazioni" onclick="caricaSezione('allocazioni')">Allocazione Costi</a>
+  </nav>
+  <main>
+    <div id="contenuto"></div>
+  </main>
+
+  <script>
+    async function caricaSezione(sezione) {
+      const mappaEndpoint = {
+        dipendenti: "dipendenti.php",
+        stipendi: "stipendi.php",
+        bilanci_mensili: "bilanci_mensili.php",
+        bilanci_annuali: "bilanci_annuali.php",
+        allocazioni: "allocazioni.php"
+      };
+
+      const response = await fetch(mappaEndpoint[sezione]);
+      const data = await response.json();
+
+      let html = "<h2>" + sezione.replace("_", " ").toUpperCase() + "</h2><table><thead><tr>";
+
+      if (data.length === 0) {
+        document.getElementById("contenuto").innerText = "Nessun dato disponibile.";
+        return;
+      }
+
+      // intestazioni
+      for (const chiave in data[0]) {
+        html += `<th>${chiave}</th>`;
+      }
+      html += "</tr></thead><tbody>";
+
+      // righe dati
+      for (const row of data) {
+        html += "<tr>";
+        for (const chiave in row) {
+          html += `<td>${row[chiave]}</td>`;
+        }
+        html += "</tr>";
+      }
+
+      html += "</tbody></table>";
+      document.getElementById("contenuto").innerHTML = html;
+    }
+
+    // Caricamento predefinito
+    caricaSezione('dipendenti');
+  </script>
+</body>
+</html>

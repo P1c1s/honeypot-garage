@@ -176,10 +176,20 @@ lab.get_machine("wsn").copy_directory_from_path("../configurazioni/wsn/nginx", "
 lab.get_machine("smb").copy_directory_from_path("../configurazioni/smb/samba", "/etc/samba")
 lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql/mariadb.conf.d", "/etc/mysql/mariadb.conf.d")      # -- da rivedere 
 lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/data", "/root")
+lab.get_machine("wsa1").copy_directory_from_path("../configurazioni/wsa1/html/prova", "/var/www/html")
 # lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql/mariadb.conf.d", "/etc/mysql/mariadb.conf.d")
+lab.get_machine("syslog").copy_directory_from_path("../configurazioni/syslog-server", "/etc")
+lab.get_machine("wsa1").copy_directory_from_path("../configurazioni/syslog-client", "/etc")
+lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/syslog-client", "/etc")
+
 
 # lab.get_machine("fw").update_meta({"bridged":True})
 lab.get_machine("nat").update_meta({"bridged":True})
+lab.get_machine("wsa1").update_meta({"bridged":True})
+
+# lab.new_machine("wireshark", image="lscr.io/linuxserver/wireshark")
+# lab.get_machine("wireshark").update_meta({"bridged":True, "port":"3000:3000"})
+
 
 # Deploy del lab
 Kathara.get_instance().deploy_lab(lab)

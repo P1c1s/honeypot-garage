@@ -71,12 +71,12 @@
 
     "machine_startup" : {
         "oldap" : [],
-        "syslog" : [], 
+        "syslog" : ["rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/50-remote-logs.conf", "systemctl restart rsyslog"], 
         "bind1" : ["systemctl start bind9"],
-        "wsa1" : ["systemctl start apache2"],
-        "mdb" : ["service mariadb start"],
+        "wsa1" : ["systemctl start apache2", "rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf", "systemctl restart rsyslog"],
+        "mdb" : ["service mariadb start", "mysql < /root/import.sql"],
         "smb" : ["systemctl start smbd"],
-        "wsa2" : ["systemctl start apache2"],
+        "wsa2" : ["systemctl start apache2", "rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf", "systemctl restart rsyslog"],
         "wsn" : ["systemctl start nginx"],
         "ovpn" : [], 
         "bind2" : ["systemctl start bind9"],
@@ -110,7 +110,7 @@
     "image_host" : {
         "theb0ys/apache": ["wsa1", "wsa2"],
         "theb0ys/nginx": ["wsn"],
-        "theb0ys/base": ["nat", "fw", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "switchs", "switchd", "switcho", "ovpn", "pc1s", "pc2s", "pc1d", "pc1o"],
+        "theb0ys/base": ["syslog", "nat", "fw", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "switchs", "switchd", "switcho", "ovpn", "pc1s", "pc2s", "pc1d", "pc1o"],
         "theb0ys/mariadb": ["mdb"],
         "theb0ys/samba": ["smb"],
         "kathara/bind:9.11": ["bind1", "bind2"]
