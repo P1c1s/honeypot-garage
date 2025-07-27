@@ -1,0 +1,3 @@
+# set a static ip address on the point-to-point link
+ip address add 192.168.0.1/24 dev eth0      # Lan A
+ip address add 192.168.100.1/24 dev eth1      # Lan B

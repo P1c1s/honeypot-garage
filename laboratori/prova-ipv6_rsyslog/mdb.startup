@@ -1,0 +1,8 @@
+# echo "nameserver 2001:1:1:2901:200:ff:fe00:a4" >> /etc/resolv.conf
+
+ip -6 route default via 2001:1:1:2901::1 dev eth0
+
+rsyslogd -N1 -f /etc/rsyslog.conf
+rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf
+
+systemctl start rsyslog

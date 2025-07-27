@@ -1,0 +1,8 @@
+options {
+    directory "/var/cache/bind";
+
+
+    allow-query { ::1; 2001:1:1:2901::/64; 2001:1:1:2902::/64; };
+    recursion yes;
+    listen-on { ::1; 2001:1:1:2901:200:ff:fe00:a4; };
+};

@@ -1,0 +1,12 @@
+# set a static ip address on the point-to-point link
+ip address add 2001:1:1:2901::1/64 dev eth0      # Lan A
+ip address add 2001:1:1:2902::1/64 dev eth1      # Lan B
+
+
+# set correct privileges for radvd.conf
+chmod o-rw /etc/radvd.conf
+
+# start the radvd service
+systemctl start radvd
+
+echo "nameserver 2001:1:1:2901:200:ff:fe00:a4" >> /etc/resolv.conf

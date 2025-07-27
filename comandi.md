@@ -90,6 +90,11 @@ stop
 "
 
 nano /etc/rsyslog.conf
+# -- AGGIUNGERE QUESTA ALTRIMENTI FORZA TENTATIVO IPV4
+global(
+    net.ipprotocol="ipv6-only"
+)
+
 # rimuovere commenti alle righe:
 provides UDP syslog reception
 module(load="imudp")

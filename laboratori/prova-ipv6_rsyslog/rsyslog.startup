@@ -1,0 +1,8 @@
+ip address add 2001:1:1:2901::2/64 dev eth0      # Lan A
+
+ip -6 route default via 2001:1:1:2901::1 dev eth0
+
+rsyslogd -N1 -f /etc/rsyslog.conf
+rsyslogd -N1 -f /etc/rsyslog.d/50-remote-logs.conf
+
+systemctl start rsyslog

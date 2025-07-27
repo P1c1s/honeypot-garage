@@ -1,0 +1,20 @@
+$TTL 604800
+@   IN  SOA bind.local. root.local. (
+        2025070301 ; Serial
+        604800     ; Refresh
+        86400      ; Retry
+        2419200    ; Expire
+        604800 )   ; Negative Cache TTL
+
+@   IN  NS  bind.local.
+
+; ========================
+; LAN A  
+; ========================
+bind        IN  AAAA   2001:1:1:2901:200:ff:fe00:a4
+mdb         IN  AAAA   2001:1:1:2901:200:ff:fe00:b3
+
+; ========================
+; LAN B
+; ========================
+smb         IN  AAAA   2001:1:1:2902:200:ff:fe00:b4
