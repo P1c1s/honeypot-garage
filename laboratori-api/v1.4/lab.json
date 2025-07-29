@@ -75,7 +75,7 @@
         "bind1" : ["systemctl start bind9"],
         "wsa1" : ["systemctl start apache2", "rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf", "systemctl restart rsyslog"],
         "mdb" : ["service mariadb start", "mysql < /root/import.sql"],
-        "smb" : ["systemctl start smbd"],
+        "smb" : ["systemctl start smbd", "useradd -m -p pippo pippo", "(echo 'pippo'; echo 'pippo') | smbpasswd -a pippo"],
         "wsa2" : ["systemctl start apache2", "rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf", "systemctl restart rsyslog"],
         "wsn" : ["systemctl start nginx"],
         "ovpn" : [], 

@@ -181,6 +181,9 @@ lab.get_machine("wsa1").copy_directory_from_path("../configurazioni/wsa1/html/pr
 lab.get_machine("syslog").copy_directory_from_path("../configurazioni/syslog-server", "/etc")
 lab.get_machine("wsa1").copy_directory_from_path("../configurazioni/syslog-client", "/etc")
 lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/syslog-client", "/etc")
+lab.get_machine("smb").copy_directory_from_path("../configurazioni/smb/srv", "/srv")
+lab.get_machine("smb").copy_directory_from_path("../configurazioni/smb/samba", "/etc/samba")
+
 
 
 # lab.get_machine("fw").update_meta({"bridged":True})

@@ -101,8 +101,8 @@ fi
 export VTYSH_PAGER="less -EFX"
 
 
-# Iptables
-function show_iptables {
+# Iptables ipv4
+function show_iptables_ipv4 {
     if [ -z "$1" ]; then
         echo -e "\e[5;1;35mAttenzione: nessun argomento fornito. Utilizzo della tabella predefinita 'filter'.\e[0m"
         local table="filter"
@@ -122,7 +122,29 @@ function show_iptables {
     sed -E 's/ LOG /\x1b[36;1m&\x1b[0m/'
 }
 
+# Iptables ipv6
+function show_iptables_ipv6 {
+    if [ -z "$1" ]; then
+        echo -e "\e[5;1;35mAttenzione: nessun argomento fornito. Utilizzo della tabella predefinita 'filter'.\e[0m"
+        local table="filter"
+    else
+        local table="$1"
+        echo "Regole della tabella $table:"
+    fi
+
+    ip6tables -t "$table" --line-numbers -vnL |\
+    sed -E 's/^Chain.*$/\x1b[4m&\x1b[0m/' |\
+    sed -E 's/^num.*/\x1b[33m&\x1b[0m/' |\
+    sed -E '/([^y] )((REJECT|DROP))/s//\1\x1b[31m\3\x1b[0m/' |\
+    sed -E '/([^y] )(ACCEPT)/s//\1\x1b[32m\2\x1b[0m/' |\
+    sed -E '/([ds]pt[s]?:)([[:digit:]]+(:[[:digit:]]+)?)/s//\1\x1b[33;1m\2\x1b[0m/' |\
+    sed -E '/([[:digit:]]{1,3}\.){3}[[:digit:]]{1,3}(\/([[:digit:]]){1,3}){0,1}/s//\x1b[36;1m&\x1b[0m/g' |\
+    sed -E '/([^n] )(LOGDROP)/s//\1\x1b[33;1m\2\x1b[0m/'|\
+    sed -E 's/ LOG /\x1b[36;1m&\x1b[0m/'
+}
+
 alias ip='ip -c'
-alias ipt='show_iptables'
+alias ipt4='show_iptables_ipv4'
+alias ipt6='show_iptables_ipv6'
 
 

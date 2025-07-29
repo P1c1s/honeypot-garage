@@ -19,7 +19,7 @@ testparm
 
 ``` bash
 apt install smbclient -y # client
-smbclient //172.17.0.2/sharing -U pippo -c "put /pippo.txt pippo.txt"
+smbclient //172.17.0.2/sharing -U pippo -c "put /pippo.txt pippo.txt"   # "sharing" fa riferimento allo sharing nel smb.conf
 smbclient -L //172.17.0.2/sharing -U pippo # list directies
 
 # user: pippo
@@ -167,7 +167,7 @@ nmap -6 2001:1:1:2902::   #indirizzo global
 ``` 
 
 # OpenLdap
-
+https://it.linux-console.net/?p=30804
 ``` bash
 # database locale situato in /var/lib/ldap
 
@@ -188,6 +188,14 @@ userPassword: password_utente
 
 sudo ldapadd -x -D "cn=admin,dc=example,dc=com" -W -f utente.ldif
 ldapsearch -x -b "dc=example,dc=com" "(uid=nome_utente)"            # verifica inserimento utente
+
+docker run -it --name francescotottibiascica --hostname ldap.dominio.local theb0ys/base
+
+echo "172.17.0.2 ldap.dominio.local ldap" >> /etc/hosts
+sudo apt install slapd ldap-utils
+sudo dpkg-reconfigure slapd
+
+
 
 
 
