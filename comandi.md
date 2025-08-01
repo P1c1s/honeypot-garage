@@ -307,14 +307,18 @@ curl -g -6 'http://[fe80::3ad1:35ff:fe08:cd%eth0]:80/'
 
 ## Sito Wordpress
 ```bash
+
 # wordpress macch wsa2
+apt update && apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server
+systemctl start apache2
+service mariadb start
 CREATE DATABASE wordpress;
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'hrl-2D4-dd5-fGh';
 GRANT ALL PRIVILEGES ON wordpress.* TO 'admin'@'localhost';
 FLUSH PRIVILEGES;
 
 username = 'michela'
-password = 'qYmB9l$9#AArvqqE%H'
+password = 'C$!(XOdNDSfk*GXhuw'
 ```
 
 ## Kathara APIs

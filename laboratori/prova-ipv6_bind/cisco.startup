@@ -9,4 +9,4 @@ chmod o-rw /etc/radvd.conf
 # start the radvd service
 systemctl start radvd
 
-echo "nameserver 2001:1:1:2901:200:ff:fe00:a4" >> /etc/resolv.conf
+echo "nameserver 2001:1:1:2901:200:ff:fe00:a4" > /etc/resolv.conf

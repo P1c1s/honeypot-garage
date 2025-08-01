@@ -1,0 +1,1 @@
+ip -6 route default via 2001:1:1:2901::1 dev eth0

@@ -1,0 +1,10 @@
+cisco eth0 2001:1:1:2901::1
+cisco eth1 2001:1:1:2902::1
+
+LAN A
+bind eth0 2001:1:1:2901:200:ff:fe00:a4 
+mdb eth0 2001:1:1:2901:200:ff:fe00:b3
+
+LAN B
+smb eth0 2001:1:1:2902:200:ff:fe00:b4
+pc eth0 2001:1:1:2902:200:ff:fe00:ff02
