@@ -1,0 +1,6 @@
+# tayga.conf template, i valori verranno sostituiti dallo script di startup
+
+tun-device nat64
+ipv4-addr {{IPv4_ADDR}}
+prefix {{PREFIX}}
+dynamic-pool {{POOL}}

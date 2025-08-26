@@ -11,10 +11,10 @@ docker network create \
   my_ipv6_network
 
 # Avvia i container senza connessione alla rete bridge, utilizzando solo la rete personalizzata
-docker run -dit --name cisco --net my_ipv6_network --ip6 2001:0:0:0::3 --hostname cisco --privileged theb0ys/base
-docker run -dit --name pc1 --ip6 2001:0:0:0::4 --hostname pc --privileged --network none theb0ys/base
+docker run -dit --name cisco --net my_ipv6_network --ip6 2001:0:0:0::3 --hostname cisco --privileged=True theb0ys/base
+docker run -dit --name pc1 --ip6 2001:0:0:0::4  --net my_ipv6_network --hostname pc theb0ys/base
 
 # Se necessario, collega 'cisco' alla rete bridge per ulteriori operazioni
-docker network connect bridge cisco
-docker network connect my_ipv6_network cisco
+#docker network connect bridge cisco
+#docker network connect my_ipv6_network cisco
 
