@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+# -----
+# THE BOYS TAYGA IMAGE
+# -----
+
 set -e
 
 # Variabili di configurazione (modifica se serve)
@@ -23,7 +28,7 @@ echo "### 3. Lancio il container Tayga..."
 sudo docker run -d --net $DOCKER_NET_NAME --ip $TAYGA_CONF_IPV4_ADDR --ip6 $TAYGA_IPV6_ADDR --dns 8.8.8.8 \
   --name tayga --hostname tayga --privileged=true \
   --sysctl net.ipv6.conf.all.disable_ipv6=0 --sysctl net.ipv6.conf.all.forwarding=1 \
-  danehans/tayga:latest \
+  theb0ys/tayga:latest \
   bash -c "apt update && apt install -y iproute2 curl iputils-ping tcpudump && bash"
 
 echo "### 4. Creo la configurazione di bind9 per DNS64..."

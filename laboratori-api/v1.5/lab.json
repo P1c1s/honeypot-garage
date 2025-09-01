@@ -1,0 +1,125 @@
+{
+    "lab_info":{
+        "description" : "Versione con ipv6 e aggiunte quasi tutte le macchine della rete di sinistra e di destra",
+        "version" : "1.2",
+        "author" : "M. Sicuranza, L. Ricciardi",
+        "email" : "contact@kathara.org",
+        "web" : "http://www.kathara.org/"
+    },
+
+    "rete": {
+        "nat" : {
+            "lan" : [],
+            "plan" : ["N"], 
+            "iface" : [],
+            "piface" : [0],
+            "switch" : {},
+            "route" : []
+        },
+        "fw" : {
+            "lan" : [],
+            "plan" : ["I", "E", "N"], 
+            "iface" : [],
+            "piface" : [0 , 1, 2],
+            "switch" : {},
+            "route" : ["A|I", "B|I", "C|I", "S|E", "D|E", "O|E"]
+        },
+        "cisco" : {
+            "lan" : ["A", "B", "C"],
+            "plan" : ["I"], 
+            "iface" : [0, 1, 2],
+            "piface" : [3],
+            "switch" : {
+                "switcha" : ["oldap", "syslog", "bind1"],
+                "switchb" : ["wsa1", "mdb", "smb"],
+                "switchc" : ["wsa2", "wsn", "ovpn", "bind2"]
+            },
+            "route" : ["def|I"]
+
+        },
+        "ciscos" : {
+            "lan" : ["S"],
+            "plan" : ["F2", "F1", "E"],
+            "iface" : [0],
+            "piface" : [1, 2, 3],
+            "switch" : {
+                "switchs" : ["pc1s", "pc2s"]
+            }, 
+            "route" : ["D|F2", "O|F1", "def|E"]
+        },
+        "ciscod" : {
+            "lan" : ["D"],
+            "plan" : ["F2", "F3"],
+            "iface" : [0],
+            "piface" : [1, 2],
+            "switch" : {
+                "switchd" : ["pc1d"]
+            }, 
+            "route" : ["S|F2", "O|F3", "def|F2"]
+        },
+        "ciscoo" : {
+            "lan" : ["O"],
+            "plan" : ["F3", "F1"],
+            "iface" : [0],
+            "piface" : [1, 2],
+            "switch" : {
+                "switcho" : ["pc1o"]
+            }, 
+            "route" : ["D|F3", "S|F1", "def|F1"]
+        }
+    },
+
+    "machine_startup" : {
+        "oldap" : [],
+        "syslog" : ["rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/50-remote-logs.conf", "systemctl restart rsyslog"], 
+        "bind1" : ["systemctl start bind9"],
+        "wsa1" : ["systemctl start apache2", "rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf", "systemctl restart rsyslog"],
+        "mdb" : ["service mariadb start", "mysql < /root/import.sql"],
+        "smb" : ["systemctl start smbd", "useradd -m -p pippo pippo", "(echo 'pippo'; echo 'pippo') | smbpasswd -a pippo"],
+        "wsa2" : ["systemctl start apache2", "rsyslogd -N1 -f /etc/rsyslog.conf","rsyslogd -N1 -f /etc/rsyslog.d/20-forward-logs.conf", "systemctl restart rsyslog"],
+        "wsn" : ["systemctl start nginx"],
+        "ovpn" : [], 
+        "bind2" : ["systemctl start bind9"],
+        "pc1s" : [], 
+        "pc2s" : [], 
+        "pc1d" : [], 
+        "pc1o" : [],
+        "cisco" : [],
+        "ciscos" : [],
+        "ciscod" : [],
+        "ciscoo" : [], 
+        "fw" : [],
+        "nat" : [],
+        "switcha" : [],
+        "switchb" : [],
+        "switchc" : [],
+        "switchs" : [],
+        "switchd" : [],
+        "switcho" : []
+    },
+
+    "network_address" : {
+        "A" : "2a04:0:0:0000::/64",
+        "B" : "2a04:0:0:0001::/64",
+        "C" : "2a04:0:0:0002::/64", 
+        "S" : "2a04:0:0:0010::/64",  
+        "D" : "2a04:0:0:0011::/64", 
+        "O" : "2a04:0:0:0012::/64"    
+    },
+
+    "image_host" : {
+        "theb0ys/apache": ["wsa1", "wsa2"],
+        "theb0ys/nginx": ["wsn"],
+        "theb0ys/base": ["syslog", "fw", "cisco", "ciscos", "ciscod", "ciscoo", "switcha", "switchb", "switchc", "switchs", "switchd", "switcho", "ovpn", "pc1s", "pc2s", "pc1d", "pc1o"],
+        "theb0ys/mariadb": ["mdb"],
+        "theb0ys/samba": ["smb"],
+        "kathara/bind:9.11": ["bind1", "bind2"],
+        "theb0ys/tayga": ["nat"]
+    },
+
+    "management_host" : {
+    "M1" : ["bind1", "oldap", "syslog", "wsa1", "mdb", "smb", "wsa2", "wsn", "ovpn", "bind2", "pc1s"],
+    "M2" : ["fw", "cisco", "switcha", "switchb", "switchc", "ciscos", "switchs", "ciscod", "switchd", "ciscoo", "switcho", "pc2s"]
+    }
+
+}

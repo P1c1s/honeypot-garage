@@ -147,4 +147,7 @@ alias ip='ip -c'
 alias ipt4='show_iptables_ipv4'
 alias ipt6='show_iptables_ipv6'
 
-
+function pingll() {
+    ip=$(awk -v host="$1" '$2==host {print $1}' /etc/hosts);
+    [[ $ip == fe80::* ]] && ping6 "${ip}%eth1" || ping "$ip";
+}
