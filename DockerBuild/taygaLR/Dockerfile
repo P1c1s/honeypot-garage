@@ -13,7 +13,7 @@ RUN sysctl -w net.ipv6.conf.all.disable_ipv6=0 && \
 
 # Aggiorna e installa pacchetti utili
 RUN apt-get update && \
-    apt-get install -y iproute2 curl iputils-ping tcpdump && \
+    apt-get install -y iproute2 curl iputils-ping tcpdump nano netcat-opnebsd traceroute net-tools && \
     rm -rf /var/lib/apt/lists/*
 
 # Imposta hostname

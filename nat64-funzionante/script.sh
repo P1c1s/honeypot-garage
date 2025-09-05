@@ -9,9 +9,9 @@ TAYGA_CONF_DYNAMIC_POOL=172.18.0.128/25
 TAYGA_CONF_PREFIX=2001:db8:64:ff9b::/96
 DOCKER_NET_NAME=test
 
-docker stop bind9 tayga c1 || true
-docker rm bind9 tayga c1 || true
-docker network rm $DOCKER_NET_NAME
+docker stop bind9 tayga c1 2>/dev/null || true
+docker rm bind9 tayga c1 2>/dev/null || true
+docker network rm $DOCKER_NET_NAME 2>/dev/null || true
 
 echo "### 1. Creo la rete Docker con subnet IPv4 e IPv6..."
 sudo docker network create --subnet 172.18.0.0/16 --ipv6 --subnet=fd00:dead:beef::/48 $DOCKER_NET_NAME >/dev/null
@@ -69,9 +69,4 @@ sudo docker run -it --dns fd00:dead:beef::200 --net $DOCKER_NET_NAME --name c1 -
   echo 'Configurazione client pronta. Puoi testare la connettività usando curl.';
   exec bash
 "
-
-echo "### SCRIPT COMPLETATO ###"
-echo "Ora sei dentro il container client (c1). Puoi provare a fare:"
-echo "curl -6 -v hub.docker.com"
-echo "curl -6 -v www.google.com"
 
