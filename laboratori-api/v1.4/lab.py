@@ -168,13 +168,14 @@ for machine in machine_startup:
 
 
 lab.get_machine("bind1").copy_directory_from_path("../configurazioni/bind1", "/etc/bind") 
-lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/apache2", "/etc/apache2")
+lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/apache2/sites-available/", "/etc/apache2/sites-available/")
 lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/html", "/var/www/html")
 lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsn/html", "/var/www/html")
 lab.get_machine("wsn").copy_directory_from_path("../configurazioni/wsn/html", "/var/www/html")
 lab.get_machine("wsn").copy_directory_from_path("../configurazioni/wsn/nginx", "/etc/nginx")
 lab.get_machine("smb").copy_directory_from_path("../configurazioni/smb/samba", "/etc/samba")
 lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql/mariadb.conf.d", "/etc/mysql/mariadb.conf.d")      # -- da rivedere 
+lab.get_machine("mdb").create_file_from_path("../configurazioni/mdb/mysql/my.cnf", "/etc/mysql/my.cnf")      # -- da rivedere 
 lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/data", "/root")
 lab.get_machine("wsa1").copy_directory_from_path("../configurazioni/wsa1/html/prova", "/var/www/html")
 # lab.get_machine("mdb").copy_directory_from_path("../configurazioni/mdb/mysql/mariadb.conf.d", "/etc/mysql/mariadb.conf.d")
