@@ -146,6 +146,7 @@ function show_iptables_ipv6 {
 alias ip='ip -c'
 alias ipt4='show_iptables_ipv4'
 alias ipt6='show_iptables_ipv6'
+alias ping="ping -n" #no dns name resolution
 
 function pingll() {
     ip=$(awk -v host="$1" '$2==host {print $1}' /etc/hosts);
