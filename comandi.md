@@ -346,3 +346,9 @@ ssh siserver@fe80::200:ff:fe00:104%eth1
 ip6tables -A INPUT -i eth1 -s fe80::/10 -p tcp --dport 22 -j ACCEPT
 ip6tables -A INPUT -p tcp --dport 22 -j REJECT
 ```
+
+
+
+
+DOCKER 
+docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
