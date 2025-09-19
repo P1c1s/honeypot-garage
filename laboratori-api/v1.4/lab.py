@@ -91,6 +91,7 @@ for router in rete:
 
                 machine_startup[host].append(f"ip address add {str(ip)}/64 dev eth0\nip -6 route add default via {network_address[rete[router]["lan"][i]].replace("::/64", "::1")} dev eth0")
                 machine_startup[switch].append(f"ip link set dev eth{index} master mainbridge")
+                machine_startup[host].append(f"echo '::1 localhost {host}' > /etc/hosts") ### DA RIVEDERE IL POSIZIONAMENTO
 
                 lab.get_machine(host).create_file_from_string("nameserver 2a04:0:0:0::4", "/etc/resolv.conf")
                 index += 1
@@ -163,11 +164,14 @@ for lan, hosts in management_host.items():
             machine_startup[host].append("useradd -m -p $(perl -e 'print crypt($ARGV[0], \"password\")' '2Password!') sirouter")
         machine_startup[host].append("systemctl start ssh")
 
+
+
 for machine in machine_startup:
     lab.create_file_from_list(machine_startup[machine], f"{machine}.startup")   
 
 
-lab.get_machine("bind1").copy_directory_from_path("../configurazioni/bind1", "/etc/bind") 
+lab.get_machine("bind1").copy_directory_from_path("../configurazioni/bind1", "/etc/bind")
+lab.get_machine("bind2").copy_directory_from_path("../configurazioni/bind2", "/etc/bind") 
 lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/apache2/sites-available/", "/etc/apache2/sites-available/")
 lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsa2/html", "/var/www/html")
 lab.get_machine("wsa2").copy_directory_from_path("../configurazioni/wsn/html", "/var/www/html")

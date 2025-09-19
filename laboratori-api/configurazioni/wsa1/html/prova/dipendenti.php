@@ -1,21 +1,44 @@
 <?php
-include 'connessione.php';
+header('Content-Type: application/json');
 
-$sql = "SELECT d.id, d.nome, d.cognome, p.nome AS posizione, r.nome AS reparto, d.salario
+// Includi la connessione al database
+require_once "connessione.php";
+
+try {
+    // Query per recuperare tutti i dipendenti con il titolo della posizione
+    $sql = "
+        SELECT 
+            d.id_dipendente,
+            d.nome,
+            d.cognome,
+            p.titolo AS posizione,
+            d.data_assunzione,
+            d.stipendio_mensile
         FROM dipendenti d
-        JOIN posizioni p ON d.posizione_id = p.id
-        JOIN reparti r ON d.reparto_id = r.id";
+        LEFT JOIN posizioni p ON d.id_posizione = p.id_posizione
+        ORDER BY d.id_dipendente
+    ";
 
-$result = $conn->query($sql);
-$data = [];
+    $result = $conn->query($sql);
 
-if ($result) {
-  while($row = $result->fetch_assoc()) {
-    $data[] = $row;
-  }
+    if(!$result) {
+        throw new Exception("Errore nella query: " . $conn->error);
+    }
+
+    $dipendenti = [];
+
+    while($row = $result->fetch_assoc()) {
+        $dipendenti[] = $row;
+    }
+
+    echo json_encode($dipendenti, JSON_UNESCAPED_UNICODE);
+
+} catch(Exception $e) {
+    echo json_encode([
+        "error" => $e->getMessage()
+    ]);
 }
 
-header('Content-Type: application/json');
-echo json_encode($data);
+// Chiudi la connessione
 $conn->close();
 ?>

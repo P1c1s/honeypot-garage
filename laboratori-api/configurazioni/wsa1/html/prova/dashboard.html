@@ -22,22 +22,30 @@
       padding: 1rem;
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
     }
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+    nav a.active {
+      background-color: #0066cc;
     }
     nav a:hover {
       text-decoration: underline;
     }
     main {
       padding: 2rem;
+      overflow-x: auto;
     }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 1rem;
+      min-width: 600px;
     }
     th, td {
       border: 1px solid #ccc;
@@ -54,57 +62,82 @@
     <h1>Area Riservata - Dashboard Aziendale</h1>
   </header>
   <nav>
-    <a href="#dipendenti" onclick="caricaSezione('dipendenti')">Dipendenti</a>
-    <a href="#stipendi" onclick="caricaSezione('stipendi')">Stipendi</a>
-    <a href="#bilanci_mensili" onclick="caricaSezione('bilanci_mensili')">Bilanci Mensili</a>
-    <a href="#bilanci_annuali" onclick="caricaSezione('bilanci_annuali')">Bilanci Annuali</a>
-    <a href="#allocazioni" onclick="caricaSezione('allocazioni')">Allocazione Costi</a>
+    <a href="#dipendenti" onclick="caricaSezione('dipendenti', this)">Dipendenti</a>
+    <a href="#bilanci_mensili" onclick="caricaSezione('bilanci_mensili', this)">Bilanci Mensili</a>
+    <a href="#bilanci_annuali" onclick="caricaSezione('bilanci_annuali', this)">Bilanci Annuali</a>
   </nav>
   <main>
     <div id="contenuto"></div>
   </main>
 
   <script>
-    async function caricaSezione(sezione) {
+    async function caricaSezione(sezione, linkElement=null) {
       const mappaEndpoint = {
         dipendenti: "dipendenti.php",
-        stipendi: "stipendi.php",
         bilanci_mensili: "bilanci_mensili.php",
-        bilanci_annuali: "bilanci_annuali.php",
-        allocazioni: "allocazioni.php"
+        bilanci_annuali: "bilanci_annuali.php"
       };
 
-      const response = await fetch(mappaEndpoint[sezione]);
-      const data = await response.json();
+      // Evidenzia sezione attiva
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      if(linkElement) linkElement.classList.add('active');
 
-      let html = "<h2>" + sezione.replace("_", " ").toUpperCase() + "</h2><table><thead><tr>";
+      document.getElementById("contenuto").innerHTML = "<p>Caricamento in corso...</p>";
 
-      if (data.length === 0) {
-        document.getElementById("contenuto").innerText = "Nessun dato disponibile.";
-        return;
-      }
+      try {
+        const response = await fetch(mappaEndpoint[sezione]);
+        if (!response.ok) throw new Error("Errore nella richiesta: " + response.status);
+        const data = await response.json();
 
-      // intestazioni
-      for (const chiave in data[0]) {
-        html += `<th>${chiave}</th>`;
-      }
-      html += "</tr></thead><tbody>";
-
-      // righe dati
-      for (const row of data) {
-        html += "<tr>";
-        for (const chiave in row) {
-          html += `<td>${row[chiave]}</td>`;
+        if (!data.length) {
+          document.getElementById("contenuto").innerText = "Nessun dato disponibile.";
+          return;
         }
-        html += "</tr>";
-      }
 
-      html += "</tbody></table>";
-      document.getElementById("contenuto").innerHTML = html;
+        let html = `<h2>${sezione.replace("_", " ").toUpperCase()}</h2><table><thead><tr>`;
+        for (const chiave in data[0]) html += `<th>${chiave}</th>`;
+        html += "</tr></thead><tbody>";
+
+        for (const row of data) {
+          html += "<tr>";
+          for (const chiave in row) {
+            let valore = row[chiave];
+
+            // Formatta numeri come valuta
+            if (!isNaN(valore) && (
+                chiave.toLowerCase().includes('ricavi') || 
+                chiave.toLowerCase().includes('costi') || 
+                chiave.toLowerCase().includes('utile') || 
+                chiave.toLowerCase().includes('salario') || 
+                chiave.toLowerCase().includes('stipendio')
+              )) {
+              valore = parseFloat(valore).toLocaleString("it-IT", {style:"currency", currency:"EUR"});
+            }
+            // Formatta date YYYY-MM-DD
+            else if (/^\d{4}-\d{2}-\d{2}$/.test(valore)) {
+              const d = new Date(valore);
+              valore = d.toLocaleDateString("it-IT");
+            }
+
+            html += `<td>${valore}</td>`;
+          }
+          html += "</tr>";
+        }
+
+        html += "</tbody></table>";
+        document.getElementById("contenuto").innerHTML = html;
+
+      } catch (error) {
+        document.getElementById("contenuto").innerText = "Errore nel caricamento dei dati.";
+        console.error(error);
+      }
     }
 
     // Caricamento predefinito
-    caricaSezione('dipendenti');
+    window.addEventListener('DOMContentLoaded', () => {
+      const primoLink = document.querySelector('nav a');
+      if(primoLink) primoLink.click();
+    });
   </script>
 </body>
 </html>

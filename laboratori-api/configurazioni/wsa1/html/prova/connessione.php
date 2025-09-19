@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 $host = "mdb.theboys.it";
 $user = "pluto";
 $pass = "pluto";
-$dbname = "azienda_completa";
+$dbname = "azienda";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {

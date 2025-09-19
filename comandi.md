@@ -21,6 +21,7 @@ testparm
 apt install smbclient -y # client
 smbclient //172.17.0.2/sharing -U pippo -c "put /pippo.txt pippo.txt"   # "sharing" fa riferimento allo sharing nel smb.conf
 smbclient -L //172.17.0.2/sharing -U pippo # list directies
+smbclient -L //2a04:0:0:1::4/sharing -U pippo --password=pippo
 
 # user: pippo
 # pwd: pippo

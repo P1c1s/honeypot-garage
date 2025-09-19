@@ -1,141 +1,219 @@
--- Creazione dell'utente MySQL e concessione dei privilegi
+-- =========================================
+-- CREAZIONE UTENTE MySQL E ASSEGNAZIONE PRIVILEGI
+-- =========================================
 CREATE USER IF NOT EXISTS 'pluto'@'%' IDENTIFIED BY 'pluto';
 GRANT ALL PRIVILEGES ON *.* TO 'pluto'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
--- Creazione del database aziendale realistico
-CREATE DATABASE IF NOT EXISTS azienda_completa;
-USE azienda_completa;
+-- =========================================
+-- CREAZIONE DATABASE
+-- =========================================
+CREATE DATABASE IF NOT EXISTS azienda;
+USE azienda;
 
--- Tabella dei reparti
-CREATE TABLE reparti (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50) UNIQUE NOT NULL,
-    descrizione TEXT
-);
-
--- Tabella delle posizioni
+-- =========================================
+-- TABELLA POSIZIONI
+-- =========================================
 CREATE TABLE posizioni (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titolo VARCHAR(100) UNIQUE NOT NULL,
-    descrizione TEXT
+    id_posizione INT AUTO_INCREMENT PRIMARY KEY,
+    titolo VARCHAR(50) NOT NULL,
+    stipendio_base DECIMAL(10,2) NOT NULL
 );
 
--- Tabella dei dipendenti con chiavi esterne verso reparti e posizioni
+-- =========================================
+-- TABELLA DIPENDENTI
+-- =========================================
 CREATE TABLE dipendenti (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50),
-    cognome VARCHAR(50),
-    data_nascita DATE,
-    posizione_id INT,
-    reparto_id INT,
+    id_dipendente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    id_posizione INT,
     data_assunzione DATE,
-    salario DECIMAL(10,2),
-    FOREIGN KEY (posizione_id) REFERENCES posizioni(id),
-    FOREIGN KEY (reparto_id) REFERENCES reparti(id)
+    stipendio_mensile DECIMAL(10,2),
+    FOREIGN KEY (id_posizione) REFERENCES posizioni(id_posizione)
 );
 
--- Tabella dei bilanci mensili
-CREATE TABLE bilanci_mensili (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    mese INT,
-    anno INT,
-    ricavi DECIMAL(15,2),
-    costi DECIMAL(15,2),
-    utile DECIMAL(15,2)
+-- =========================================
+-- TABELLA BILANCIO MENSILE
+-- =========================================
+CREATE TABLE bilancio_mensile (
+    id_spesa INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_spesa VARCHAR(50) NOT NULL,
+    id_dipendente INT DEFAULT NULL,
+    data_riferimento DATE NOT NULL,
+    importo DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_dipendente) REFERENCES dipendenti(id_dipendente)
 );
 
--- Tabella dei bilanci annuali
-CREATE TABLE bilanci_annuali (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    anno INT,
-    ricavi_totali DECIMAL(15,2),
-    costi_totali DECIMAL(15,2),
-    utile_netto DECIMAL(15,2),
-    totale_attivo DECIMAL(15,2),
-    totale_passivo DECIMAL(15,2)
-);
+-- =========================================
+-- POPOLAMENTO POSIZIONI
+-- =========================================
+INSERT INTO posizioni (titolo, stipendio_base) VALUES
+('Amministratore Delegato', 3500.00),
+('Direttore Marketing', 2200.00),
+('Direttore IT', 2400.00),
+('Sviluppatore Senior', 1800.00),
+('Sviluppatore Junior', 1500.00),
+('Contabile', 1600.00),
+('Assistente', 1200.00),
+('HR Manager', 2000.00),
+('Project Manager', 2100.00),
+('Supporto Clienti', 1300.00);
 
--- Tabella degli stipendi mensili
-CREATE TABLE stipendi_mensili (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    dipendente_id INT,
-    mese INT,
-    anno INT,
-    stipendio_lordo DECIMAL(10,2),
-    tasse DECIMAL(10,2),
-    stipendio_netto DECIMAL(10,2),
-    FOREIGN KEY (dipendente_id) REFERENCES dipendenti(id)
-);
+-- =========================================
+-- POPOLAMENTO DIPENDENTI
+-- =========================================
+INSERT INTO dipendenti (nome, cognome, id_posizione, data_assunzione, stipendio_mensile) VALUES
+('Mario','Rossi',4,'2019-02-15',1800.00),
+('Luisa','Bianchi',2,'2018-06-01',2200.00),
+('Giovanni','Verdi',6,'2020-03-20',1600.00),
+('Anna','Neri',5,'2021-11-10',1500.00),
+('Paolo','Gialli',1,'2015-09-05',3550.00),
+('Elena','Blu',4,'2020-08-01',1800.00),
+('Francesco','Russo',5,'2022-01-20',1550.00),
+('Sofia','Ferrari',3,'2017-05-15',2400.00),
+('Alessandro','Costa',9,'2016-09-10',2100.00),
+('Martina','Marini',8,'2019-07-01',2000.00);
 
--- Tabella di allocazione dei costi per reparto
-CREATE TABLE allocazione_costi_reparti (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    mese INT,
-    anno INT,
-    reparto_id INT,
-    costo_allocato DECIMAL(12,2),
-    FOREIGN KEY (reparto_id) REFERENCES reparti(id)
-);
+-- =========================================
+-- POPOLAMENTO BILANCIO MENSILE (12 MESI 2023)
+-- =========================================
 
--- Dati fittizi per i reparti
-INSERT INTO reparti (nome, descrizione) VALUES
-('IT', 'Reparto tecnologico e sviluppo software'),
-('Finanza', 'Gestione contabile e finanziaria dell`azienda'),
-('Management', 'Supervisione e direzione strategica'),
-('Marketing', 'Promozione e branding dei prodotti'),
-('Risorse Umane', 'Gestione del personale e risorse umane');
+-- Loop manuale mese per mese
+-- Gennaio 2023
+INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+('Stipendio',1,'2023-01-31',1800.00),
+('Stipendio',2,'2023-01-31',2200.00),
+('Stipendio',3,'2023-01-31',1600.00),
+('Stipendio',4,'2023-01-31',1500.00),
+('Stipendio',5,'2023-01-31',3550.00),
+('Stipendio',6,'2023-01-31',1800.00),
+('Stipendio',7,'2023-01-31',1550.00),
+('Stipendio',8,'2023-01-31',2400.00),
+('Stipendio',9,'2023-01-31',2100.00),
+('Stipendio',10,'2023-01-31',2000.00),
+('Affitto',NULL,'2023-01-31',3000.00),
+('Utenze',NULL,'2023-01-31',800.00),
+('Materiali',NULL,'2023-01-31',500.00);
 
--- Dati fittizi per le posizioni
-INSERT INTO posizioni (titolo, descrizione) VALUES
-('Ingegnere Software', 'Responsabile dello sviluppo e manutenzione dei software'),
-('Contabile', 'Gestione della contabilità aziendale'),
-('Direttore Operativo', 'Responsabile delle operazioni aziendali'),
-('Designer UX', 'Progetta interfacce utente intuitive ed efficaci'),
-('HR Specialist', 'Gestione risorse umane e pratiche di assunzione'),
-('Analista Dati', 'Analizza e interpreta dati aziendali'),
-('Responsabile Marketing', 'Gestione delle strategie di comunicazione e marketing'),
-('Tecnico IT', 'Supporto tecnico e infrastruttura informatica');
+-- Febbraio 2023
+INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+('Stipendio',1,'2023-02-28',1800.00),
+('Stipendio',2,'2023-02-28',2200.00),
+('Stipendio',3,'2023-02-28',1600.00),
+('Stipendio',4,'2023-02-28',1500.00),
+('Stipendio',5,'2023-02-28',3550.00),
+('Stipendio',6,'2023-02-28',1800.00),
+('Stipendio',7,'2023-02-28',1550.00),
+('Stipendio',8,'2023-02-28',2400.00),
+('Stipendio',9,'2023-02-28',2100.00),
+('Stipendio',10,'2023-02-28',2000.00),
+('Affitto',NULL,'2023-02-28',3000.00),
+('Utenze',NULL,'2023-02-28',850.00),
+('Materiali',NULL,'2023-02-28',600.00);
 
--- Dati fittizi per i dipendenti
-INSERT INTO dipendenti (nome, cognome, data_nascita, posizione_id, reparto_id, data_assunzione, salario) VALUES
-('Luca', 'Rossi', '1985-04-10', 1, 1, '2015-09-01', 3800.00),
-('Maria', 'Bianchi', '1990-08-22', 2, 2, '2018-03-15', 3200.00),
-('Giovanni', 'Verdi', '1978-12-03', 3, 3, '2010-01-01', 6500.00),
-('Sara', 'Neri', '1992-06-19', 4, 4, '2020-06-10', 2900.00),
-('Elena', 'Russo', '1987-11-05', 5, 5, '2016-11-25', 3100.00),
-('Marco', 'Conti', '1982-02-14', 6, 2, '2017-04-12', 4000.00),
-('Francesca', 'De Luca', '1993-09-28', 7, 4, '2021-05-20', 3500.00),
-('Alessandro', 'Ferrari', '1988-07-07', 8, 1, '2019-02-01', 3300.00);
+-- Marzo 2023
+INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+('Stipendio',1,'2023-03-31',1800.00),
+('Stipendio',2,'2023-03-31',2200.00),
+('Stipendio',3,'2023-03-31',1600.00),
+('Stipendio',4,'2023-03-31',1500.00),
+('Stipendio',5,'2023-03-31',3550.00),
+('Stipendio',6,'2023-03-31',1800.00),
+('Stipendio',7,'2023-03-31',1550.00),
+('Stipendio',8,'2023-03-31',2400.00),
+('Stipendio',9,'2023-03-31',2100.00),
+('Stipendio',10,'2023-03-31',2000.00),
+('Affitto',NULL,'2023-03-31',3000.00),
+('Utenze',NULL,'2023-03-31',820.00),
+('Materiali',NULL,'2023-03-31',550.00);
 
--- Dati fittizi per i bilanci mensili
-INSERT INTO bilanci_mensili (mese, anno, ricavi, costi, utile) VALUES
-(1, 2024, 120000.00, 90000.00, 30000.00),
-(2, 2024, 110000.00, 85000.00, 25000.00),
-(3, 2024, 130000.00, 95000.00, 35000.00);
+-- Aprile 2023
+INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+('Stipendio',1,'2023-04-30',1800.00),
+('Stipendio',2,'2023-04-30',2200.00),
+('Stipendio',3,'2023-04-30',1600.00),
+('Stipendio',4,'2023-04-30',1500.00),
+('Stipendio',5,'2023-04-30',3550.00),
+('Stipendio',6,'2023-04-30',1800.00),
+('Stipendio',7,'2023-04-30',1550.00),
+('Stipendio',8,'2023-04-30',2400.00),
+('Stipendio',9,'2023-04-30',2100.00),
+('Stipendio',10,'2023-04-30',2000.00),
+('Affitto',NULL,'2023-04-30',3000.00),
+('Utenze',NULL,'2023-04-30',830.00),
+('Materiali',NULL,'2023-04-30',500.00);
 
--- Dati fittizi per i bilanci annuali
-INSERT INTO bilanci_annuali (anno, ricavi_totali, costi_totali, utile_netto, totale_attivo, totale_passivo) VALUES
-(2022, 1350000.00, 1050000.00, 300000.00, 2200000.00, 800000.00),
-(2023, 1420000.00, 1100000.00, 320000.00, 2300000.00, 850000.00);
+-- Maggio 2023
+INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+('Stipendio',1,'2023-05-31',1800.00),
+('Stipendio',2,'2023-05-31',2200.00),
+('Stipendio',3,'2023-05-31',1600.00),
+('Stipendio',4,'2023-05-31',1500.00),
+('Stipendio',5,'2023-05-31',3550.00),
+('Stipendio',6,'2023-05-31',1800.00),
+('Stipendio',7,'2023-05-31',1550.00),
+('Stipendio',8,'2023-05-31',2400.00),
+('Stipendio',9,'2023-05-31',2100.00),
+('Stipendio',10,'2023-05-31',2000.00),
+('Affitto',NULL,'2023-05-31',3000.00),
+('Utenze',NULL,'2023-05-31',840.00),
+('Materiali',NULL,'2023-05-31',500.00);
 
--- Dati fittizi per stipendi mensili
-INSERT INTO stipendi_mensili (dipendente_id, mese, anno, stipendio_lordo, tasse, stipendio_netto) VALUES
-(1, 1, 2024, 3800.00, 800.00, 3000.00),
-(2, 1, 2024, 3200.00, 700.00, 2500.00),
-(3, 1, 2024, 6500.00, 1600.00, 4900.00),
-(4, 1, 2024, 2900.00, 600.00, 2300.00),
-(5, 1, 2024, 3100.00, 650.00, 2450.00);
+-- Giugno 2023
+INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+('Stipendio',1,'2023-06-30',1800.00),
+('Stipendio',2,'2023-06-30',2200.00),
+('Stipendio',3,'2023-06-30',1600.00),
+('Stipendio',4,'2023-06-30',1500.00),
+('Stipendio',5,'2023-06-30',3550.00),
+('Stipendio',6,'2023-06-30',1800.00),
+('Stipendio',7,'2023-06-30',1550.00),
+('Stipendio',8,'2023-06-30',2400.00),
+('Stipendio',9,'2023-06-30',2100.00),
+('Stipendio',10,'2023-06-30',2000.00),
+('Affitto',NULL,'2023-06-30',3000.00),
+('Utenze',NULL,'2023-06-30',850.00),
+('Materiali',NULL,'2023-06-30',550.00);
 
--- Dati fittizi per allocazione dei costi tra reparti
-INSERT INTO allocazione_costi_reparti (mese, anno, reparto_id, costo_allocato) VALUES
-(1, 2024, 1, 22000.00),
-(1, 2024, 2, 15000.00),
-(1, 2024, 3, 18000.00),
-(1, 2024, 4, 12000.00),
-(1, 2024, 5, 13000.00),
-(2, 2024, 1, 21000.00),
-(2, 2024, 2, 14000.00),
-(2, 2024, 3, 17000.00),
-(2, 2024, 4, 11500.00),
-(2, 2024, 5, 12500.00);
+-- LUGLIO 2023
+INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+('Stipendio',1,'2023-07-31',1800.00),
+('Stipendio',2,'2023-07-31',2200.00),
+('Stipendio',3,'2023-07-31',1600.00),
+('Stipendio',4,'2023-07-31',1500.00),
+('Stipendio',5,'2023-07-31',3550.00),
+('Stipendio',6,'2023-07-31',1800.00),
+('Stipendio',7,'2023-07-31',1550.00),
+('Stipendio',8,'2023-07-31',2400.00),
+('Stipendio',9,'2023-07-31',2100.00),
+('Stipendio',10,'2023-07-31',2000.00),
+('Affitto',NULL,'2023-07-31',3000.00),
+('Utenze',NULL,'2023-07-31',850.00),
+('Materiali',NULL,'2023-07-31',550.00);
+
+WHILE @anno <= 2025 DO
+    SET @giorno := LAST_DAY(CONCAT(@anno,'-',LPAD(@mese,2,'0'),'-01'));
+    
+    INSERT INTO bilancio_mensile (tipo_spesa, id_dipendente, data_riferimento, importo) VALUES
+    ('Stipendio',1,@giorno,1800.00),
+    ('Stipendio',2,@giorno,2200.00),
+    ('Stipendio',3,@giorno,1600.00),
+    ('Stipendio',4,@giorno,1500.00),
+    ('Stipendio',5,@giorno,3550.00),
+    ('Stipendio',6,@giorno,1800.00),
+    ('Stipendio',7,@giorno,1550.00),
+    ('Stipendio',8,@giorno,2400.00),
+    ('Stipendio',9,@giorno,2100.00),
+    ('Stipendio',10,@giorno,2000.00),
+    ('Affitto',NULL,@giorno,3000.00),
+    ('Utenze',NULL,@giorno,800 + FLOOR(RAND()*100)),  -- piccola variazione casuale
+    ('Materiali',NULL,@giorno,500 + FLOOR(RAND()*100)); -- piccola variazione casuale
+    
+    -- Passaggio al mese successivo
+    SET @mese := @mese + 1;
+    IF @mese > 12 THEN
+        SET @mese := 1;
+        SET @anno := @anno + 1;
+    END IF;
+END WHILE;
