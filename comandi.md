@@ -353,3 +353,12 @@ ip6tables -A INPUT -p tcp --dport 22 -j REJECT
 
 DOCKER 
 docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+
+
+
+
+
+
+per disabilitare reverse dns lookup su syslog (se lo fa) --- /etc/rsyslog.conf
+global(preserveFQDN="off")
