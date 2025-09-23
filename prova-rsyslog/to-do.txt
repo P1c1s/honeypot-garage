@@ -1,0 +1,100 @@
+DENTRO I CLIENT
+scaricare a mano anche il modulo imfile
+
+apt install rsyslog-gnutls
+
+inserire dentro /etc/rsyslog.conf 
+
+#module(load="imfile")
+
+VERIFICARE PER OGNI SERVIZIO CHE SYSLOG ABBIA I PERMESSI PER LEGGERE LE CARTELLE DI LOG
+ls -l /var/log/named/*.log
+chmod o+r /var/log/named/*.log   # se necessario
+chmod o+r /var/log/apache2/*.log  # se necessario
+chmod o+r /var/log/nginx/*.log   # se necessario
+
+
+
+PER APACHE
+aggiungere file 30-apache-logs.conf
+
+input(
+    type="imfile"
+    File="/var/log/apache2/access.log"
+    Tag="apache-access"
+    Severity="info"
+    Facility="local6"
+)
+
+input(
+    type="imfile"
+    File="/var/log/apache2/error.log"
+    Tag="apache-error"
+    Severity="error"
+    Facility="local6"
+)
+
+
+PER NGINX
+aggiungere il file 31-nginx-logs.conf
+
+# Input Nginx access log
+input(
+    type="imfile"
+    File="/var/log/nginx/access.log"
+    Tag="nginx-access"
+    Facility="local6"
+    Severity="info"
+)
+
+# Input Nginx error log
+input(
+    type="imfile"
+    File="/var/log/nginx/error.log"
+    Tag="nginx-error"
+    Facility="local6"
+    Severity="error"
+)
+
+PER SAMBA
+modificare file configurazione /etc/samba/smbd.conf
+
+aggiungere sotto max log file 
+
+   log level = 5
+   syslog = 5
+
+
+PER BIND:
+aggiungere il file 32-bind-log.conf
+
+# Input BIND query log
+input(
+    type="imfile"
+    File="/var/log/named/query.log"
+    Tag="bind-query"
+    Facility="local6"
+    Severity="info"
+)
+
+# Input BIND security log
+input(
+    type="imfile"
+    File="/var/log/named/security.log"
+    Tag="bind-security"
+    Facility="local6"
+    Severity="warning"
+)
+
+e dentro il named.conf.options aggiungere: 
+
+logging {
+        channel default_syslog {
+        syslog local6;
+        severity info;
+        print-time yes;
+    };
+    category default { default_syslog; };
+    category queries { default_syslog; };
+    category security { default_syslog; };
+};
