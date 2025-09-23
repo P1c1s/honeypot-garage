@@ -79,6 +79,7 @@ RUN apt update && \
 	python3-pip \
 	radvd \
 	rsyslog \
+	rsyslog-gnutls \
 	rsync \
 	smbclient \
 	screen \
@@ -108,6 +109,11 @@ RUN echo "iproute2 install" | dpkg --set-selections && \
 
 RUN python3 -m pip install --no-cache-dir --upgrade --break-system-packages pip && \
 	python3 -m pip install --no-cache-dir --break-system-packages scapy tabulate
+
+# Set timezone to Europe/Rome
+RUN ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime && \
+    echo "Europe/Rome" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata
 
 RUN mkdir /var/kathara
 

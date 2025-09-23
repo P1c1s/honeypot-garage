@@ -32,6 +32,8 @@ RUN apt update && \
 	openssl \
 	python3-pip \
 	rsync \
+	rsyslog \
+	rsyslog-gnutls \
 	screen \
 	sed \
 	tar \
@@ -65,6 +67,11 @@ COPY .bashrc /root/.bashrc
 
 RUN apt clean && \
 	rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+
+# Set timezone to Europe/Rome
+RUN ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime && \
+    echo "Europe/Rome" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata
 
 WORKDIR /
 

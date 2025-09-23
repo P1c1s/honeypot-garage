@@ -19,3 +19,8 @@ VOLUME ["/etc/ldap/slapd.d", "/var/lib/ldap"]
 
 # Comando di default: avvia slapd in foreground
 CMD ["/usr/local/bin/start-slapd.sh"]
+
+# Set timezone to Europe/Rome
+RUN ln -sf /usr/share/zoneinfo/Europe/Rome /etc/localtime && \
+    echo "Europe/Rome" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata
