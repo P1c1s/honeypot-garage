@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Black Honey - Manutenzione</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+        /* Reset e base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #1b1a1a 0%, #292522 100%);
+            color: #c9a84f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            user-select: none;
+        }
+
+        /* Titolo Black Honey */
+        #title {
+            position: absolute;
+            top: 180px;
+            width: 100%;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #f7d06e;
+            text-shadow: 2px 2px 6px #201800aa, 0 0 12px #f7d06e88;
+            letter-spacing: 0.1em;
+            z-index: 15;
+            font-family: 'Segoe UI Black', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        /* Contenitore centrale testo */
+        #message-container {
+            position: absolute;
+            top: 300px;
+            z-index: 10;
+            background: rgba(255 255 255 / 0.07);
+            border: 2px solid #f7d06eaa;
+            padding: 35px 50px;
+            border-radius: 14px;
+            box-shadow: 0 0 20px #f7d06e55 inset, 0 4px 25px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            max-width: 420px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #f7d06e;
+            backdrop-filter: blur(8px);
+            transition: background-color 0.4s ease;
+        }
+
+        #message-container:hover {
+            background: rgba(255 255 255 / 0.15);
+            border-color: #f7d06eff;
+            box-shadow: 0 0 25px #f7d06eff inset, 0 6px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Api che volano */
+        .bee {
+            position: fixed;
+            font-size: 40px;
+            user-select: none;
+            will-change: transform;
+            z-index: 20;
+            pointer-events: none;
+            filter: drop-shadow(0 0 2px #ffdc75);
+            animation: bee-wiggle 4s ease-in-out infinite;
+        }
+
+        @keyframes bee-wiggle {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(15deg);
+            }
+        }
+
+        /* Footer discreto */
+        footer {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7a6a20cc;
+            font-style: italic;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Responsive minore */
+        @media (max-width: 450px) {
+            #title {
+                font-size: 2.8rem;
+                top: 130px;
+            }
+
+            #message-container {
+                top: 210px;
+                max-width: 90vw;
+                font-size: 1.1rem;
+                padding: 25px 30px;
+            }
+
+            #hex-grid {
+                width: 260px;
+                top: 270px;
+            }
+
+            .hex {
+                width: 65px;
+                height: 75px;
+                font-size: 0.9rem;
+            }
+
+            .hex:nth-child(odd) {
+                margin-top: 38px;
+            }
+
+            .bee {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">Black Honey</div>
+
+    <div id="message-container">
+        Siamo in manutenzione.<br />
+        Torneremo presto con nuove deliziose ricette!
+    </div>
+
+    <footer>© <span id="year"></span> Black Honey - Tutti i diritti riservati</footer>
+
+    <script>
+        // Api che volano da destra verso sinistra con oscillazione Y
+
+        const beeCount = 7;
+        const bees = [];
+
+        function createBee() {
+            const bee = document.createElement('div');
+            bee.classList.add('bee');
+            bee.textContent = '🐝';
+
+            // Posizione di partenza a destra (fuori schermo)
+            const startX = window.innerWidth + Math.random() * 200;
+            const startY = Math.random() * window.innerHeight;
+
+            bee.style.left = `${startX}px`;
+            bee.style.top = `${startY}px`;
+
+            document.body.appendChild(bee);
+
+            return {
+                element: bee,
+                speed: 1 + Math.random() * 2,
+                x: startX,
+                y: startY,
+                baseY: startY,
+                oscillationPhase: Math.random() * Math.PI * 2,
+                oscillationAmplitude: 10 + Math.random() * 8,
+                oscillationSpeed: 0.02 + Math.random() * 0.03
+            };
+        }
+
+        for (let i = 0; i < beeCount; i++) {
+            bees.push(createBee());
+        }
+
+        function animate() {
+            bees.forEach(bee => {
+                bee.x -= bee.speed;
+                bee.oscillationPhase += bee.oscillationSpeed;
+                bee.y = bee.baseY + Math.sin(bee.oscillationPhase) * bee.oscillationAmplitude;
+
+                if (bee.x < -50) {
+                    bee.x = window.innerWidth + Math.random() * 200;
+                    bee.baseY = Math.random() * window.innerHeight;
+                    bee.oscillationPhase = Math.random() * Math.PI * 2;
+                }
+
+                bee.element.style.left = bee.x + 'px';
+                bee.element.style.top = bee.y + 'px';
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            bees.forEach(bee => {
+                if (bee.x > window.innerWidth) {
+                    bee.x = window.innerWidth + Math.random() * 200;
+                }
+                if (bee.y > window.innerHeight) {
+                    bee.y = Math.random() * window.innerHeight;
+                    bee.baseY = bee.y;
+                }
+            });
+        });
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+    </script>
+</body>
+
+</html>

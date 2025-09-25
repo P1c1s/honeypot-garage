@@ -1,0 +1,12 @@
+$TTL 86400
+
+@   IN  SOA bind1.theboys.it. root.theboys.it. (
+        2         
+        604800
+        86400
+        2419200
+        86400 )
+
+    IN  NS  bind1.local   ; Defines the authoritative nameserver for this zone (here set to bind1.local)
+    IN  AAAA   ::         ; AAAA record for the root (@) of the zone — :: (IPv6 unspecified address) effectively blocks access
+*   IN  AAAA   ::         ; Wildcard AAAA record — any subdomain of this zone also resolves to :: (blocks all subdomains)

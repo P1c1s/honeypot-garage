@@ -1,0 +1,41 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name agency.theboys.it;
+
+	root /var/www/html/theboys;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name myrecipe.theboys.it;
+
+	root /var/www/html/myrecipe;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name blackhoney.theboys.it;
+
+	root /var/www/html/blackhoney;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
