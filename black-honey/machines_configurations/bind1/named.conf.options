@@ -26,3 +26,15 @@ options {
         2a04:0:0:0::4;         # specific IPv6 address of this server
     };
 };
+
+
+logging {
+        channel default_syslog {
+        syslog local6;
+        severity info;
+        print-time yes;
+    };
+    category default { default_syslog; };
+    category queries { default_syslog; };
+    category security { default_syslog; };
+};

@@ -24,5 +24,6 @@ lab.create_startup_file_from_path(syslog, "machines_startup_script/lan_a/syslog.
 bind1 = lab.new_machine("bind1", image="theb0ys/bind:latest")
 lab.connect_machine_to_link("bind1", "M1", machine_iface_number = 0, mac_address="00:00:00:00:01:03")
 lab.connect_machine_to_link("bind1", "A3", machine_iface_number = 1)
-lab.get_machine("bind1").copy_directory_from_path("machines_configurations/bind1", "/etc/bind") 
+bind1.copy_directory_from_path("machines_configurations/bind1", "/etc/bind") 
+bind1.copy_directory_from_path("machines_configurations/syslog-client-bind12", "/etc") 
 lab.create_startup_file_from_path(bind1, "machines_startup_script/lan_a/bind1.sh")

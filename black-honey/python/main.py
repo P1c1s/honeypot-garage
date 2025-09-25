@@ -6,13 +6,13 @@ Setting.get_instance().enable_ipv6 = True
 
 from meta import lab
 
-# import backbone
-# import lan_A
-# import lan_B
-# import lan_C
-# import lan_S
-# import lan_D
-# import lan_O
+import backbone
+import lan_A
+import lan_B
+import lan_C
+import lan_S
+import lan_D
+import lan_O
 
 
 red_hornet = lab.new_machine("red_hornet", image = "theb0ys/red-hornet:latest")
