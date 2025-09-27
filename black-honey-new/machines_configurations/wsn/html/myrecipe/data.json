@@ -1,0 +1,1585 @@
+[
+    {
+        "id": 1,
+        "nome": "Pasta al Pomodoro",
+        "descrizione": "Una classica ricetta italiana con pomodori freschi e basilico.",
+        "ingredienti": [
+            "400g di pasta",
+            "500g di pomodori freschi",
+            "2 spicchi d'aglio",
+            "Basilico fresco",
+            "Olio d'oliva",
+            "Sale",
+            "Pepe"
+        ],
+        "istruzioni": [
+            "Cuocere la pasta in acqua salata secondo le istruzioni.",
+            "In una padella, scaldare l'olio d'oliva e aggiungere l'aglio tritato.",
+            "Aggiungere i pomodori tagliati e cuocere per 10 minuti.",
+            "Scolare la pasta e unirla al sugo.",
+            "Aggiungere basilico fresco, sale e pepe a piacere."
+        ]
+    },
+    {
+        "id": 2,
+        "nome": "Tiramisù",
+        "descrizione": "Un dolce al cucchiaio italiano a base di caffè e mascarpone.",
+        "ingredienti": [
+            "250g di mascarpone",
+            "3 uova",
+            "100g di zucchero",
+            "200ml di caffè espresso",
+            "200g di savoiardi",
+            "Cacao in polvere"
+        ],
+        "istruzioni": [
+            "Montare i tuorli con lo zucchero fino a ottenere un composto chiaro.",
+            "Aggiungere il mascarpone e mescolare bene.",
+            "Montare gli albumi a neve e incorporarli delicatamente.",
+            "Inzuppare i savoiardi nel caffè e disporli in una teglia.",
+            "Alternare strati di savoiardi e crema al mascarpone.",
+            "Spolverare con cacao e refrigerare per almeno 4 ore."
+        ]
+    },
+    {
+        "id": 3,
+        "nome": "Insalata Caprese",
+        "descrizione": "Un'insalata fresca e semplice con mozzarella, pomodori e basilico.",
+        "ingredienti": [
+            "200g di mozzarella",
+            "200g di pomodori",
+            "Basilico fresco",
+            "Olio d'oliva",
+            "Sale",
+            "Pepe"
+        ],
+        "istruzioni": [
+            "Affettare la mozzarella e i pomodori.",
+            "Disporre le fette su un piatto alternando mozzarella e pomodoro.",
+            "Aggiungere foglie di basilico.",
+            "Condire con olio d'oliva, sale e pepe."
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "Pasta alla Carbonara",
+        "descrizione": "Una ricetta tradizionale romana, ricca e cremosa, a base di guanciale e pecorino.",
+        "ingredienti": [
+            "400g di pasta (spaghetti o rigatoni)",
+            "150g di guanciale (o pancetta)",
+            "100g di pecorino romano grattugiato",
+            "3 tuorli d'uovo",
+            "Pepe nero macinato",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Cuocere la pasta in acqua salata secondo le istruzioni.",
+            "In una padella, rosolare il guanciale fino a renderlo croccante.",
+            "In una ciotola, sbattere i tuorli con il pecorino e il pepe.",
+            "Scolare la pasta e unirla al guanciale, mescolando bene.",
+            "Togliere dal fuoco e aggiungere il composto di uova, mescolando rapidamente per creare una crema.",
+            "Servire con una spolverata di pepe nero."
+        ]
+    },
+    {
+        "id": 5,
+        "nome": "Risotto ai Funghi",
+        "descrizione": "Un risotto cremoso e saporito, perfetto per le serate autunnali.",
+        "ingredienti": [
+            "300g di riso Arborio",
+            "500g di funghi freschi (champignon o porcini)",
+            "1 cipolla",
+            "1 litro di brodo vegetale",
+            "100ml di vino bianco",
+            "50g di burro",
+            "Parmigiano grattugiato",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "In una pentola, sciogliere il burro e soffriggere la cipolla tritata.",
+            "Aggiungere i funghi e cuocere fino a doratura.",
+            "Unire il riso e tostarlo per un paio di minuti.",
+            "Sfumare con il vino bianco e lasciare evaporare.",
+            "Aggiungere il brodo poco alla volta, mescolando fino a cottura.",
+            "Mantecare con parmigiano e servire caldo."
+        ]
+    },
+    {
+        "id": 6,
+        "nome": "Lasagna",
+        "descrizione": "Un piatto ricco e stratificato a base di pasta, carne e besciamella.",
+        "ingredienti": [
+            "400g di lasagne",
+            "500g di carne macinata",
+            "1 litro di salsa di pomodoro",
+            "500ml di besciamella",
+            "100g di parmigiano grattugiato",
+            "1 cipolla",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Soffriggere la cipolla in olio d'oliva, aggiungere la carne e cuocere.",
+            "Unire la salsa di pomodoro e cuocere per 20 minuti.",
+            "In una teglia, alternare strati di lasagne, sugo di carne e besciamella.",
+            "Terminare con besciamella e parmigiano.",
+            "Cuocere in forno a 180°C per 30 minuti."
+        ]
+    },
+    {
+        "id": 7,
+        "nome": "Pollo alla Cacciatora",
+        "descrizione": "Un piatto di pollo cucinato con pomodori, olive e aromi.",
+        "ingredienti": [
+            "1kg di pollo",
+            "400g di pomodori pelati",
+            "100g di olive nere",
+            "1 cipolla",
+            "2 spicchi d'aglio",
+            "Olio d'oliva",
+            "Sale e pepe",
+            "Rosmarino"
+        ],
+        "istruzioni": [
+            "In una padella, rosolare il pollo in olio d'oliva.",
+            "Aggiungere cipolla e aglio tritati, cuocere fino a doratura.",
+            "Unire i pomodori e le olive, cuocere per 40 minuti.",
+            "Aggiungere rosmarino, sale e pepe a piacere."
+        ]
+    },
+    {
+        "id": 8,
+        "nome": "Gnocchi di Patate",
+        "descrizione": "Deliziosi gnocchi fatti in casa a base di patate.",
+        "ingredienti": [
+            "1kg di patate",
+            "300g di farina",
+            "1 uovo",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Lessare le patate e schiacciarle.",
+            "Unire farina, uovo e sale, impastare fino a ottenere un composto omogeneo.",
+            "Formare dei cilindri e tagliare a pezzi.",
+            "Cuocere gli gnocchi in acqua salata fino a quando non salgono in superficie."
+        ]
+    },
+    {
+        "id": 9,
+        "nome": "Bruschetta al Pomodoro",
+        "descrizione": "Un antipasto semplice e gustoso con pomodori freschi.",
+        "ingredienti": [
+            "4 fette di pane",
+            "300g di pomodori",
+            "Basilico fresco",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Tostare le fette di pane.",
+            "Tagliare i pomodori a cubetti e condirli con olio, sale, pepe e basilico."
+        ]
+    },
+    {
+        "id": 10,
+        "nome": "Pasta Pesto",
+        "descrizione": "Una pasta fresca con un delizioso pesto di basilico.",
+        "ingredienti": [
+            "400g di pasta (linguine o trofie)",
+            "100g di basilico fresco",
+            "50g di pinoli",
+            "100g di parmigiano grattugiato",
+            "2 spicchi d'aglio",
+            "150ml di olio d'oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Frullare basilico, pinoli, aglio, parmigiano e olio fino a ottenere un pesto.",
+            "Cuocere la pasta in acqua salata secondo le istruzioni.",
+            "Scolare la pasta e mescolarla con il pesto.",
+            "Servire con una spolverata di parmigiano."
+        ]
+    },
+    {
+        "id": 11,
+        "nome": "Frittata di Patate",
+        "descrizione": "Una frittata ricca e sostanziosa a base di patate.",
+        "ingredienti": [
+            "4 uova",
+            "300g di patate",
+            "1 cipolla",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Sbucciare e tagliare le patate a fette sottili.",
+            "Soffriggere la cipolla in olio d'oliva, aggiungere le patate e cuocere fino a doratura.",
+            "In una ciotola, sbattere le uova con sale e pepe.",
+            "Versare le uova sulle patate e cuocere fino a quando la frittata è ben cotta."
+        ]
+    },
+    {
+        "id": 12,
+        "nome": "Arancini di Riso",
+        "descrizione": "Deliziose palline di riso ripiene, impanate e fritte.",
+        "ingredienti": [
+            "300g di riso Arborio",
+            "500ml di brodo",
+            "100g di mozzarella",
+            "50g di piselli",
+            "2 uova",
+            "Farina",
+            "Pan grattato",
+            "Olio per friggere",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Cuocere il riso nel brodo fino a quando è al dente.",
+            "Lasciare raffreddare e mescolare con piselli e mozzarella a cubetti.",
+            "Formare delle palline e passarle in farina, uova e pan grattato.",
+            "Friggere in olio caldo fino a doratura."
+        ]
+    },
+    {
+        "id": 13,
+        "nome": "Sgombro alla Griglia",
+        "descrizione": "Un piatto di pesce semplice e saporito, grigliato con erbe.",
+        "ingredienti": [
+            "2 sgombri",
+            "Olio d'oliva",
+            "Limone",
+            "Prezzemolo",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Pulire e squamare gli sgombri.",
+            "Condire con olio, limone, sale, pepe e prezzemolo.",
+            "Grigliare gli sgombri per circa 5-7 minuti per lato."
+        ]
+    },
+    {
+        "id": 14,
+        "nome": "Crespelle alla Fiorentina",
+        "descrizione": "Crespelle ripiene di ricotta e spinaci, gratinate al forno.",
+        "ingredienti": [
+            "200g di farina",
+            "500ml di latte",
+            "4 uova",
+            "300g di ricotta",
+            "200g di spinaci",
+            "50g di parmigiano grattugiato",
+            "Burro",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Preparare una pastella con farina, latte, uova e sale.",
+            "Cuocere le crespelle in una padella con un po' di burro.",
+            "Mescolare ricotta, spinaci, sale e pepe.",
+            "Farcire le crespelle con il composto e arrotolarle.",
+            "Disporre in una teglia, cospargere di parmigiano e gratinare in forno."
+        ]
+    },
+    {
+        "id": 15,
+        "nome": "Pasta alla Norma",
+        "descrizione": "Un piatto siciliano a base di melanzane, pomodoro e ricotta salata.",
+        "ingredienti": [
+            "400g di pasta (rigatoni o spaghetti)",
+            "2 melanzane",
+            "500g di pomodori pelati",
+            "100g di ricotta salata",
+            "2 spicchi d'aglio",
+            "Olio d'oliva",
+            "Basilico fresco",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Tagliare le melanzane a cubetti e friggerle in olio d'oliva.",
+            "In una padella, soffriggere l'aglio e aggiungere i pomodori pelati.",
+            "Cuocere per 15 minuti e aggiungere le melanzane.",
+            "Cuocere la pasta in acqua salata e unirla al sugo.",
+            "Servire con ricotta salata e basilico fresco."
+        ]
+    },
+    {
+        "id": 16,
+        "nome": "Cacciucco",
+        "descrizione": "Una zuppa di pesce tipica della Toscana, ricca di sapori.",
+        "ingredienti": [
+            "500g di pesce misto (sgombro, calamari, gamberi)",
+            "400g di pomodori pelati",
+            "1 cipolla",
+            "2 spicchi d'aglio",
+            "1 litro di brodo di pesce",
+            "Olio d'oliva",
+            "Peperoncino",
+            "Sale e pepe",
+            "Pane tostato"
+        ],
+        "istruzioni": [
+            "Soffriggere cipolla e aglio in olio d'oliva.",
+            "Aggiungere i pomodori pelati e cuocere per 10 minuti.",
+            "Unire il pesce e il brodo, cuocere per 20 minuti.",
+            "Servire caldo con pane tostato."
+        ]
+    },
+    {
+        "id": 17,
+        "nome": "Torta della Nonna",
+        "descrizione": "Un dolce tradizionale con crema pasticcera e pinoli.",
+        "ingredienti": [
+            "250g di farina",
+            "125g di burro",
+            "100g di zucchero",
+            "1 uovo",
+            "500ml di latte",
+            "3 tuorli d'uovo",
+            "40g di amido di mais",
+            "Pinoli",
+            "Scorza di limone"
+        ],
+        "istruzioni": [
+            "Preparare la pasta frolla mescolando farina, burro, zucchero e uovo.",
+            "Stendere la pasta in una teglia e cuocere in forno a 180°C per 15 minuti.",
+            "Preparare la crema mescolando latte, tuorli, zucchero e amido.",
+            "Versare la crema sulla base di pasta e cospargere di pinoli.",
+            "Cuocere in forno per altri 20 minuti."
+        ]
+    },
+    {
+        "id": 18,
+        "nome": "Frittelle di Zucchine",
+        "descrizione": "Deliziose frittelle croccanti a base di zucchine.",
+        "ingredienti": [
+            "300g di zucchine",
+            "100g di farina",
+            "2 uova",
+            "50g di parmigiano grattugiato",
+            "Sale e pepe",
+            "Olio per friggere"
+        ],
+        "istruzioni": [
+            "Grattugiare le zucchine e strizzarle per eliminare l'acqua.",
+            "In una ciotola, mescolare zucchine, farina, uova, parmigiano, sale e pepe.",
+            "Friggere a cucchiaiate in olio caldo fino a doratura."
+        ]
+    },
+    {
+        "id": 19,
+        "nome": "Panna Cotta",
+        "descrizione": "Un dolce al cucchiaio cremoso, servito con salsa di frutti di bosco.",
+        "ingredienti": [
+            "500ml di panna",
+            "100g di zucchero",
+            "1 baccello di vaniglia",
+            "3 fogli di gelatina",
+            "Frutti di bosco per guarnire"
+        ],
+        "istruzioni": [
+            "Scaldare la panna con zucchero e vaniglia fino a sciogliere.",
+            "Aggiungere la gelatina ammollata e mescolare.",
+            "Versare in stampini e refrigerare per almeno 4 ore.",
+            "Servire con frutti di bosco freschi."
+        ]
+    },
+    {
+        "id": 20,
+        "nome": "Crostata di Marmellata",
+        "descrizione": "Un dolce semplice e delizioso, perfetto per la colazione.",
+        "ingredienti": [
+            "250g di farina",
+            "125g di burro",
+            "100g di zucchero",
+            "1 uovo",
+            "Marmellata a piacere",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Mescolare farina, burro, zucchero, uovo e sale per formare la pasta frolla.",
+            "Stendere la pasta in una teglia e bucherellare il fondo.",
+            "Spalmare la marmellata sulla base.",
+            "Cuocere in forno a 180°C per 30 minuti."
+        ]
+    },
+    {
+        "id": 21,
+        "nome": "Zuppa di Lenticchie",
+        "descrizione": "Una zuppa calda e nutriente, perfetta per l'inverno.",
+        "ingredienti": [
+            "300g di lenticchie",
+            "1 cipolla",
+            "2 carote",
+            "2 pomodori",
+            "1 litro di brodo vegetale",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Soffriggere cipolla e carote in olio d'oliva.",
+            "Aggiungere le lenticchie e i pomodori a cubetti.",
+            "Versare il brodo e cuocere per 30-40 minuti.",
+            "Regolare di sale e pepe prima di servire."
+        ]
+    },
+    {
+        "id": 22,
+        "nome": "Sgombro al Forno",
+        "descrizione": "Un piatto di pesce semplice e sano, cotto al forno con erbe.",
+        "ingredienti": [
+            "2 sgombri",
+            "1 limone",
+            "Olio d'oliva",
+            "Prezzemolo",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Pulire gli sgombri e condirli con olio, limone, sale e pepe.",
+            "Disporli in una teglia e cospargere di prezzemolo.",
+            "Cuocere in forno a 180°C per 20-25 minuti."
+        ]
+    },
+    {
+        "id": 23,
+        "nome": "Torta di Mele",
+        "descrizione": "Un dolce classico, soffice e profumato, ideale per ogni occasione.",
+        "ingredienti": [
+            "3 mele",
+            "200g di farina",
+            "150g di zucchero",
+            "3 uova",
+            "100ml di latte",
+            "50g di burro",
+            "1 bustina di lievito",
+            "Cinnamon"
+        ],
+        "istruzioni": [
+            "Sbattere le uova con lo zucchero fino a ottenere un composto chiaro.",
+            "Aggiungere burro fuso, latte e mescolare.",
+            "Incorporare farina, lievito e cannella.",
+            "Aggiungere le mele a fette e mescolare.",
+            "Versare in una teglia e cuocere in forno a 180°C per 40 minuti."
+        ]
+    },
+    {
+        "id": 24,
+        "nome": "Pasta con le Sarde",
+        "descrizione": "Un piatto tipico siciliano a base di sarde fresche e finocchietto.",
+        "ingredienti": [
+            "400g di pasta (bucatini o spaghetti)",
+            "300g di sarde fresche",
+            "1 cipolla",
+            "100g di finocchietto selvatico",
+            "50g di pinoli",
+            "50g di uvetta",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Soffriggere la cipolla in olio d'oliva.",
+            "Aggiungere le sarde e cuocere fino a doratura.",
+            "Unire il finocchietto, pinoli e uvetta, cuocere per 10 minuti.",
+            "Cuocere la pasta in acqua salata e unirla al sugo.",
+            "Servire caldo."
+        ]
+    },
+    {
+        "id": 25,
+        "nome": "Polpette al Sugo",
+        "descrizione": "Polpette di carne cotte in un ricco sugo di pomodoro.",
+        "ingredienti": [
+            "500g di carne macinata",
+            "1 uovo",
+            "100g di pane grattugiato",
+            "50g di parmigiano grattugiato",
+            "400g di pomodori pelati",
+            "1 cipolla",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Mescolare carne, uovo, pane grattugiato, parmigiano, sale e pepe.",
+            "Formare delle polpette e friggerle in olio d'oliva.",
+            "In una padella, soffriggere la cipolla e aggiungere i pomodori.",
+            "Unire le polpette al sugo e cuocere per 30 minuti."
+        ]
+    },
+    {
+        "id": 26,
+        "nome": "Canneloni Ricotta e Spinaci",
+        "descrizione": "Pasta ripiena di ricotta e spinaci, gratinata al forno.",
+        "ingredienti": [
+            "250g di caneloni",
+            "300g di ricotta",
+            "200g di spinaci",
+            "400g di salsa di pomodoro",
+            "100g di parmigiano grattugiato",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere gli spinaci e mescolarli con la ricotta, sale e pepe.",
+            "Riempire i caneloni con il composto di ricotta.",
+            "Disporre i caneloni in una teglia, coprire con salsa di pomodoro e parmigiano.",
+            "Cuocere in forno a 180°C per 30 minuti."
+        ]
+    },
+    {
+        "id": 27,
+        "nome": "Torta Salata con Verdure",
+        "descrizione": "Una torta salata ricca di verdure di stagione.",
+        "ingredienti": [
+            "1 rotolo di pasta sfoglia",
+            "300g di verdure miste (zucchine, peperoni, melanzane)",
+            "3 uova",
+            "200ml di panna",
+            "100g di formaggio grattugiato",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Stendere la pasta sfoglia in una teglia.",
+            "Cuocere le verdure in padella e lasciarle raffreddare.",
+            "In una ciotola, mescolare uova, panna, formaggio, sale e pepe.",
+            "Aggiungere le verdure e versare il composto sulla pasta.",
+            "Cuocere in forno a 180°C per 40 minuti."
+        ]
+    },
+    {
+        "id": 28,
+        "nome": "Pasta con Pesto di Rucola",
+        "descrizione": "Un'alternativa fresca e saporita al tradizionale pesto, perfetta per l'estate.",
+        "ingredienti": [
+            "400g di pasta (trofie o linguine)",
+            "100g di rucola fresca",
+            "50g di noci",
+            "50g di parmigiano grattugiato",
+            "2 spicchi d'aglio",
+            "150ml di olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere la pasta in acqua salata secondo le istruzioni.",
+            "In un frullatore, unire rucola, noci, parmigiano, aglio e olio, frullare fino a ottenere un pesto omogeneo.",
+            "Scolare la pasta e mescolarla con il pesto.",
+            "Servire con una spolverata di parmigiano e pepe."
+        ]
+    },
+    {
+        "id": 29,
+        "nome": "Risotto alla Milanese",
+        "descrizione": "Un risotto cremoso e profumato allo zafferano, tipico di Milano.",
+        "ingredienti": [
+            "320g di riso Carnaroli",
+            "1 bustina di zafferano",
+            "1 cipolla",
+            "1 litro di brodo di carne",
+            "50g di burro",
+            "50g di parmigiano grattugiato",
+            "Olio d'oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Soffriggere la cipolla tritata in olio e metà del burro.",
+            "Aggiungere il riso e tostarlo per un paio di minuti.",
+            "Unire lo zafferano sciolto in un mestolo di brodo caldo.",
+            "Aggiungere il brodo poco alla volta, mescolando continuamente.",
+            "A fine cottura, mantecare con il burro rimasto e il parmigiano."
+        ]
+    },
+    {
+        "id": 30,
+        "nome": "Melanzane alla Parmigiana",
+        "descrizione": "Un classico piatto italiano a base di melanzane, salsa di pomodoro e formaggio.",
+        "ingredienti": [
+            "3 melanzane",
+            "500ml di salsa di pomodoro",
+            "200g di mozzarella",
+            "100g di parmigiano grattugiato",
+            "Basilico fresco",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Tagliare le melanzane a fette e friggerle in olio d'oliva.",
+            "In una teglia, alternare strati di melanzane, salsa, mozzarella e parmigiano.",
+            "Terminare con parmigiano e basilico.",
+            "Cuocere in forno a 180°C per 30-35 minuti."
+        ]
+    },
+    {
+        "id": 31,
+        "nome": "Insalata Caprese",
+        "descrizione": "Un'antipasto fresco e leggero a base di mozzarella, pomodoro e basilico.",
+        "ingredienti": [
+            "3 pomodori maturi",
+            "200g di mozzarella di bufala",
+            "Basilico fresco",
+            "Olio extravergine d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Tagliare i pomodori e la mozzarella a fette.",
+            "Disporre in un piatto alternando pomodoro e mozzarella.",
+            "Condire con olio, sale, pepe e foglie di basilico fresco."
+        ]
+    },
+    {
+        "id": 32,
+        "nome": "Pasta al Limone",
+        "descrizione": "Un primo piatto semplice e aromatico con crema di limone.",
+        "ingredienti": [
+            "400g di spaghetti",
+            "1 limone (succo e scorza)",
+            "200ml di panna fresca",
+            "50g di parmigiano grattugiato",
+            "Burro",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere la pasta in acqua salata.",
+            "In una padella, sciogliere il burro e aggiungere la panna, la scorza e il succo di limone.",
+            "Aggiungere il parmigiano e mescolare fino a ottenere una crema.",
+            "Scolare la pasta e saltarla nel condimento.",
+            "Servire subito con una spolverata di pepe."
+        ]
+    },
+    {
+        "id": 33,
+        "nome": "Minestrone di Verdure",
+        "descrizione": "Una zuppa ricca di verdure di stagione, sana e gustosa.",
+        "ingredienti": [
+            "2 patate",
+            "2 carote",
+            "1 zucchina",
+            "100g di fagioli",
+            "1 cipolla",
+            "1 gambo di sedano",
+            "1 litro di brodo vegetale",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Tagliare tutte le verdure a cubetti.",
+            "Soffriggere la cipolla e il sedano in olio d'oliva.",
+            "Aggiungere le verdure e i fagioli, poi coprire con il brodo.",
+            "Cuocere a fuoco medio per circa 40 minuti.",
+            "Regolare di sale e pepe prima di servire."
+        ]
+    },
+    {
+        "id": 34,
+        "nome": "Spiedini di Gamberi",
+        "descrizione": "Gamberi marinati e grigliati su spiedini, perfetti per l’estate.",
+        "ingredienti": [
+            "500g di gamberi sgusciati",
+            "1 limone",
+            "Olio d'oliva",
+            "Aglio",
+            "Prezzemolo",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Marinare i gamberi con olio, limone, aglio tritato, sale e pepe per 30 minuti.",
+            "Infilzare i gamberi su spiedini.",
+            "Grigliare per 2-3 minuti per lato.",
+            "Servire con prezzemolo fresco tritato."
+        ]
+    },
+    {
+        "id": 35,
+        "nome": "Spaghetti Aglio, Olio e Peperoncino",
+        "descrizione": "Un piatto veloce e saporito della tradizione italiana.",
+        "ingredienti": [
+            "400g di spaghetti",
+            "3 spicchi d'aglio",
+            "Peperoncino",
+            "Olio extravergine d'oliva",
+            "Prezzemolo (facoltativo)",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Cuocere gli spaghetti in acqua salata.",
+            "In una padella, soffriggere l'aglio e il peperoncino in olio.",
+            "Scolare la pasta e saltarla in padella con l'olio aromatizzato.",
+            "Servire con una spolverata di prezzemolo se desiderato."
+        ]
+    },
+    {
+        "id": 36,
+        "nome": "Vitello Tonnato",
+        "descrizione": "Un antipasto freddo a base di fettine di vitello e salsa al tonno.",
+        "ingredienti": [
+            "600g di girello di vitello",
+            "1 carota",
+            "1 cipolla",
+            "1 gambo di sedano",
+            "2 uova",
+            "150g di tonno sott'olio",
+            "2 filetti di acciuga",
+            "Capperi",
+            "Maionese",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Lessare il vitello con cipolla, carota e sedano per circa 1 ora.",
+            "Lasciar raffreddare e tagliare a fettine sottili.",
+            "Preparare la salsa frullando tonno, acciughe, capperi e maionese.",
+            "Servire le fettine coperte dalla salsa tonnata."
+        ]
+    },
+    {
+        "id": 37,
+        "nome": "Pasta e Fagioli",
+        "descrizione": "Un piatto rustico e nutriente della cucina italiana.",
+        "ingredienti": [
+            "200g di pasta corta",
+            "300g di fagioli borlotti",
+            "1 cipolla",
+            "1 carota",
+            "1 gambo di sedano",
+            "1 spicchio d'aglio",
+            "Olio d'oliva",
+            "Rosmarino",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere i fagioli fino a renderli morbidi.",
+            "Soffriggere cipolla, carota, sedano e aglio in olio con rosmarino.",
+            "Aggiungere i fagioli e cuocere per 15 minuti.",
+            "Aggiungere la pasta e cuocere fino a cottura.",
+            "Aggiustare di sale e pepe prima di servire."
+        ]
+    },
+    {
+        "id": 38,
+        "nome": "Tagliata di Manzo",
+        "descrizione": "Fettine di manzo grigliate, servite con rucola e scaglie di grana.",
+        "ingredienti": [
+            "600g di controfiletto di manzo",
+            "Rucola",
+            "Scaglie di grana",
+            "Olio extravergine d'oliva",
+            "Sale grosso",
+            "Pepe"
+        ],
+        "istruzioni": [
+            "Scaldare bene una griglia e cuocere la carne 3-4 minuti per lato.",
+            "Lasciar riposare qualche minuto, poi tagliare a fettine sottili.",
+            "Servire su un letto di rucola con scaglie di grana.",
+            "Condire con olio, sale e pepe."
+        ]
+    },
+    {
+        "id": 39,
+        "nome": "Tiramisù con le fragole",
+        "descrizione": "Il famoso dolce italiano a base di savoiardi, mascarpone e caffè.",
+        "ingredienti": [
+            "300g di savoiardi",
+            "500g di mascarpone",
+            "4 uova",
+            "100g di zucchero",
+            "Caffè espresso",
+            "Cacao amaro in polvere"
+        ],
+        "istruzioni": [
+            "Montare i tuorli con lo zucchero, aggiungere il mascarpone.",
+            "Montare gli albumi a neve e incorporarli al composto.",
+            "Inzuppare i savoiardi nel caffè e disporli in una teglia.",
+            "Alternare strati di savoiardi e crema.",
+            "Spolverare con cacao e refrigerare per almeno 3 ore."
+        ]
+    },
+    {
+        "id": 40,
+        "nome": "Zucchine Ripiene",
+        "descrizione": "Zucchine farcite con carne e formaggio, cotte al forno.",
+        "ingredienti": [
+            "4 zucchine",
+            "300g di carne macinata",
+            "1 uovo",
+            "50g di parmigiano",
+            "Pangrattato",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Tagliare le zucchine a metà e svuotarle.",
+            "Mescolare carne, uovo, parmigiano, sale e pepe.",
+            "Riempire le zucchine con il composto e cospargere di pangrattato.",
+            "Cuocere in forno a 180°C per 30-35 minuti."
+        ]
+    },
+    {
+        "id": 41,
+        "nome": "Risotto ai Funghi",
+        "descrizione": "Risotto cremoso con funghi porcini freschi o secchi.",
+        "ingredienti": [
+            "320g di riso Arborio",
+            "200g di funghi porcini",
+            "1 cipolla",
+            "1 litro di brodo vegetale",
+            "50g di burro",
+            "50g di parmigiano",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Soffriggere la cipolla tritata con olio e burro.",
+            "Aggiungere i funghi e cuocere per 5 minuti.",
+            "Unire il riso e tostarlo per un paio di minuti.",
+            "Aggiungere il brodo poco alla volta, mescolando continuamente.",
+            "A cottura quasi ultimata, mantecare con parmigiano e burro.",
+            "Aggiustare di sale e pepe e servire caldo."
+        ]
+    },
+    {
+        "id": 42,
+        "nome": "Pancakes Americani",
+        "descrizione": "Pancakes soffici da gustare a colazione con sciroppo d'acero.",
+        "ingredienti": [
+            "200g di farina",
+            "2 cucchiai di zucchero",
+            "2 cucchiaini di lievito per dolci",
+            "1 pizzico di sale",
+            "250ml di latte",
+            "2 uova",
+            "50g di burro fuso"
+        ],
+        "istruzioni": [
+            "Mescolare farina, zucchero, lievito e sale.",
+            "In un’altra ciotola, sbattere uova, latte e burro fuso.",
+            "Unire gli ingredienti liquidi a quelli secchi e mescolare.",
+            "Cuocere piccole quantità di impasto su una padella antiaderente.",
+            "Girare quando si formano bollicine e cuocere l’altro lato.",
+            "Servire con sciroppo d’acero o frutta."
+        ]
+    },
+    {
+        "id": 43,
+        "nome": "Parmigiana di Melanzane",
+        "descrizione": "Melanzane fritte alternate a salsa di pomodoro, mozzarella e parmigiano.",
+        "ingredienti": [
+            "3 melanzane",
+            "500ml di passata di pomodoro",
+            "250g di mozzarella",
+            "100g di parmigiano",
+            "Farina",
+            "Olio per friggere",
+            "Basilico",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Tagliare le melanzane a fette e infarinarle.",
+            "Friggerle in olio caldo fino a doratura.",
+            "Preparare la salsa di pomodoro e insaporire con basilico e sale.",
+            "In una teglia alternare strati di melanzane, salsa, mozzarella e parmigiano.",
+            "Cuocere in forno a 180°C per 30 minuti.",
+            "Servire calda."
+        ]
+    },
+    {
+        "id": 44,
+        "nome": "Insalata Caprese",
+        "descrizione": "Insalata fresca con pomodoro, mozzarella e basilico.",
+        "ingredienti": [
+            "3 pomodori maturi",
+            "250g di mozzarella di bufala",
+            "Basilico fresco",
+            "Olio extravergine d'oliva",
+            "Sale",
+            "Pepe"
+        ],
+        "istruzioni": [
+            "Tagliare pomodori e mozzarella a fette.",
+            "Disporre alternando su un piatto.",
+            "Aggiungere foglie di basilico.",
+            "Condire con olio, sale e pepe.",
+            "Servire subito."
+        ]
+    },
+    {
+        "id": 45,
+        "nome": "Polpette al Sugo",
+        "descrizione": "Polpette di carne cotte in salsa di pomodoro.",
+        "ingredienti": [
+            "400g di carne macinata mista",
+            "1 uovo",
+            "50g di pangrattato",
+            "50g di parmigiano",
+            "1 spicchio d'aglio",
+            "500ml di passata di pomodoro",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Mescolare carne, uovo, pangrattato, parmigiano, aglio, sale e pepe.",
+            "Formare polpette e rosolarle in padella con olio.",
+            "Aggiungere la passata di pomodoro e cuocere coperto per 30 minuti.",
+            "Servire calde."
+        ]
+    },
+    {
+        "id": 46,
+        "nome": "Lasagne alla Bolognese",
+        "descrizione": "Lasagne al forno con ragù, besciamella e parmigiano.",
+        "ingredienti": [
+            "250g di lasagne fresche",
+            "500g di ragù alla bolognese",
+            "500ml di besciamella",
+            "100g di parmigiano",
+            "Olio d'oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "In una teglia, alternare strati di lasagne, ragù, besciamella e parmigiano.",
+            "Terminare con uno strato di besciamella e parmigiano.",
+            "Cuocere in forno a 180°C per 40 minuti.",
+            "Lasciar riposare 10 minuti prima di servire."
+        ]
+    },
+    {
+        "id": 47,
+        "nome": "Bruschette al Pomodoro",
+        "descrizione": "Fette di pane tostato condite con pomodoro, aglio e basilico.",
+        "ingredienti": [
+            "Pane casereccio",
+            "3 pomodori maturi",
+            "1 spicchio d'aglio",
+            "Basilico fresco",
+            "Olio extravergine d'oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Tostare le fette di pane.",
+            "Strofinare l’aglio sul pane caldo.",
+            "Tagliare i pomodori a cubetti e condirli con olio, sale e basilico.",
+            "Distribuire i pomodori sulle fette di pane.",
+            "Servire subito."
+        ]
+    },
+    {
+        "id": 48,
+        "nome": "Frittata di Zucchine",
+        "descrizione": "Frittata soffice con zucchine grattugiate e formaggio.",
+        "ingredienti": [
+            "4 uova",
+            "2 zucchine",
+            "50g di parmigiano",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Grattugiare le zucchine e strizzarle per togliere l’acqua.",
+            "Sbattere le uova con parmigiano, sale e pepe.",
+            "Unire le zucchine e mescolare.",
+            "Cuocere in padella con olio, girando a metà cottura.",
+            "Servire calda o a temperatura ambiente."
+        ]
+    },
+    {
+        "id": 49,
+        "nome": "Minestrone di Verdure",
+        "descrizione": "Zuppa ricca di verdure miste, ideale per l’inverno.",
+        "ingredienti": [
+            "2 carote",
+            "2 patate",
+            "1 zucchina",
+            "1 cipolla",
+            "100g di fagioli cannellini",
+            "1 pomodoro",
+            "Brodo vegetale",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Soffriggere la cipolla tritata in olio.",
+            "Aggiungere carote, patate, zucchina e pomodoro a pezzi.",
+            "Coprire con brodo e cuocere fino a cottura.",
+            "Aggiungere i fagioli e cuocere altri 10 minuti.",
+            "Regolare di sale e pepe e servire caldo."
+        ]
+    },
+    {
+        "id": 50,
+        "nome": "Baccalà alla Vicentina",
+        "descrizione": "Baccalà cotto lentamente con latte, acciughe e cipolle.",
+        "ingredienti": [
+            "600g di baccalà ammollato",
+            "2 cipolle",
+            "100ml di latte",
+            "50g di acciughe sott’olio",
+            "Farina",
+            "Olio d’oliva",
+            "Prezzemolo",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Infarinare il baccalà e rosolarlo in olio.",
+            "Soffriggere le cipolle e le acciughe tritate.",
+            "Unire il baccalà, coprire con latte e cuocere lentamente per 2 ore.",
+            "Aggiustare di sale e pepe e servire con prezzemolo."
+        ]
+    },
+    {
+        "id": 51,
+        "nome": "Spaghetti alle Vongole",
+        "descrizione": "Pasta con vongole fresche, aglio, prezzemolo e olio d’oliva.",
+        "ingredienti": [
+            "320g di spaghetti",
+            "1kg di vongole",
+            "2 spicchi d’aglio",
+            "Olio extravergine d'oliva",
+            "Prezzemolo fresco",
+            "Peperoncino (facoltativo)",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Pulire le vongole e farle aprire in padella con un po’ d’olio e aglio.",
+            "Cuocere gli spaghetti in abbondante acqua salata.",
+            "Saltare la pasta con le vongole, aggiungere prezzemolo e peperoncino.",
+            "Servire subito."
+        ]
+    },
+    {
+        "id": 52,
+        "nome": "Tiramisù con le gocciole",
+        "descrizione": "Dolce al cucchiaio con mascarpone, caffè e savoiardi.",
+        "ingredienti": [
+            "300g di mascarpone",
+            "3 uova",
+            "100g di zucchero",
+            "200g di savoiardi",
+            "300ml di caffè freddo",
+            "Cacao amaro in polvere"
+        ],
+        "istruzioni": [
+            "Montare i tuorli con zucchero e mascarpone.",
+            "Montare gli albumi a neve e incorporare delicatamente.",
+            "Inzuppare i savoiardi nel caffè e disporli in una pirofila.",
+            "Alternare strati di crema e savoiardi.",
+            "Spolverare con cacao e refrigerare per almeno 4 ore."
+        ]
+    },
+    {
+        "id": 53,
+        "nome": "Pollo alla Cacciatora",
+        "descrizione": "Pollo cotto con pomodoro, olive e vino bianco.",
+        "ingredienti": [
+            "1 kg di pollo a pezzi",
+            "400g di pomodori pelati",
+            "100g di olive nere",
+            "1 cipolla",
+            "1 spicchio d’aglio",
+            "200ml di vino bianco",
+            "Olio d’oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Rosolare il pollo con cipolla e aglio in olio.",
+            "Sfumare con vino bianco.",
+            "Aggiungere pomodori e olive e cuocere a fuoco basso per 40 minuti.",
+            "Regolare di sale e pepe e servire."
+        ]
+    },
+    {
+        "id": 54,
+        "nome": "Pasta alla Norma",
+        "descrizione": "Pasta con melanzane fritte, pomodoro e ricotta salata.",
+        "ingredienti": [
+            "320g di pasta (penne o rigatoni)",
+            "2 melanzane",
+            "500ml di passata di pomodoro",
+            "Ricotta salata",
+            "Basilico fresco",
+            "Olio d’oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Tagliare e friggere le melanzane a cubetti.",
+            "Cuocere la passata con sale e basilico.",
+            "Cuocere la pasta e unirla al sugo e alle melanzane.",
+            "Servire con ricotta salata grattugiata."
+        ]
+    },
+    {
+        "id": 55,
+        "nome": "Risotto allo Zafferano",
+        "descrizione": "Risotto cremoso aromatizzato con zafferano.",
+        "ingredienti": [
+            "320g di riso Carnaroli",
+            "1 bustina di zafferano",
+            "1 cipolla",
+            "1 litro di brodo vegetale",
+            "50g di burro",
+            "50g di parmigiano",
+            "Olio d’oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Soffriggere la cipolla tritata in olio e burro.",
+            "Tostare il riso per 2 minuti.",
+            "Aggiungere il brodo poco per volta e cuocere mescolando.",
+            "A metà cottura, sciogliere lo zafferano nel brodo e aggiungerlo.",
+            "Mantecare con burro e parmigiano, aggiustare di sale.",
+            "Servire caldo."
+        ]
+    },
+    {
+        "id": 56,
+        "nome": "Caponata Siciliana",
+        "descrizione": "Contorno di melanzane, pomodori, capperi e olive in agrodolce.",
+        "ingredienti": [
+            "3 melanzane",
+            "2 pomodori",
+            "1 cipolla",
+            "50g di capperi",
+            "100g di olive verdi",
+            "Aceto di vino",
+            "Zucchero",
+            "Olio d’oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Tagliare e friggere le melanzane.",
+            "Soffriggere cipolla, aggiungere pomodori, capperi e olive.",
+            "Unire melanzane, aceto e zucchero e cuocere per 10 minuti.",
+            "Lasciar raffreddare e servire."
+        ]
+    },
+    {
+        "id": 57,
+        "nome": "Gnocchi di Patate al Pesto",
+        "descrizione": "Gnocchi morbidi conditi con salsa al pesto genovese.",
+        "ingredienti": [
+            "1 kg di patate",
+            "300g di farina",
+            "200g di basilico fresco",
+            "50g di pinoli",
+            "100g di parmigiano",
+            "2 spicchi d’aglio",
+            "Olio extravergine d’oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Lessare le patate, schiacciarle e impastarle con farina.",
+            "Formare gli gnocchi e cuocerli in acqua bollente salata.",
+            "Preparare il pesto frullando basilico, pinoli, aglio, parmigiano e olio.",
+            "Condire gli gnocchi con il pesto e servire."
+        ]
+    },
+    {
+        "id": 58,
+        "nome": "Zuppa di Lenticchie",
+        "descrizione": "Zuppa calda e nutriente con lenticchie e verdure.",
+        "ingredienti": [
+            "300g di lenticchie",
+            "1 carota",
+            "1 cipolla",
+            "1 gambo di sedano",
+            "2 patate",
+            "Brodo vegetale",
+            "Olio d’oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Soffriggere cipolla, carota e sedano tritati.",
+            "Aggiungere le patate a cubetti e lenticchie sciacquate.",
+            "Coprire con brodo e cuocere fino a cottura completa.",
+            "Regolare di sale e pepe e servire caldo."
+        ]
+    },
+    {
+        "id": 59,
+        "nome": "Frittelle di Zucchine",
+        "descrizione": "Frittelle croccanti di zucchine grattugiate e formaggio.",
+        "ingredienti": [
+            "3 zucchine",
+            "2 uova",
+            "50g di parmigiano",
+            "100g di farina",
+            "Olio per friggere",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Grattugiare le zucchine e strizzarle.",
+            "Mescolare con uova, parmigiano, farina, sale e pepe.",
+            "Friggere cucchiaiate di impasto in olio caldo fino a doratura.",
+            "Scolare e servire calde."
+        ]
+    },
+    {
+        "id": 60,
+        "nome": "Calzone Ripieno",
+        "descrizione": "Pasta lievitata ripiena di mozzarella, pomodoro e salame, cotto al forno.",
+        "ingredienti": [
+            "500g di farina",
+            "300ml di acqua",
+            "15g di lievito di birra",
+            "200g di mozzarella",
+            "150g di salame",
+            "200ml di passata di pomodoro",
+            "Olio d’oliva",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Preparare un impasto con farina, acqua, lievito e sale, lasciar lievitare.",
+            "Stendere la pasta, aggiungere mozzarella, salame e pomodoro.",
+            "Chiudere a mezzaluna e sigillare bene.",
+            "Cuocere in forno a 200°C per 25-30 minuti.",
+            "Servire caldo."
+        ]
+    },
+    {
+        "id": 61,
+        "nome": "Pasta con i Fagioli",
+        "descrizione": "Un piatto tradizionale italiano, ricco e sostanzioso.",
+        "ingredienti": [
+            "400g di pasta (ditalini o tubetti)",
+            "300g di fagioli borlotti",
+            "1 cipolla",
+            "2 spicchi d'aglio",
+            "Olio d'oliva",
+            "Rosmarino",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere i fagioli in acqua salata fino a teneri.",
+            "In una padella, soffriggere cipolla e aglio in olio d'oliva.",
+            "Aggiungere i fagioli e un po' di rosmarino, cuocere per 10 minuti.",
+            "Cuocere la pasta in acqua salata e unirla al condimento.",
+            "Servire caldo con un filo d'olio."
+        ]
+    },
+    {
+        "id": 62,
+        "nome": "Sformato di Verdure",
+        "descrizione": "Un piatto leggero e gustoso, perfetto come contorno.",
+        "ingredienti": [
+            "300g di verdure miste (zucchine, carote, spinaci)",
+            "3 uova",
+            "200ml di panna",
+            "100g di formaggio grattugiato",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere le verdure e lasciarle raffreddare.",
+            "In una ciotola, mescolare uova, panna, formaggio, sale e pepe.",
+            "Aggiungere le verdure e mescolare bene.",
+            "Versare in una teglia e cuocere in forno a 180°C per 30-35 minuti."
+        ]
+    },
+    {
+        "id": 63,
+        "nome": "Tortellini in Brodo",
+        "descrizione": "Un piatto caldo e confortante, ideale per l'inverno.",
+        "ingredienti": [
+            "400g di tortellini",
+            "1 litro di brodo di carne",
+            "50g di parmigiano grattugiato",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Portare il brodo a ebollizione.",
+            "Cuocere i tortellini nel brodo per 3-4 minuti.",
+            "Servire caldo con una spolverata di parmigiano."
+        ]
+    },
+    {
+        "id": 64,
+        "nome": "Cacciucco di Pesce",
+        "descrizione": "Una zuppa di pesce ricca e saporita, tipica della Toscana.",
+        "ingredienti": [
+            "500g di pesce misto (sgombro, calamari, gamberi)",
+            "400g di pomodori pelati",
+            "1 cipolla",
+            "2 spicchi d'aglio",
+            "1 litro di brodo di pesce",
+            "Olio d'oliva",
+            "Sale e pepe",
+            "Pane tostato"
+        ],
+        "istruzioni": [
+            "Soffriggere cipolla e aglio in olio d'oliva.",
+            "Aggiungere i pomodori pelati e cuocere per 10 minuti.",
+            "Unire il pesce e il brodo, cuocere per 20 minuti.",
+            "Servire caldo con pane tostato."
+        ]
+    },
+    {
+        "id": 65,
+        "nome": "Torta di Ricotta",
+        "descrizione": "Un dolce soffice e cremoso, perfetto per ogni occasione.",
+        "ingredienti": [
+            "500g di ricotta",
+            "200g di zucchero",
+            "3 uova",
+            "100g di farina",
+            "1 bustina di lievito",
+            "Scorza di limone"
+        ],
+        "istruzioni": [
+            "In una ciotola, mescolare ricotta, zucchero, uova e scorza di limone.",
+            "Aggiungere farina e lievito, mescolare bene.",
+            "Versare in una teglia e cuocere in forno a 180°C per 40 minuti."
+        ]
+    },
+    {
+        "id": 65,
+        "nome": "Pasta con i Carciofi",
+        "descrizione": "Un piatto semplice e gustoso, perfetto per la primavera.",
+        "ingredienti": [
+            "400g di pasta (spaghetti o linguine)",
+            "4 carciofi",
+            "2 spicchi d'aglio",
+            "Olio d'oliva",
+            "Prezzemolo",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Pulire i carciofi e tagliarli a fettine.",
+            "In una padella, soffriggere l'aglio in olio d'oliva.",
+            "Aggiungere i carciofi e cuocere fino a teneri.",
+            "Cuocere la pasta in acqua salata e unirla ai carciofi.",
+            "Servire con prezzemolo tritato."
+        ]
+    },
+    {
+        "id": 66,
+        "nome": "Pollo al Limone",
+        "descrizione": "Un piatto di pollo leggero e aromatico, perfetto per l'estate.",
+        "ingredienti": [
+            "1kg di pollo",
+            "2 limoni",
+            "Olio d'oliva",
+            "Rosmarino",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Marinare il pollo con succo di limone, olio, rosmarino, sale e pepe.",
+            "Cuocere in forno a 180°C per 40-50 minuti.",
+            "Servire caldo con fette di limone."
+        ]
+    },
+    {
+        "id": 67,
+        "nome": "Risotto al Limone",
+        "descrizione": "Un risotto fresco e profumato, ideale per le occasioni speciali.",
+        "ingredienti": [
+            "300g di riso Arborio",
+            "1 litro di brodo vegetale",
+            "1 cipolla",
+            "100ml di vino bianco",
+            "2 limoni",
+            "50g di burro",
+            "Parmigiano grattugiato",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Soffriggere la cipolla in burro, aggiungere il riso e tostarlo.",
+            "Sfumare con il vino bianco e aggiungere il brodo poco alla volta.",
+            "Aggiungere succo e scorza di limone a fine cottura.",
+            "Mantecare con parmigiano e servire caldo."
+        ]
+    },
+    {
+        "id": 68,
+        "nome": "Crespelle ai Funghi",
+        "descrizione": "Crespelle ripiene di funghi e besciamella, gratinate al forno.",
+        "ingredienti": [
+            "200g di farina",
+            "500ml di latte",
+            "4 uova",
+            "300g di funghi",
+            "50g di burro",
+            "100g di formaggio grattugiato",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Preparare la pastella con farina, latte, uova e sale.",
+            "Cuocere le crespelle in una padella con burro.",
+            "Soffriggere i funghi e mescolarli con besciamella.",
+            "Farcire le crespelle e disporle in una teglia.",
+            "Cospargere di formaggio e gratinare in forno."
+        ]
+    },
+    {
+        "id": 69,
+        "nome": "Torta di Noci",
+        "descrizione": "Un dolce ricco e profumato, perfetto per le festività.",
+        "ingredienti": [
+            "200g di noci",
+            "150g di zucchero",
+            "3 uova",
+            "100g di burro",
+            "200g di farina",
+            "1 bustina di lievito",
+            "Sale"
+        ],
+        "istruzioni": [
+            "Tritare le noci e mescolarle con zucchero, uova e burro fuso.",
+            "Aggiungere farina, lievito e un pizzico di sale.",
+            "Versare in una teglia e cuocere in forno a 180°C per 30-35 minuti."
+        ]
+    },
+    {
+        "id": 70,
+        "nome": "Frittelle di Mele",
+        "descrizione": "Deliziose frittelle dolci, perfette per una merenda.",
+        "ingredienti": [
+            "3 mele",
+            "200g di farina",
+            "2 uova",
+            "100ml di latte",
+            "50g di zucchero",
+            "1 bustina di lievito",
+            "Olio per friggere",
+            "Cinnamon"
+        ],
+        "istruzioni": [
+            "Sbucciare e affettare le mele.",
+            "In una ciotola, mescolare farina, zucchero, lievito, uova e latte fino a ottenere una pastella liscia.",
+            "Aggiungere le mele affettate alla pastella.",
+            "Friggere a cucchiaiate in olio caldo fino a doratura.",
+            "Spolverare con zucchero a velo e cannella prima di servire."
+        ]
+    },
+    {
+        "id": 71,
+        "nome": "Pasta alla Puttanesca",
+        "descrizione": "Un piatto saporito e veloce, con pomodori, olive e capperi.",
+        "ingredienti": [
+            "400g di pasta (spaghetti o linguine)",
+            "400g di pomodori pelati",
+            "100g di olive nere",
+            "2 cucchiai di capperi",
+            "2 spicchi d'aglio",
+            "Peperoncino",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere la pasta in acqua salata secondo le istruzioni.",
+            "In una padella, soffriggere l'aglio e il peperoncino in olio d'oliva.",
+            "Aggiungere i pomodori, le olive e i capperi, cuocere per 10 minuti.",
+            "Scolare la pasta e unirla al sugo.",
+            "Servire caldo con una spolverata di pepe."
+        ]
+    },
+    {
+        "id": 72,
+        "nome": "Torta di Ricotta e Cioccolato",
+        "descrizione": "Un dolce cremoso e goloso, perfetto per ogni occasione.",
+        "ingredienti": [
+            "500g di ricotta",
+            "150g di zucchero",
+            "3 uova",
+            "100g di cioccolato fondente",
+            "100g di farina",
+            "1 bustina di lievito",
+            "Scorza di limone"
+        ],
+        "istruzioni": [
+            "In una ciotola, mescolare ricotta, zucchero, uova e scorza di limone.",
+            "Aggiungere farina, lievito e cioccolato fondente fuso.",
+            "Versare in una teglia e cuocere in forno a 180°C per 40 minuti.",
+            "Lasciare raffreddare prima di servire."
+        ]
+    },
+    {
+        "id": 73,
+        "nome": "Polpette di Melanzane",
+        "descrizione": "Polpette vegetariane gustose e croccanti, perfette come antipasto.",
+        "ingredienti": [
+            "2 melanzane",
+            "100g di pangrattato",
+            "50g di parmigiano grattugiato",
+            "1 uovo",
+            "2 spicchi d'aglio",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere le melanzane in forno fino a tenerle.",
+            "Schiacciarle e mescolarle con pangrattato, parmigiano, uovo, aglio, sale e pepe.",
+            "Formare delle polpette e friggerle in olio d'oliva fino a doratura.",
+            "Servire calde."
+        ]
+    },
+    {
+        "id": 75,
+        "nome": "Sgombro alla Griglia",
+        "descrizione": "Un piatto di pesce semplice e sano, grigliato con erbe aromatiche.",
+        "ingredienti": [
+            "2 sgombri",
+            "1 limone",
+            "Olio d'oliva",
+            "Prezzemolo fresco",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Pulire e squamare gli sgombri.",
+            "Condire con olio, succo di limone, sale e pepe.",
+            "Grigliare gli sgombri per circa 5-7 minuti per lato.",
+            "Servire con prezzemolo tritato e fette di limone."
+        ]
+    },
+    {
+        "id": 76,
+        "nome": "Torta di Carote",
+        "descrizione": "Un dolce soffice e profumato, ideale per la colazione o la merenda.",
+        "ingredienti": [
+            "300g di carote grattugiate",
+            "200g di zucchero",
+            "3 uova",
+            "200g di farina",
+            "100ml di olio di semi",
+            "1 bustina di lievito",
+            "Cinnamon"
+        ],
+        "istruzioni": [
+            "In una ciotola, sbattere le uova con lo zucchero fino a ottenere un composto chiaro.",
+            "Aggiungere l'olio e mescolare bene.",
+            "Incorporare le carote grattugiate, la farina, il lievito e la cannella.",
+            "Versare in una teglia e cuocere in forno a 180°C per 40-45 minuti.",
+            "Lasciare raffreddare prima di servire."
+        ]
+    },
+    {
+        "id": 77,
+        "nome": "Torta di Ricotta e Cioccolato",
+        "descrizione": "Un dolce cremoso e goloso, perfetto per ogni occasione.",
+        "ingredienti": [
+            "500g di ricotta",
+            "150g di zucchero",
+            "3 uova",
+            "100g di cioccolato fondente",
+            "100g di farina",
+            "1 bustina di lievito",
+            "Scorza di limone"
+        ],
+        "istruzioni": [
+            "In una ciotola, mescolare ricotta, zucchero, uova e scorza di limone.",
+            "Aggiungere farina, lievito e cioccolato fondente fuso.",
+            "Versare in una teglia e cuocere in forno a 180°C per 40 minuti.",
+            "Lasciare raffreddare prima di servire."
+        ]
+    },
+    {
+        "id": 78,
+        "nome": "Polpette di Melanzane",
+        "descrizione": "Polpette vegetariane gustose e croccanti, perfette come antipasto.",
+        "ingredienti": [
+            "2 melanzane",
+            "100g di pangrattato",
+            "50g di parmigiano grattugiato",
+            "1 uovo",
+            "2 spicchi d'aglio",
+            "Olio d'oliva",
+            "Sale e pepe"
+        ],
+        "istruzioni": [
+            "Cuocere le melanzane in forno fino a tenerle.",
+            "Schiacciarle e mescolarle con pangrattato, parmigiano, uovo, aglio, sale e pepe.",
+            "Formare delle polpette e friggerle in olio d'oliva fino a doratura.",
+            "Servire calde."
+        ]
+    }
+]

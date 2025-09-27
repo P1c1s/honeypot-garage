@@ -1,0 +1,19 @@
+options {
+    directory "/var/cache/bind";
+
+    allow-query { ::1; ::;};
+    recursion yes;
+    listen-on { ::1; 2a04:0:0:0::4; };
+};
+
+
+logging {
+        channel default_syslog {
+        syslog local6;
+        severity info;
+        print-time yes;
+    };
+    category default { default_syslog; };
+    category queries { default_syslog; };
+    category security { default_syslog; };
+};

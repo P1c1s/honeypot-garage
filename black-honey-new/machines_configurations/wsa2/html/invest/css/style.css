@@ -1,0 +1,290 @@
+/* Font e reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #1e3c72;
+  background: linear-gradient(90deg, #2a5298, #1e3c72);
+  padding: 20px 40px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color: #fff;
+  color: #1e3c72;
+}
+
+main {
+  flex: 1;
+  padding: 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  background: white;
+  border-radius: 15px;
+  padding: 60px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(46,61,73,.1);
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #1e3c72;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 35px;
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #1e3c72;
+  color: white;
+  font-weight: 700;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 15px rgba(30,60,114,0.3);
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #2a5298;
+}
+
+.servizi {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.servizi h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #1e3c72;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(46,61,73,.1);
+  padding: 30px;
+  flex: 1 1 280px;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2a5298;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.contatti {
+  background: white;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(46,61,73,.1);
+  max-width: 600px;
+  margin: 0 auto 100px auto;
+  text-align: center;
+}
+
+.contatti h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1e3c72;
+}
+
+.contatti p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #1e3c72;
+  outline: none;
+}
+
+.contact-form button {
+  width: 100%;
+  background-color: #1e3c72;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(30,60,114,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #2a5298;
+}
+
+footer {
+  background: #1e3c72;
+  color: #ccc;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.prezzi-section {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.prezzi-section h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #1e3c72;
+}
+
+.prezzi-section p {
+  margin-bottom: 30px;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.filter-container {
+  margin-bottom: 25px;
+}
+
+.filter-container label {
+  font-weight: 600;
+  margin-right: 15px;
+  font-size: 1.1rem;
+  color: #1e3c72;
+}
+
+.filter-container select {
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #1e3c72;
+  outline: none;
+  cursor: pointer;
+}
+
+.prezzi-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 25px;
+}
+
+.prezzo-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 30px rgba(46,61,73,.1);
+  transition: transform 0.3s ease;
+}
+
+.prezzo-card:hover {
+  transform: translateY(-8px);
+}
+
+.prezzo-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #2a5298;
+}
+
+.prezzo-card p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.loading {
+  font-style: italic;
+  color: #666;
+}
+
+.errore {
+  color: #c0392b;
+  font-weight: 700;
+  font-size: 1.1rem;
+}

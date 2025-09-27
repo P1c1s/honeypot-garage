@@ -1,0 +1,35 @@
+Generazione chiavi:
+
+# Chiave privata della CA
+openssl genrsa -out ca.key 4096
+
+# Certificato self-signed della CA (valido 10 anni)
+openssl req -x509 -new -nodes \
+  -key ca.key \
+  -sha256 -days 3650 \
+  -out ca.crt \
+  -subj "/CN=OpenVPN-CA"
+
+# Chiave privata del server
+openssl genrsa -out server.key 4096
+
+# CSR (Certificate Signing Request) del server
+openssl req -new -key server.key -out server.csr \
+  -subj "/CN=server"
+
+# Certificato firmato dalla CA (valido 1 anno)
+openssl x509 -req -in server.csr \
+  -CA ca.crt -CAkey ca.key -CAcreateserial \
+  -out server.crt -days 365 -sha256
+
+
+openssl genrsa -out client1.key 4096
+openssl req -new -key client1.key -out client1.csr \
+  -subj "/CN=client1"
+openssl x509 -req -in client1.csr \
+  -CA ca.crt -CAkey ca.key -CAcreateserial \
+  -out client1.crt -days 365 -sha256
+
+
+openssl dhparam -out dh.pem 2048
+
