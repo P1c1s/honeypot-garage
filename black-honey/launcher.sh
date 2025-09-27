@@ -20,17 +20,9 @@ fi
 HOSTS_FILE="/etc/hosts"
 IPV4="$GATEWAY"
 
-DOMAINS=(
-  manager.theboys.it
-  quix.theboys.it
-  ecopulse.theboys.it
-  wsn.theboys.it
-  invest.theboys.it
-  techsolve.theboys.it
-  agency.theboys.it
-  myrecipe.theboys.it
-  blackhoney.theboys.it
-)
+DOMAINS=("manager.theboys.it"                                                                 # wsa1's virtual host
+         "ecopulse.theboys.it" "invest.theboys.it" "quix.theboys.it" "techsolve.theboys.it"   # wsa2's virtual host
+         "agency.theboys.it" "blackhoney.theboys.it" "myrecipe.theboys.it")                   # wsn's virtual host
 
 echo "✅ Updating /etc/hosts"
 for domain in "${DOMAINS[@]}"; do

@@ -11,10 +11,10 @@ server {
     }
 }
 
-# Proxy for quix.theboys.it
+# Proxy for ecopulse.theboys.it
 server {
     listen 80;
-    server_name quix.theboys.it;
+    server_name ecopulse.theboys.it;
 
     location / {
         proxy_pass http://[2a04:0:0:2::2]:80;
@@ -24,10 +24,23 @@ server {
     }
 }
 
-# Proxy for ecopulse.theboys.it
+# Proxy for invest.theboys.it
 server {
     listen 80;
-    server_name ecopulse.theboys.it;
+    server_name invest.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::2]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for quix.theboys.it
+server {
+    listen 80;
+    server_name quix.theboys.it;
 
     location / {
         proxy_pass http://[2a04:0:0:2::2]:80;

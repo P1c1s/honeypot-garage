@@ -505,7 +505,7 @@
     },
     {
         "id": 26,
-        "nome": "Caneloni Ricotta e Spinaci",
+        "nome": "Canneloni Ricotta e Spinaci",
         "descrizione": "Pasta ripiena di ricotta e spinaci, gratinata al forno.",
         "ingredienti": [
             "250g di caneloni",
@@ -769,7 +769,7 @@
     },
     {
         "id": 39,
-        "nome": "Tiramisù",
+        "nome": "Tiramisù con le fragole",
         "descrizione": "Il famoso dolce italiano a base di savoiardi, mascarpone e caffè.",
         "ingredienti": [
             "300g di savoiardi",
@@ -1040,7 +1040,7 @@
     },
     {
         "id": 52,
-        "nome": "Tiramisù",
+        "nome": "Tiramisù con le gocciole",
         "descrizione": "Dolce al cucchiaio con mascarpone, caffè e savoiardi.",
         "ingredienti": [
             "300g di mascarpone",

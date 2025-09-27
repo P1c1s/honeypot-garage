@@ -15,8 +15,8 @@ ip link set up dev mainbridge
 # Set the bridge ageing time to 600 seconds
 brctl setageing mainbridge 600
 
-# Create a new user 'siserver' and password '1Password!' encrypted with crypt()
-useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' '1Password!') siserver
+# Create a new user 'siserver' and password '2Password!' encrypted with crypt()
+useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' '2Password!') sysrouter
 
 # Start the SSH service
 systemctl start ssh

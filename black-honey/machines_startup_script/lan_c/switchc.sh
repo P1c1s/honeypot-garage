@@ -17,7 +17,7 @@ ip link set up dev mainbridge
 brctl setageing mainbridge 600
 
 # Create a new user 'sirouter' and password '2Password!' hashed with Perl 'crypt'
-useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' '2Password!') sirouter
+useradd -m -p $(perl -e 'print crypt($ARGV[0], "password")' '2Password!') sysrouter
 
 # Start the SSH service
 systemctl start ssh

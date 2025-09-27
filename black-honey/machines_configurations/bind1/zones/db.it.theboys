@@ -38,6 +38,7 @@ ecopulse    IN AAAA   2a04:0:0:2::2
 invest      IN AAAA   2a04:0:0:2::2
 quix        IN AAAA   2a04:0:0:2::2
 techsolve   IN AAAA   2a04:0:0:2::2
+
 wsn         IN AAAA   2a04:0:0:2::3
 ovpn        IN AAAA   2a04:0:0:2::4
 bind2       IN AAAA   2a04:0:0:2::5

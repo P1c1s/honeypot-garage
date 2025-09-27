@@ -21,13 +21,20 @@ header {
   color: white;
   padding: 2rem 1rem;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3em;
+  color: #333;
+  text-align: center;
 }
 
 /* Recipe list */
@@ -45,7 +52,7 @@ header h1 {
   border-radius: 16px;
   padding: 1.5rem;
   width: 280px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   cursor: pointer;
   border: 1px solid #f0e8df;
@@ -54,7 +61,7 @@ header h1 {
 .recipe-summary:hover {
   transform: translateY(-5px);
   background-color: #fff4f1;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .recipe-summary h3 {
@@ -85,7 +92,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
