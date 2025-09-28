@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+LABEL org.opencontainers.image.authors="Theboys Workers <theboys.workers@gmail.com>"
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV VNC_PASSWORD=user
 
@@ -18,6 +20,7 @@ RUN apt-get update && apt-get install -y \
     vino \
     openssh-server \
     net-tools \
+    iputils-ping \
     dconf-editor \
     ubuntu-desktop \
     ubuntu-gnome-desktop \

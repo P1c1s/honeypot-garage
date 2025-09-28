@@ -38,6 +38,10 @@ docker build -t theb0ys/samba:latest samba
 
 # Build red_hornet image
 echo "🔹 Building red_hornet:latest"
-docker build -t theb0ys/red-hornet red_hornet
+docker build -t theb0ys/red-hornet red-hornet
+
+# Build ubuntu-desktop image
+echo "🔹 Building ubuntu-desktop:latest"
+docker build -t theb0ys/ubuntu-desktop ubuntu-desktop
 
 echo "✅ All builds completed!"

@@ -40,4 +40,8 @@ docker pull theb0ys/samba:latest
 echo "🔹 Pulling theb0ys/red_hornet:latest"
 docker pull theb0ys/red-hornet:latest
 
+# Pull ubuntu-desktop image
+echo "🔹 Pulling theb0ys/ubuntu-desktop:latest"
+docker pull theb0ys/ubuntu-desktop:latest
+
 echo "✅ All pulls completed!"
