@@ -9,12 +9,12 @@ Setting.get_instance().enable_ipv6 = True
 
 import backbone
 import lan_A
-import lan_B
-import lan_C
-import lan_S
+# import lan_B
+# import lan_C
+# import lan_S
 import lan_D
-import lan_O
-import pentesting
+# import lan_O
+# import pentesting
 
 Kathara.get_instance().deploy_lab(lab)
 

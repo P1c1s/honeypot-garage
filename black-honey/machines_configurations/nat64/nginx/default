@@ -63,10 +63,10 @@ server {
     }
 }
 
-# Proxy for myrecipe.theboys.it
+# Proxy for agency.theboys.it
 server {
     listen 80;
-    server_name myrecipe.theboys.it;
+    server_name agency.theboys.it;
 
     location / {
         proxy_pass http://[2a04:0:0:2::3]:80;
@@ -75,6 +75,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
+
 
 # Proxy for blackhoney.theboys.it
 server {
@@ -89,14 +90,26 @@ server {
     }
 }
 
-
-# Proxy for agency.theboys.it
+# Proxy for myrecipe.theboys.it
 server {
     listen 80;
-    server_name agency.theboys.it;
+    server_name myrecipe.theboys.it;
 
     location / {
         proxy_pass http://[2a04:0:0:2::3]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for myrecipe.theboys.it
+server {
+    listen 5900;
+    server_name 172.17.0.2;
+
+    location / {
+        proxy_pass http://[2a04:0:0:11::2]:5900;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

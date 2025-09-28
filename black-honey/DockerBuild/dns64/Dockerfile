@@ -9,7 +9,7 @@ RUN apt-get update && \
         dnsutils && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
+    
 # Prepare BIND working directory
 RUN mkdir -p /var/bind && \
     chmod 777 /var/bind

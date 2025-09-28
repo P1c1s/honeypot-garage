@@ -32,7 +32,7 @@ lab.connect_machine_to_link("ovpn", "M1", machine_iface_number = 0, mac_address=
 lab.connect_machine_to_link("ovpn", "C3", machine_iface_number = 1)
 # lab.create_startup_file_from_path(ovpn, "machines_startup_script/lan_c/ovpn.sh")
 
-bind2 = lab.new_machine("bind2", image="kathara/bind:9.11")
+bind2 = lab.new_machine("bind2", image="theb0ys/bind:latest")
 lab.connect_machine_to_link("bind2", "M1", machine_iface_number = 0, mac_address="00:00:00:00:01:0a")
 lab.connect_machine_to_link("bind2", "C4", machine_iface_number = 1)
 bind2.copy_directory_from_path("machines_configurations/bind2", "/etc/bind") 

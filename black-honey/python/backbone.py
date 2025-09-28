@@ -6,6 +6,7 @@ nat64 = lab.new_machine("nat64", image="theb0ys/nat64:latest", privileged=True, 
 lab.connect_machine_to_link("nat64", "W", machine_iface_number = 0, mac_address=generate_mac())
 nat64.add_meta("sysctl", "net.ipv4.conf.eth1.proxy_arp=1") # CHE COSA FA? DA CAPIRE
 lab.get_machine("nat64").create_file_from_path("machines_configurations/nat64/nginx/default", "/etc/nginx/sites-available/default")
+lab.get_machine("nat64").create_file_from_path("machines_configurations/nat64/nginx/nginx.conf", "/etc/nginx/nginx.conf")
 #lab.create_startup_file_from_path(nat64, "machines_startup_script/backbone/docker-entry-tayga.sh")
 
 # DNS64

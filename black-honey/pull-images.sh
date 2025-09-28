@@ -38,6 +38,6 @@ docker pull theb0ys/samba:latest
 
 # Pull red_hornet image
 echo "🔹 Pulling theb0ys/red_hornet:latest"
-docker pull theb0ys/red_hornet:latest
+docker pull theb0ys/red-hornet:latest
 
 echo "✅ All pulls completed!"

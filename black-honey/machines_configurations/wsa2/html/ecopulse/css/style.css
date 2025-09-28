@@ -173,6 +173,16 @@ header p {
   font-size: 1.5rem;
 }
 
+.error-button{
+  border: 2px solid #64d9b2;
+  border-radius: 10px;
+  padding: 10px; 
+  background-color: #161616;
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 0 0 20px #7fffd4aa;
+}
+
 /* Footer */
 footer {
   text-align: center;
