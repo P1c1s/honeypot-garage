@@ -1,0 +1,60 @@
+# This block defines a VirtualHost for the domain wsn.theboys.it (This domain is blocked)
+server {
+    listen 80; 
+    listen [::]:80; 
+
+    server_name wsn.theboys.it;
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        deny all; 
+    }
+}
+
+# This block defines a VirtualHost for the domain agency.theboys.it
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name agency.theboys.it;
+
+	root /var/www/html/theboys;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+# This block defines a VirtualHost for the domain blackhoney.theboys.it
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name blackhoney.theboys.it;
+
+	root /var/www/html/blackhoney;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+# This block defines a VirtualHost for the domain myrecipe.theboys.it
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name myrecipe.theboys.it;
+
+	root /var/www/html/myrecipe;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+

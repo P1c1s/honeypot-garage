@@ -1,0 +1,340 @@
+    /* RESET e BASE */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fff;
+        color: #222;
+        padding: 40px 20px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    /* LOGIN */
+    #login-container {
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 30px 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 320px;
+        width: 100%;
+        text-align: center;
+    }
+
+    #login-container h2 {
+        margin-bottom: 1.5rem;
+        color: #111;
+    }
+
+    #login-container input[type="text"],
+    #login-container input[type="password"] {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline-offset: 2px;
+        transition: border-color 0.3s ease;
+    }
+
+    #login-container input[type="text"]:focus,
+    #login-container input[type="password"]:focus {
+        border-color: #000;
+    }
+
+    #login-error {
+        color: #c0392b;
+        margin-bottom: 1rem;
+        display: none;
+    }
+
+    #login-container button {
+        padding: 10px 18px;
+        font-size: 1rem;
+        font-weight: 600;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #login-container button:hover,
+    #login-container button:focus-visible {
+        background-color: #222;
+        outline: none;
+    }
+
+    /* DASHBOARD (nascondiamo a inizio pagina) */
+    #dashboard {
+        display: none;
+        width: 100%;
+        max-width: 900px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* restano tutti gli stili originali */
+    h1 {
+        font-weight: 600;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #111;
+    }
+
+    #selettore-container {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        max-width: 900px;
+        justify-content: center;
+    }
+
+    .btn-tab {
+        background: none;
+        border: none;
+        padding: 10px 18px;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #555;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: color 0.3s ease, border-color 0.3s ease;
+        user-select: none;
+        outline-offset: 2px;
+    }
+
+    .btn-tab:hover,
+    .btn-tab:focus-visible {
+        color: #000;
+        border-color: #000;
+        outline: none;
+    }
+
+    .btn-tab.active {
+        color: #000;
+        border-color: #000;
+        font-weight: 600;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    #search-container {
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: 1rem;
+    }
+
+    #search {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline-offset: 2px;
+        transition: border-color 0.3s ease;
+    }
+
+    #search:focus {
+        border-color: #000;
+    }
+
+    #contenuto {
+        width: 100%;
+        max-width: 900px;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 24px 30px;
+        min-height: 160px;
+        user-select: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 0.95rem;
+        color: #333;
+    }
+
+    thead tr {
+        border-bottom: 1px solid #ccc;
+    }
+
+    th,
+    td {
+        padding: 12px 15px;
+        text-align: right;
+        font-weight: 400;
+        cursor: default;
+        user-select: none;
+    }
+
+    th:first-child,
+    td:first-child {
+        text-align: left;
+        font-weight: 600;
+        color: #111;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    th.sortable {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+    }
+
+    th.sortable:hover {
+        color: #000;
+    }
+
+    th.sortable .sort-arrow {
+        position: absolute;
+        right: 8px;
+        font-size: 0.7rem;
+        user-select: none;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid #eee;
+    }
+
+    tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    td[style*="color:green"] {
+        color: #1b7a1b;
+        font-weight: 600;
+    }
+
+    td[style*="color:red"] {
+        color: #a62a2a;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #666;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    canvas#grafico {
+        display: block;
+        margin: 0 auto 60px auto;
+        max-width: 900px;
+        width: 100%;
+        height: 380px !important;
+    }
+
+    #pagination {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        max-width: 900px;
+        user-select: none;
+    }
+
+    #pagination button {
+        background: none;
+        border: 1.5px solid #999;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        color: #555;
+        cursor: pointer;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    #pagination button:hover:not(:disabled),
+    #pagination button:focus-visible:not(:disabled) {
+        border-color: #000;
+        color: #000;
+        outline: none;
+        background-color: #eee;
+    }
+
+    #pagination button:disabled {
+        border-color: #ddd;
+        color: #bbb;
+        cursor: default;
+        background: none;
+    }
+
+    #pagination button.active {
+        background-color: #000;
+        color: #fff;
+        border-color: #000;
+        cursor: default;
+        pointer-events: none;
+        font-weight: 600;
+    }
+
+
+    .button-404 {
+        padding: 10px 18px;
+        font-size: 1rem;
+        font-weight: 600;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+
+    @media (max-width: 600px) {
+        body {
+            padding: 30px 15px;
+        }
+
+        #selettore-container {
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-tab {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            flex: 1 1 100px;
+        }
+
+        #contenuto {
+            padding: 20px 15px;
+            min-height: 140px;
+        }
+
+        canvas#grafico {
+            height: 280px !important;
+        }
+
+        #pagination {
+            gap: 4px;
+        }
+
+        #pagination button {
+            padding: 5px 9px;
+            font-size: 0.85rem;
+        }
+    }
+
+    

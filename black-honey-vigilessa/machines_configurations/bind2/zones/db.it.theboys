@@ -1,0 +1,28 @@
+$TTL 604800
+@   IN  SOA bind2.theboys.it. root.theboys.it. (
+        2025070301 ; Serial
+        604800     ; Refresh
+        86400      ; Retry
+        2419200    ; Expire
+        604800 )   ; Negative Cache TTL
+
+@   IN  NS  bind2.theboys.it.
+
+
+; ========================
+; LAN C - 2a04:0:0:2::/64
+; ========================
+
+; vhost di wsa2
+ecopulse    IN AAAA   2a04:0:0:2::2
+invest      IN AAAA   2a04:0:0:2::2
+quix        IN AAAA   2a04:0:0:2::2
+techsolve   IN AAAA   2a04:0:0:2::2
+
+; vhost di wsn
+agency      IN AAAA   2a04:0:0:2::3
+myrecipe    IN AAAA   2a04:0:0:2::3
+blackhoney  IN AAAA   2a04:0:0:2::3
+
+; CHECK THIS CHECK THIS CHECK THIS
+; ovpn        IN AAAA   2a04:0:0:2::4

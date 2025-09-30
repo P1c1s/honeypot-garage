@@ -1,0 +1,4 @@
+config.php
+.htaccess
+json/reports/cache/*.json
+site.webmanifest

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestione bilanci</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Portale per prendere visione dei bilanci della The Boys">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-container" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <h2 id="login-title">Accesso Amministratore</h2>
+    <div id="login-error" role="alert">Utente o password errati</div>
+    <input type="text" id="username" placeholder="Nome utente" aria-label="Nome utente" autocomplete="username" />
+    <input type="password" id="password" placeholder="Password" aria-label="Password" autocomplete="current-password" />
+    <button id="login-btn">Accedi</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" role="main" aria-live="polite">
+    
+    <!-- LOGO AGGIUNTO QUI -->
+    <img src="db.png" alt="Logo" id="logo" style="max-width:120px; display:block; margin:auto;">
+
+    <h1>Gestione bilanci</h1>
+
+    <div id="selettore-container" role="tablist" aria-label="Seleziona tabella aziendale">
+      <button class="btn-tab active" role="tab" aria-selected="true" data-endpoint="dipendenti.php" tabindex="0">Dipendenti</button>
+      <button class="btn-tab" role="tab" aria-selected="false" data-endpoint="posizioni.php" tabindex="-1">Posizioni</button>
+      <button class="btn-tab" role="tab" aria-selected="false" data-endpoint="entrate.php" tabindex="-1">Entrate</button>
+      <button class="btn-tab" role="tab" aria-selected="false" data-endpoint="uscite.php" tabindex="-1">Uscite</button>
+      <button class="btn-tab" role="tab" aria-selected="false" data-endpoint="bilanci_mensili.php" tabindex="-1">Bilanci Mensili</button>
+      <button class="btn-tab" role="tab" aria-selected="false" data-endpoint="bilanci_annuali.php" tabindex="-1">Bilanci Annuali</button>
+    </div>
+
+    <div id="search-container" style="display:none;">
+      <input type="search" id="search" placeholder="Cerca nella tabella..." aria-label="Cerca nella tabella" />
+    </div>
+
+    <div id="contenuto" role="region" aria-live="polite" aria-busy="false" tabindex="0"></div>
+    <div id="pagination" aria-label="Navigazione pagine tabella" style="display:none;"></div>
+    <canvas id="grafico" style="display: none;"></canvas>
+  </div>
+
+</body>
+</html>

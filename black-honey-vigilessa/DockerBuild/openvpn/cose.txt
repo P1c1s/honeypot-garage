@@ -1,0 +1,1 @@
+docker run -d   --name=openvpn-4 --privileged   -p 943:943 -p 443:443 -p 1194:1194/udp  openvpn/openvpn-as

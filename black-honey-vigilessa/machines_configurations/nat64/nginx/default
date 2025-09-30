@@ -1,0 +1,124 @@
+# Proxy for manager.theboys.it 
+server {
+    listen 80;
+    server_name manager.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:1::2]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for sysloghub.theboys.it 
+server {
+    listen 80;
+    server_name the.sysloghub.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:1::2]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+### Note
+### The websites manager.theboys.it and sysloghub.tehboys.it should to be available
+### only from the INTRANET
+
+
+
+# Proxy for ecopulse.theboys.it
+server {
+    listen 80;
+    server_name ecopulse.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::2]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for invest.theboys.it
+server {
+    listen 80;
+    server_name invest.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::2]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for quix.theboys.it
+server {
+    listen 80;
+    server_name quix.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::2]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for techsolve.theboys.it
+server {
+    listen 80;
+    server_name techsolve.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::2]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for agency.theboys.it
+server {
+    listen 80;
+    server_name agency.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::3]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+
+# Proxy for blackhoney.theboys.it
+server {
+    listen 80;
+    server_name blackhoney.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::3]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+# Proxy for myrecipe.theboys.it
+server {
+    listen 80;
+    server_name myrecipe.theboys.it;
+
+    location / {
+        proxy_pass http://[2a04:0:0:2::3]:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
