@@ -1,4 +1,23 @@
-
+<body>
+    <p>
+        <img src="src/logo.png" alt="Pi-hole logo" width="300" height="300">
+        <br>
+        <strong>Powerful Honeypot System...</strong>
+        <br>
+        <span style="font-size: 14px; color: gray;">Capture and analyze malicious traffic effectively...</span>
+    </p>
+    <div style="display: flex; justify-content: center; gap: 10px;">
+        <div>Creators</div>
+        <div style="display: flex; align-items: center; padding: 5px; border: 1px solid #ccc; border-radius: 100px; background-color: #f9f9f9;">
+            <img src="https://github.com/p1c1s.png" alt="Foto" style="border-radius: 50%; width: 15px; height: 15px; margin-right: 4px;">
+            <a href="https://github.com/p1c1s" style="font-size: 14px; font-weight: bold; text-decoration: none; color: #333;">p1c1s</a>
+        </div>
+        <div style="display: flex; align-items: center; padding: 5px; border: 1px solid #ccc; border-radius: 100px; background-color: #f9f9f9;">
+            <img src="https://github.com/sicmic.png" alt="Foto" style="border-radius: 50%; width: 15px; height: 15px; margin-right: 4px;">
+            <a href="https://github.com/sicmic" style="font-size: 14px; font-weight: bold; text-decoration: none; color: #333;">sicmic</a>
+        </div>
+    </div>
+</body>
 <!DOCTYPE html>
 <html lang="it">
 <head>
