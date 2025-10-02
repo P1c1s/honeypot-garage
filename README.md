@@ -1,4 +1,71 @@
 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Esempio</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2; 
+        }
+        .badge-container {
+            display: flex;
+            justify-content: center; 
+            gap: 10px; 
+        }
+        .badge {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 100px;
+            background-color: #f9f9f9;
+        }
+        .badge img {
+            border-radius: 50%;
+            width: 30px; /* Dimensione dell'immagine */
+            height: 30px;
+            margin-right: 4px;
+        }
+        .badge .name {
+            font-size: 14px; 
+            font-weight: bold;
+            text-decoration: none;
+            color: #333; 
+        }
+        p {
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <img src="src/logo.png" alt="Pi-hole logo" width="300" height="300">
+        <br>
+        <strong>Powerful Honeypot System...</strong>
+        <br>
+        <span style="font-size: 14px; color: gray;">Capture and analyze malicious traffic effectively...</span>
+    </p>
+    <div class="badge-container">
+        <div class="badge">
+            <img src="https://github.com/p1c1s.png" alt="Foto">
+            <a class="name" href="https://github.com/p1c1s">p1c1s</a>
+        </div>
+        <div class="badge">
+            <img src="https://github.com/sicmic.png" alt="Foto">
+            <a class="name" href="https://github.com/sicmic">sicmic</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/pi-hole/graphics/refs/heads/master/Vortex/vortex_with_text.svg" alt="Pi-hole website" width="168" height="270">
