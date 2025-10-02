@@ -1,6 +1,4 @@
-<!-- markdownlint-configure-file { "MD004": { "style": "consistent" } } -->
-<!-- markdownlint-disable MD033 -->
-#
+
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/pi-hole/graphics/refs/heads/master/Vortex/vortex_with_text.svg" alt="Pi-hole website" width="168" height="270">
@@ -8,7 +6,6 @@
   <strong>Network-wide ad blocking via your own Linux hardware</strong>
 </p>
 
-<!-- markdownlint-enable MD033 -->
 
 <!-- markdownlint-configure-file { "MD004": { "style": "consistent" } } -->
 <!-- markdownlint-disable MD033 -->
