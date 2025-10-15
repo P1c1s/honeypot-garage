@@ -1,3 +1,9 @@
+[![Docker Version][docker-image]][docker-url]
+[![Docker Pulls][pulls-image]][pulls-url]
+[![Kathara Version](https://img.shields.io/badge/Kathara%20Version-1.0.0-blue)](https://github.com/kathara-project/kathara)
+[![GitHub Releases](https://img.shields.io/github/release/kathara-project/kathara.svg)](https://github.com/kathara-project/kathara/releases)
+
+
 <body>
     <p>
         <img src="src/logo.png" alt="Pi-hole logo" width="300" height="300">
