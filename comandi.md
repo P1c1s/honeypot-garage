@@ -394,6 +394,8 @@ ssh -L 8081:192.168.178.101:123 username@192.168.178.101
 
 
 -- Scrivere bene scenario brute force nell'honeypot
+MESSO COME ATTACCO ESTERNO SU ZENGLISH, METTERE ANCHE ATTACCO INTERNO SU MANAGER.THEBOYS.IT
+
 MANAGER, BLACKHONEY CONSOLE
 hydra IP/SERVER http-form-post "/login.php:user=^USER^&pass=^PASS^:Errore" -L users.txt -P pass.txt -t 5 -w 60 -o output.txt
 
